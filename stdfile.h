@@ -30,7 +30,7 @@ int delfile(char file_name[]) { int status;
    { printf("CANT DELETE FILE\n");
    perror("ERROR"); }}
 
-int copyfile(char source_file[], target_file[]) { char ch; FILE *source, *target;
+int copyfile(char source_file[], char target_file[]) { char ch; FILE *source, *target;
    source = fopen(source_file, "r");
    if( source == NULL )
    {printf("FILE NOT FOUNDED...\n");
