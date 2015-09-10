@@ -1,5 +1,16 @@
 /*lsferreira programming */
 
+/*
+                                              _       _   
+                                             (_)     | |  
+  ___  ___  _   _ _ __ ___ ___  ___  ___ _ __ _ _ __ | |_ 
+ / __|/ _ \| | | | '__/ __/ _ \/ __|/ __| '__| | '_ \| __|
+ \__ \ (_) | |_| | | | (_|  __/\__ \ (__| |  | | |_) | |_ 
+ |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
+                                               | |        
+                                               |_|        
+*/
+
 #ifndef LSCLIBPILIB_H_INCLUDED
 #define LSCLIBPILIB_H_INCLUDED
 
@@ -7,16 +18,30 @@
 
 #endif
 
-#include "libs.h"
+#include "libs.hpp"
 #define FPINUMBASE    10000
 
 // ...
 
 
 int nblock; int *tot; int *t1; int *t2; int *t3;
-void arctan(result, w1, w2, denom, onestep)
-int *result, *w1, *w2, denom, onestep;
-{ int denom2 = denom*denom; int k = 1;
+set(int* result, int rhs) { int i;
+        for(i=0; i<nblock; i++)
+                result[i] = 0;
+        result[0] = rhs; }
+divls(int* result, int denom) { int i, carry = 0;
+        for(i=0; i<nblock; i++){
+                result[i] += carry*FPINUMBASE;
+                carry = result[i] % denom;
+                result[i] /= denom;
+        } }
+void copy(int* result, int* from);
+void sub(int* result, int* decrem);
+void add(int* result, int *increm);
+void mult(int* result, int factor);
+bool zero(int* result);
+void print(int* result);
+void arctan(int* result, int* w1, int* w2, int denom, int onestep) {int denom2 = denom*denom; int k = 1;
         set(result, 1);
         divls(result, denom);
         copy(w1, result);
@@ -49,22 +74,16 @@ void pi(int ndigit) {
         print(tot); }
 
 
-void copy(result, from)
-int *result, *from;
-{ int i;
+void copy(int* result, int* from){ int i;
         for(i=0; i<nblock; i++)
                 result[i] = from[i];
 }
-void zero(result)
-int *result;
-{ int i;
+bool zero(int* result) { int i;
         for(i=0; i<nblock; i++)
                 if(result[i])
                         return 0;
         return 1; }
-void add(result, increm)
-int *result, *increm;
-{ int i;
+void add(int* result, int *increm) { int i;
         for(i=nblock-1; i>=0; i--){
                 result[i] += increm[i];
                 if(result[i] >= FPINUMBASE){
@@ -72,9 +91,7 @@ int *result, *increm;
                         result[i-1]++;
                 }
         } }
-void sub(result, decrem)
-int *result, *decrem;
-{ int i;
+void sub(int* result, int* decrem) { int i;
         for(i=nblock-1; i>=0; i--){
                 result[i] -= decrem[i];
 
@@ -83,31 +100,14 @@ int *result, *decrem;
                         result[i-1]--;
                 }
         } }
-void mult(result, factor)
-int *result, factor;
-{ int i, carry = 0;
+void mult(int* result, int factor) { int i, carry = 0;
         for(i=nblock-1; i>=0; i--){
                 result[i] *= factor;
                 result[i] += carry;
                 carry = result[i]/FPINUMBASE;
                 result[i] %= FPINUMBASE;
         } }
-void divls(result, denom)
-int *result, denom;
-{ int i, carry = 0;
-        for(i=0; i<nblock; i++){
-                result[i] += carry*FPINUMBASE;
-                carry = result[i] % denom;
-                result[i] /= denom;
-        } }
-void set(result, rhs)
-int *result, rhs;
-{ int i;
-        for(i=0; i<nblock; i++)
-                result[i] = 0;
-        result[0] = rhs; }
-void print(result)
-int *result; { int i, k; char s[10];
+void print(int* result) { int i, k; char s[10];
         printf("%1d.\n", result[0]);
         for(i=1; i<nblock; i++){
                 sprintf(s, "%4d ", result[i]);
