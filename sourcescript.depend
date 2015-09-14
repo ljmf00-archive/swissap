@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1442073351 source:g:\workspace\projects\sourcescript\sourcescript.cpp
+	"libs.hpp"
+	"pilib.hpp"
+	"stdutils.hpp"
+	"stdfile.hpp"
+
+1442014540 g:\workspace\projects\sourcescript\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<cstdlib>
+	<string>
+	<iostream>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<unistd.h>
+	<stdio.h>
+
+1442014540 g:\workspace\projects\sourcescript\pilib.hpp
+	"libs.hpp"
+
+1442014565 g:\workspace\projects\sourcescript\stdutils.hpp
+	"libs.hpp"
+
+1442014565 g:\workspace\projects\sourcescript\stdfile.hpp
+	"libs.hpp"
+
+1442237190 source:g:\projects\sourcescript\sourcescript.cpp
+	"libs.hpp"
+	"pilib.hpp"
+	"stdutils.hpp"
+	"stdfile.hpp"
+	"stdprint.hpp"
+	"printdef.hpp"
+
+1442014540 g:\projects\sourcescript\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<cstdlib>
+	<string>
+	<iostream>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<unistd.h>
+	<stdio.h>
+
+1442236400 g:\projects\sourcescript\pilib.hpp
+	"libs.hpp"
+
+1442235651 g:\projects\sourcescript\stdutils.hpp
+	"libs.hpp"
+
+1442236697 g:\projects\sourcescript\stdfile.hpp
+	"libs.hpp"
+
+1442236361 g:\projects\sourcescript\stdprint.hpp
+	"libs.hpp"
+
+1442237661 g:\projects\sourcescript\printdef.hpp
+
