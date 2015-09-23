@@ -12,12 +12,39 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
-		<Unit filename="libs.hpp" />
-		<Unit filename="pilib.hpp" />
-		<Unit filename="printdef.hpp" />
+		<Unit filename="apps/tperiodic.hpp" />
+		<Unit filename="client.py" />
+		<Unit filename="crypto/base64.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/hex.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/md5.cpp" />
+		<Unit filename="crypto/md5.h" />
+		<Unit filename="crypto/sha1.cpp" />
+		<Unit filename="crypto/sha1.h" />
+		<Unit filename="crypto/sha2.cpp" />
+		<Unit filename="crypto/sha2.h" />
+		<Unit filename="crypto/sha2.lic" />
+		<Unit filename="crypto/stdcryptography.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/utf8.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="lib/libs.hpp" />
+		<Unit filename="lib/pilib.hpp" />
+		<Unit filename="lib/printdef.hpp" />
+		<Unit filename="lib/stdfile.hpp" />
+		<Unit filename="lib/stdprint.hpp" />
+		<Unit filename="lib/stdutils.hpp" />
+		<Unit filename="os.py" />
+		<Unit filename="server.py" />
 		<Unit filename="sourcescript.cpp" />
-		<Unit filename="stdfile.hpp" />
-		<Unit filename="stdutils.hpp" />
+		<Unit filename="speedtest.py" />
+		<Unit filename="telnet.py" />
+		<Unit filename="wget.py" />
 		<Extensions>
 			<code_completion />
 			<envvars />

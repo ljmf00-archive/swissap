@@ -12,12 +12,21 @@
 */
 
 //Include libraries
-#include "libs.hpp"
-#include "pilib.hpp"
-#include "stdutils.hpp"
-#include "stdfile.hpp"
-#include "stdprint.hpp"
-#include "printdef.hpp"
+#include "lib/libs.hpp"
+#include "lib/pilib.hpp"
+#include "lib/stdutils.hpp"
+#include "lib/stdfile.hpp"
+#include "lib/stdprint.hpp"
+#include "lib/printdef.hpp"
+
+#include "apps/tperiodic.hpp"
+
+#include "crypto/hex.h"
+#include "crypto/md5.h"
+#include "crypto/sha1.h"
+#include "crypto/sha2.h"
+#include "crypto/base64.h"
+
 
 //Used namespaces
 using namespace std;
@@ -33,6 +42,8 @@ printing printing; //printing by printing
 picalc picalc; //picalc by picalc
 file file; //file by file
 wincolor wincolor; //wincolor by wincolor
+ptable ptable; //ptable by ptable
+
 // ...
 
 //Main Function
@@ -231,6 +242,36 @@ int main(int argc, char *argv[])
                 cout << "[+] Done." << endl;
             }
         }
+        else if (string(argv[1])== "--app")
+        {
+            logo();
+            if(string(argv[2])=="periodic-table")
+            {
+                if(string(argv[3])=="--show-n")
+                {
+                    ptable.normal_pt();
+                }
+                else if(string(argv[3])=="--show-e")
+                {
+                    ptable.extended_pt();
+                }
+                else if(string(argv[3])=="--show-all")
+                {
+                    ptable.normal_pt();
+                    cout << endl;
+                    ptable.extended_pt();
+                }
+                else if(string(argv[3])=="--help")
+                {
+                    ptable.help();
+                }
+            }
+            else if(string(argv[2])=="--help")
+            {
+                cout << "List of Applications: \n" << endl;
+                cout << "periodic-table" << endl;
+            }
+        }
     }
     else   //If arguments is one, show help menu
     {
@@ -273,10 +314,10 @@ void help(void)
     cout << "  --slprint <msg>                  PRINT AN TEXT WITH SLOW EFFECT (ONLY WINDOWS)\n"; //Slow print function
     cout << "  --hourconvert <hour>             CONVERT HOUR TO MINUTE, DAY, SECOND...\n";//Hour convert function
     cout << "  --winlib (--help) [argv]...      ACCESS TO WINDOWS LIBRARY SUBARGUMENT (WINDOWS ONLY)\n";//windows lib subargument
+    cout << "  --app (name-of-app)              RUN AN INTEGRATE SOURCE SCRIPT APPLICATION\n";// run an sourcescript app || created
 }
 void helpwinlib(void)
 {
     cout << "Usage: sourcescript --winlib (--argv) [argv] ...\n\n";
     cout << "  systemprop                       SHOW SYSTEM PROPS WINDOW\n"; // Calculate a pi : pilib.h
 }
-

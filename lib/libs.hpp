@@ -26,7 +26,7 @@
 #else
 #endif
 #elif __linux
-#elif __unix
+#elif __unix__
 #elif __posix
 #endif
 //GENERAL LIBRARY
@@ -39,5 +39,14 @@
 #include <clocale>
 #include <unistd.h>
 #include <stdio.h>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <iomanip>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <string.h>
 
 #endif // LSCLIBLIBS_H_INCLUDED

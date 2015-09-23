@@ -29,13 +29,19 @@
 1442014565 g:\workspace\projects\sourcescript\stdfile.hpp
 	"libs.hpp"
 
-1442237190 source:g:\projects\sourcescript\sourcescript.cpp
-	"libs.hpp"
-	"pilib.hpp"
-	"stdutils.hpp"
-	"stdfile.hpp"
-	"stdprint.hpp"
-	"printdef.hpp"
+1442695936 source:g:\projects\sourcescript\sourcescript.cpp
+	"lib/libs.hpp"
+	"lib/pilib.hpp"
+	"lib/stdutils.hpp"
+	"lib/stdfile.hpp"
+	"lib/stdprint.hpp"
+	"lib/printdef.hpp"
+	"apps/tperiodic.hpp"
+	"crypto/hex.h"
+	"crypto/md5.h"
+	"crypto/sha1.h"
+	"crypto/sha2.h"
+	"crypto/base64.h"
 
 1442014540 g:\projects\sourcescript\libs.hpp
 	<windows.h>
@@ -65,4 +71,115 @@
 	"libs.hpp"
 
 1442237661 g:\projects\sourcescript\printdef.hpp
+
+1442445063 g:\projects\sourcescript\tperiodic.hpp
+	"libs.hpp"
+
+1442682658 source:g:\projects\sourcescript\crypto\md5.cpp
+	"md5.h"
+	<cstdio>
+
+1442682613 g:\projects\sourcescript\crypto\md5.h
+	<cstring>
+	<iostream>
+
+1442688999 source:g:\projects\sourcescript\crypto\sha1.cpp
+	"../lib/libs.hpp"
+	"sha1.h"
+
+1442682982 g:\projects\sourcescript\crypto\sha1.h
+	<iostream>
+	<string>
+
+1442688766 source:g:\projects\sourcescript\crypto\sha2.cpp
+	"../lib/libs.hpp"
+	"sha2.h"
+
+1442683010 g:\projects\sourcescript\crypto\sha2.h
+	<string>
+
+1442014540 g:\projects\sourcescript\libs\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<cstdlib>
+	<string>
+	<iostream>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<unistd.h>
+	<stdio.h>
+
+1442236400 g:\projects\sourcescript\libs\pilib.hpp
+	"libs.hpp"
+
+1442235651 g:\projects\sourcescript\libs\stdutils.hpp
+	"libs.hpp"
+
+1442236697 g:\projects\sourcescript\libs\stdfile.hpp
+	"libs.hpp"
+
+1442236361 g:\projects\sourcescript\libs\stdprint.hpp
+	"libs.hpp"
+
+1442237661 g:\projects\sourcescript\libs\printdef.hpp
+
+1442695857 g:\projects\sourcescript\apps\tperiodic.hpp
+	"../lib/libs.hpp"
+
+1442698946 g:\projects\sourcescript\lib\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<cstdlib>
+	<string>
+	<iostream>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<unistd.h>
+	<stdio.h>
+	<sstream>
+	<cstring>
+	<fstream>
+	<iomanip>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<stdlib.h>
+	<string.h>
+
+1442236400 g:\projects\sourcescript\lib\pilib.hpp
+	"libs.hpp"
+
+1442698599 g:\projects\sourcescript\lib\stdutils.hpp
+	"libs.hpp"
+	"../crypto/hex.h"
+
+1442236697 g:\projects\sourcescript\lib\stdfile.hpp
+	"libs.hpp"
+
+1442236361 g:\projects\sourcescript\lib\stdprint.hpp
+	"libs.hpp"
+
+1442237661 g:\projects\sourcescript\lib\printdef.hpp
+
+1442685575 source:g:\projects\sourcescript\crypto\sha512.cpp
+	<cstring>
+	<fstream>
+	"sha512.h"
+
+1442685546 g:\projects\sourcescript\crypto\sha512.h
+	<string>
+
+1442695564 g:\projects\sourcescript\crypto\hex.h
+	"../lib/libs.hpp"
+
+1442696015 g:\projects\sourcescript\crypto\base64.h
+	"../lib/libs.hpp"
 
