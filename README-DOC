@@ -1,4 +1,4 @@
-	Libraries
+	libs.h
 
 <windows.h>
 <conio.h>
@@ -11,48 +11,31 @@
 <math.h>
 <locale.h>
 <unistd.h>
-<cstdlib>
-<string>
-<iostream>
-<ciso646>
-<cassert>
-<cmath>
-<clocale>
-<sstream>
-<cstring>
-<fstream>
-<iomanip>
-<sys/types.h>
-<sys/stat.h>
-<fcntl.h>
 
-	Functions
+	stdutils.h
 
-util.win_sysmode(x, y);				
-util.win_syscolor(x);						
-util.win_sysclear();						
-util.unix_sysclear();							
-readfile(filename);							
-delfile(filename);								
-copyfile(sourcefile, targetfile)			
-pi(digits);									
-download(url, filepatch)					
-get_page(url, filepatch)				
-help();										
-helpwinlib();					
-logo();							
-ptable.normal_pt()
-ptable.extended_pt()
-ptable.list_pt()
-ptable.help()
-ptable.variables(argm)
-util.getOsName()
-util.hourconvert(hours)
-util.is_valid_domain_name(str)
-util.urlencode(c)
+win_sysmode(x, y);								SETTING MODE IN WINDOWS API
+win_syscolor(x);									SETTING COLOR IN WINDOWS API
+win_sysclear();										CLEAR CONSOLE IN WINDOWS API
+unix_sysclear();									CLEAR CONSOLE IN UNIX
 
+	stdfile.h
 
-	Defenitions
+readfile(filename);								READ A FILE
+delfile(filename);								DELETE A FILE
+copyfile(sourcefile, targetfile)	COPY A FILE
+
+	pilib.h
+
+pi(digits);												WRITE PI WITH N DIGITS
+
+	downloadlib.h
+
+(...)
+download(url, filepatch)					DOWNLOAD A FILE FROM URL INTO A PATCH
+get_page(url, filepatch)					DOWNLOAD A WEB PAGE FILE FROM URL INTO A PATCH
+
+	printdef.h
 
 UNIXCOLORB_BLACK
 UNIXCOLORB_RED

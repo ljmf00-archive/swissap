@@ -43,6 +43,7 @@ picalc picalc; //picalc by picalc
 file file; //file by file
 wincolor wincolor; //wincolor by wincolor
 ptable ptable; //ptable by ptable
+base64 base64; //base64 by base64
 
 // ...
 
@@ -228,6 +229,40 @@ int main(int argc, char *argv[])
         {
             utils.hourconvert(int(argv[2]));
         }
+        else if (string(argv[1]) == "--md5")
+        {
+            cout << md5(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--base64e")
+        {
+            cout << base64.encode(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--base64d")
+        {
+            cout << base64.decode(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--sha256")
+        {
+            cout << sha256(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--sha224")
+        {
+            cout << sha224(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--sha384")
+        {
+            cout << sha384(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--sha512")
+        {
+            cout << sha512(argv[2]) << endl;
+        }
+        else if (string(argv[1]) == "--choise")
+        {
+        }
+        else if (string(argv[1]) == "--gui")
+        {
+        }
         else if (string(argv[1])== "--winlib")
         {
             logo(); //Print logo
@@ -315,6 +350,13 @@ void help(void)
     cout << "  --hourconvert <hour>             CONVERT HOUR TO MINUTE, DAY, SECOND...\n";//Hour convert function
     cout << "  --winlib (--help) [argv]...      ACCESS TO WINDOWS LIBRARY SUBARGUMENT (WINDOWS ONLY)\n";//windows lib subargument
     cout << "  --app (name-of-app)              RUN AN INTEGRATE SOURCE SCRIPT APPLICATION\n";// run an sourcescript app || created
+    cout << "  --md5 (phrase)                   ENCRYPT/HASH AN PHRASE IN MD5\n";//MD5
+    cout << "  --base64e (phrase)               ENCRYPT AN PHRASE IN BASE64\n";//base64
+    cout << "  --base64d (byte)                 DECRYPT A BASE64 BYTE\n";//base64
+    cout << "  --sha224 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA224\n";//sha
+    cout << "  --sha256 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA256\n";//sha
+    cout << "  --sha384 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA384\n";//sha
+    cout << "  --sha512 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA512\n";//sha
 }
 void helpwinlib(void)
 {
