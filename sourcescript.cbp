@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sourcescript" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="sourcescript" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Unit filename="apps/tperiodic.hpp" />
+		<Unit filename="client.py" />
+		<Unit filename="crypto/base64.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/hex.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/md5.cpp" />
+		<Unit filename="crypto/md5.h" />
+		<Unit filename="crypto/sha1.cpp" />
+		<Unit filename="crypto/sha1.h" />
+		<Unit filename="crypto/sha2.cpp" />
+		<Unit filename="crypto/sha2.h" />
+		<Unit filename="crypto/sha2.lic" />
+		<Unit filename="crypto/stdcryptography.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="crypto/utf8.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="lib/libs.hpp" />
+		<Unit filename="lib/pilib.hpp" />
+		<Unit filename="lib/printdef.hpp" />
+		<Unit filename="lib/stdfile.hpp" />
+		<Unit filename="lib/stdprint.hpp" />
+		<Unit filename="lib/stdutils.hpp" />
+		<Unit filename="os.py" />
+		<Unit filename="server.py" />
+		<Unit filename="sourcescript.cpp" />
+		<Unit filename="speedtest.py" />
+		<Unit filename="telnet.py" />
+		<Unit filename="wget.py" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
