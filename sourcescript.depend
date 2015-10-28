@@ -29,7 +29,7 @@
 1442014565 g:\workspace\projects\sourcescript\stdfile.hpp
 	"libs.hpp"
 
-1443832345 source:g:\projects\sourcescript\sourcescript.cpp
+1443958204 source:g:\projects\sourcescript\sourcescript.cpp
 	"lib/libs.hpp"
 	"lib/pilib.hpp"
 	"lib/stdutils.hpp"
@@ -127,32 +127,32 @@
 
 1442237661 g:\projects\sourcescript\libs\printdef.hpp
 
-1443831590 g:\projects\sourcescript\apps\tperiodic.hpp
+1443957957 g:\projects\sourcescript\apps\tperiodic.hpp
 	"../lib/libs.hpp"
 
-1442698946 g:\projects\sourcescript\lib\libs.hpp
+1443957957 g:\projects\sourcescript\lib\libs.hpp
 	<windows.h>
 	<conio.h>
 	<tchar.h>
 	"TargetConditionals.h"
-	<cstdlib>
-	<string>
 	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<iomanip>
+	<cstdlib>
 	<ciso646>
 	<cassert>
 	<cmath>
 	<clocale>
-	<unistd.h>
-	<stdio.h>
-	<sstream>
 	<cstring>
-	<fstream>
-	<iomanip>
 	<sys/types.h>
 	<sys/stat.h>
-	<fcntl.h>
+	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<fcntl.h>
+	<unistd.h>
 
 1442236400 g:\projects\sourcescript\lib\pilib.hpp
 	"libs.hpp"
@@ -161,7 +161,7 @@
 	"libs.hpp"
 	"../crypto/hex.h"
 
-1442236697 g:\projects\sourcescript\lib\stdfile.hpp
+1443958179 g:\projects\sourcescript\lib\stdfile.hpp
 	"libs.hpp"
 
 1442236361 g:\projects\sourcescript\lib\stdprint.hpp
@@ -181,5 +181,90 @@
 	"../lib/libs.hpp"
 
 1442696015 g:\projects\sourcescript\crypto\base64.h
+	"../lib/libs.hpp"
+
+1442682658 source:c:\users\luís ferreira\workspace\projects\sourcescript\crypto\md5.cpp
+	"md5.h"
+	<cstdio>
+
+1442682613 c:\users\luís ferreira\workspace\projects\sourcescript\crypto\md5.h
+	<cstring>
+	<iostream>
+
+1442688999 source:c:\users\luís ferreira\workspace\projects\sourcescript\crypto\sha1.cpp
+	"../lib/libs.hpp"
+	"sha1.h"
+
+1443957957 c:\users\luís ferreira\workspace\projects\sourcescript\lib\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<cstring>
+	<sys/types.h>
+	<sys/stat.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+	<unistd.h>
+
+1442682982 c:\users\luís ferreira\workspace\projects\sourcescript\crypto\sha1.h
+	<iostream>
+	<string>
+
+1442688766 source:c:\users\luís ferreira\workspace\projects\sourcescript\crypto\sha2.cpp
+	"../lib/libs.hpp"
+	"sha2.h"
+
+1442683010 c:\users\luís ferreira\workspace\projects\sourcescript\crypto\sha2.h
+	<string>
+
+1443958512 source:c:\users\luís ferreira\workspace\projects\sourcescript\sourcescript.cpp
+	"lib/libs.hpp"
+	"lib/pilib.hpp"
+	"lib/stdutils.hpp"
+	"lib/stdfile.hpp"
+	"lib/stdprint.hpp"
+	"lib/printdef.hpp"
+	"apps/tperiodic.hpp"
+	"crypto/hex.h"
+	"crypto/md5.h"
+	"crypto/sha1.h"
+	"crypto/sha2.h"
+	"crypto/base64.h"
+
+1442236400 c:\users\luís ferreira\workspace\projects\sourcescript\lib\pilib.hpp
+	"libs.hpp"
+
+1442700390 c:\users\luís ferreira\workspace\projects\sourcescript\lib\stdutils.hpp
+	"libs.hpp"
+	"../crypto/hex.h"
+
+1442695564 c:\users\luís ferreira\workspace\projects\sourcescript\crypto\hex.h
+	"../lib/libs.hpp"
+
+1443958179 c:\users\luís ferreira\workspace\projects\sourcescript\lib\stdfile.hpp
+	"libs.hpp"
+
+1442236361 c:\users\luís ferreira\workspace\projects\sourcescript\lib\stdprint.hpp
+	"libs.hpp"
+
+1442237661 c:\users\luís ferreira\workspace\projects\sourcescript\lib\printdef.hpp
+
+1443957957 c:\users\luís ferreira\workspace\projects\sourcescript\apps\tperiodic.hpp
+	"../lib/libs.hpp"
+
+1442696015 c:\users\luís ferreira\workspace\projects\sourcescript\crypto\base64.h
 	"../lib/libs.hpp"
 

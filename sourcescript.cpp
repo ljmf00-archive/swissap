@@ -300,6 +300,14 @@ int main(int argc, char *argv[])
                 {
                     ptable.help();
                 }
+                else if(string(argv[3])=="--list")
+                {
+                    ptable.list_pt();
+                }
+            }
+            else if(string(argv[2])=="school-pt")
+            {
+
             }
             else if(string(argv[2])=="--help")
             {

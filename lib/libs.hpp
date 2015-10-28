@@ -30,23 +30,29 @@
 #elif __posix
 #endif
 //GENERAL LIBRARY
-#include <cstdlib>
-#include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+
+#include <string>
+
+#include <iomanip>
+
+#include <cstdlib>
 #include <ciso646>
 #include <cassert>
 #include <cmath>
 #include <clocale>
-#include <unistd.h>
-#include <stdio.h>
-#include <sstream>
 #include <cstring>
-#include <fstream>
-#include <iomanip>
+
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <fcntl.h>
+#include <unistd.h>
 
 #endif // LSCLIBLIBS_H_INCLUDED

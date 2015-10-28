@@ -92,6 +92,15 @@ public:
         system("attrib +r %WINDIR%\\system32\\drivers\\etc\\hosts");
         exit(0);
     }
+    void readfileline(const char* file_name, const char* fline)
+    {
+        std::ifstream input(file_name);
+        std::string line = fline;
+        while( std::getline( input, line ) )
+        {
+            std::cout<<line<<'\n';
+        }
+    }
 };
 
 #endif // LSCLIBSTDFILE_H_INCLUDED
