@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--hourconvert")
         {
-            utils.hourconvert(int(argv[2]));
+            utils.hourconvert(string(argv[2]));
         }
         else if (string(argv[1]) == "--md5")
         {
