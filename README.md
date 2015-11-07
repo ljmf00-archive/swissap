@@ -1,36 +1,35 @@
 # sourcescript
+## Libraries
 
-	Libraries
+* windows.h
+* conio.h
+* tchar.h
+* stdio.h
+* stdlib.h
+* string.h
+* iso646.h
+* assert.h
+* math.h
+* locale.h
+* unistd.h
+* cstdlib
+* string
+* iostream
+* ciso646
+* cassert
+* cmath
+* clocale
+* sstream
+* cstring
+* fstream
+* iomanip
+* sys/types.h
+* sys/stat.h
+* fcntl.h
 
-<windows.h>
-<conio.h>
-<tchar.h>
-<stdio.h>
-<stdlib.h>
-<string.h>
-<iso646.h>
-<assert.h>
-<math.h>
-<locale.h>
-<unistd.h>
-<cstdlib>
-<string>
-<iostream>
-<ciso646>
-<cassert>
-<cmath>
-<clocale>
-<sstream>
-<cstring>
-<fstream>
-<iomanip>
-<sys/types.h>
-<sys/stat.h>
-<fcntl.h>
+## Functions
 
-	Functions
-
-util.win_sysmode(x, y);				
+util.win_sysmode(x, y);			
 util.win_syscolor(x);						
 util.win_sysclear();						
 util.unix_sysclear();							
@@ -43,18 +42,18 @@ get_page(url, filepatch)
 help();										
 helpwinlib();					
 logo();							
-ptable.normal_pt()
-ptable.extended_pt()
-ptable.list_pt()
-ptable.help()
-ptable.variables(argm)
-util.getOsName()
-util.hourconvert(hours)
-util.is_valid_domain_name(str)
-util.urlencode(c)
+ptable.normal_pt();
+ptable.extended_pt();
+ptable.list_pt();
+ptable.help();
+ptable.variables(argm);
+util.getOsName();
+util.hourconvert(hours);
+util.is_valid_domain_name(str);
+util.urlencode(c);
 
 
-	Defenitions
+## Defenitions
 
 UNIXCOLORB_BLACK
 UNIXCOLORB_RED
