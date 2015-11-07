@@ -15,7 +15,7 @@
 #define STDPRINT_HPP_INCLUDED
 
 #if !(WIN32) //If dont support Windows :: Do Def. Inst.
-
+#define Sleep(x)
 #endif
 #if !(WIN64) //! win64
 

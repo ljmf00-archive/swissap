@@ -28,7 +28,7 @@
 using namespace std;
 
 //Objects
-crypt crypt;
+crypto crypto;
 
 // ...
 
@@ -87,8 +87,9 @@ public:
 #endif
 
     }
-    void hourconvert(long hours)
+    void hourconvert(string hour)
     {
+        int hours = atoi(hour.c_str());
         long minute;
         long seconds;
         float days, weeks, years;
@@ -161,7 +162,7 @@ public:
             else
             {
                 escaped.append("%");
-                escaped.append( crypt.char2hex(c[i]) );//converts char 255 to string "ff"
+                escaped.append( crypto.char2hex(c[i]) );//converts char 255 to string "ff"
             }
         }
         return escaped;

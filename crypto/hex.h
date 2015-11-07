@@ -6,7 +6,7 @@
 //Used namespaces
 using namespace std;
 
-class crypt
+class crypto
 {
 public:
     string char2hex( char dec )
