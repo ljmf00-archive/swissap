@@ -263,6 +263,10 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--gui")
         {
         }
+        else if (string(argv[1]) == "--getpath")
+        {
+            cout << utils.win_correntdirectory() << endl;
+        }
         else if (string(argv[1])== "--winlib")
         {
             logo(); //Print logo
