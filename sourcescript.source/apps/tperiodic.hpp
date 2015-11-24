@@ -125,6 +125,17 @@ public:
     void helium() {cout << "2		4.0026	Helium	He	-272	-269	0.18		1895	18	1s2	24.5874" << endl;}
     void lithium() {cout << "3		6.941	Lithium	Li	180	1347	0.53		1817	1	[He] 2s1	5.3917" << endl;}
     void beryllium() {cout << "4		9.0122	Beryllium	Be	1278	2970	1.85		1797	2	[He] 2s2	9.3227" << endl;}
+    void borum() {cout << "5		10.811	Boron	B	2300	2550	2.34		1808	13	[He] 2s2 2p1	8.298" << endl;}
+    void carbon() {cout << "6		12.0107	Carbon	C	3500	4827	2.26	0.094	ancient	14	[He] 2s2 2p2	11.2603" << endl;}
+    void nitrogen() {cout << "7		14.0067	Nitrogen	N	-210	-196	1.25		1772	15	[He] 2s2 2p3	14.5341" << endl;}
+    void oxygen() {cout << "8		15.9994	Oxygen	O	-218	-183	1.43	46.71	1774	16	[He] 2s2 2p4	13.6181" << endl;}
+    void fluorine() {cout << "9		18.9984	Fluorine	F	-220	-188	1.7	0.029	1886	17	[He] 2s2 2p5	17.4228" << endl;}
+    void neon() {cout << "10		20.1797	Neon	Ne	-249	-246	0.9		1898	18	[He] 2s2 2p6	21.5645" << endl;}
+    void sodium() {cout << "11		22.9897	Sodium	Na	98	883	0.97	2.75	1807	1	[Ne] 3s1	5.1391" << endl;}
+    void magnesium() {cout << "12		24.305	Magnesium	Mg	639	1090	1.74	2.08	1755	2	[Ne] 3s2	7.6462" << endl;}
+    void aluminum() {cout << "13		26.9815	Aluminum	Al	660	2467	2.7	8.07	1825	13	[Ne] 3s2 3p1	5.9858" << endl;}
+    void silicon() {cout << "14		28.0855	Silicon	Si	1410	2355	2.33	27.69	1824	14	[Ne] 3s2 3p2	8.1517" << endl;}
+    void phosphorus() {cout << "15		30.9738	Phosphorus	P	44	280	1.82	0.13	1669	15	[Ne] 3s2 3p3	10.4867" << endl;}
 };
 
 class pgraphics
