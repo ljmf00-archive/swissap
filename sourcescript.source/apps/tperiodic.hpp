@@ -1,24 +1,4 @@
 /*
-1		1.0079	Hydrogen	H	-259	-253	0.09	0.14	1776	1	1s1	13.5984
-2		4.0026	Helium	He	-272	-269	0.18		1895	18	1s2	24.5874
-3		6.941	Lithium	Li	180	1347	0.53		1817	1	[He] 2s1	5.3917
-4		9.0122	Beryllium	Be	1278	2970	1.85		1797	2	[He] 2s2	9.3227
-5		10.811	Boron	B	2300	2550	2.34		1808	13	[He] 2s2 2p1	8.298
-6		12.0107	Carbon	C	3500	4827	2.26	0.094	ancient	14	[He] 2s2 2p2	11.2603
-7		14.0067	Nitrogen	N	-210	-196	1.25		1772	15	[He] 2s2 2p3	14.5341
-8		15.9994	Oxygen	O	-218	-183	1.43	46.71	1774	16	[He] 2s2 2p4	13.6181
-9		18.9984	Fluorine	F	-220	-188	1.7	0.029	1886	17	[He] 2s2 2p5	17.4228
-10		20.1797	Neon	Ne	-249	-246	0.9		1898	18	[He] 2s2 2p6	21.5645
-11		22.9897	Sodium	Na	98	883	0.97	2.75	1807	1	[Ne] 3s1	5.1391
-12		24.305	Magnesium	Mg	639	1090	1.74	2.08	1755	2	[Ne] 3s2	7.6462
-13		26.9815	Aluminum	Al	660	2467	2.7	8.07	1825	13	[Ne] 3s2 3p1	5.9858
-14		28.0855	Silicon	Si	1410	2355	2.33	27.69	1824	14	[Ne] 3s2 3p2	8.1517
-15		30.9738	Phosphorus	P	44	280	1.82	0.13	1669	15	[Ne] 3s2 3p3	10.4867
-16		32.065	Sulfur	S	113	445	2.07	0.052	ancient	16	[Ne] 3s2 3p4	10.36
-17		35.453	Chlorine	Cl	-101	-35	3.21	0.045	1774	17	[Ne] 3s2 3p5	12.9676
-18		39.948	Argon	Ar	-189	-186	1.78		1894	18	[Ne] 3s2 3p6	15.7596
-19		39.0983	Potassium	K	64	774	0.86	2.58	1807	1	[Ar] 4s1	4.3407
-20		40.078	Calcium	Ca	839	1484	1.55	3.65	1808	2	[Ar] 4s2	6.1132
 21		44.9559	Scandium	Sc	1539	2832	2.99		1879	3	[Ar] 3d1 4s2	6.5615
 22		47.867	Titanium	Ti	1660	3287	4.54	0.62	1791	4	[Ar] 3d2 4s2	6.8281
 23		50.9415	Vanadium	V	1890	3380	6.11		1830	5	[Ar] 3d3 4s2	6.7462
@@ -108,7 +88,6 @@
 107	*	264	Bohrium	Bh					1981	7
 108	*	277	Hassium	Hs					1984	8
 109	*	268	Meitnerium	Mt					1982	9
-
 */
 
 #ifndef TPERIODIC_HPP_INCLUDED
@@ -136,6 +115,11 @@ public:
     void aluminum() {cout << "13		26.9815	Aluminum	Al	660	2467	2.7	8.07	1825	13	[Ne] 3s2 3p1	5.9858" << endl;}
     void silicon() {cout << "14		28.0855	Silicon	Si	1410	2355	2.33	27.69	1824	14	[Ne] 3s2 3p2	8.1517" << endl;}
     void phosphorus() {cout << "15		30.9738	Phosphorus	P	44	280	1.82	0.13	1669	15	[Ne] 3s2 3p3	10.4867" << endl;}
+    void sulfur() {cout << "16		32.065	Sulfur	S	113	445	2.07	0.052	ancient	16	[Ne] 3s2 3p4	10.36" << endl;}
+    void chlorine() {cout << "17		35.453	Chlorine	Cl	-101	-35	3.21	0.045	1774	17	[Ne] 3s2 3p5	12.9676" << endl;}
+    void argon() {cout << "18		39.948	Argon	Ar	-189	-186	1.78		1894	18	[Ne] 3s2 3p6	15.7596" << endl;}
+    void potassium() {cout << "19		39.0983	Potassium	K	64	774	0.86	2.58	1807	1	[Ar] 4s1	4.3407" << endl;}
+    void calcium() {cout << "20		40.078	Calcium	Ca	839	1484	1.55	3.65	1808	2	[Ar] 4s2	6.1132" << endl;}
 };
 
 class pgraphics
