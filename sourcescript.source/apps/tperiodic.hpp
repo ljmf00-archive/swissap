@@ -1,9 +1,4 @@
 /*
-21		44.9559	Scandium	Sc	1539	2832	2.99		1879	3	[Ar] 3d1 4s2	6.5615
-22		47.867	Titanium	Ti	1660	3287	4.54	0.62	1791	4	[Ar] 3d2 4s2	6.8281
-23		50.9415	Vanadium	V	1890	3380	6.11		1830	5	[Ar] 3d3 4s2	6.7462
-24		51.9961	Chromium	Cr	1857	2672	7.19	0.035	1797	6	[Ar] 3d5 4s1	6.7665
-25		54.938	Manganese	Mn	1245	1962	7.43	0.09	1774	7	[Ar] 3d5 4s2	7.434
 26		55.845	Iron	Fe	1535	2750	7.87	5.05	ancient	8	[Ar] 3d6 4s2	7.9024
 27		58.9332	Cobalt	Co	1495	2870	8.9		1735	9	[Ar] 3d7 4s2	7.881
 28		58.6934	Nickel	Ni	1453	2732	8.9	0.019	1751	10	[Ar] 3d8 4s2	7.6398
@@ -97,7 +92,7 @@
 
 using namespace std;
 
-class pelements
+class pelementslist
 {
 public:
     void hydrogen() {cout << "1		1.0079	Hydrogen	H	-259	-253	0.09	0.14	1776	1	1s1	13.5984" << endl;}
@@ -120,6 +115,12 @@ public:
     void argon() {cout << "18		39.948	Argon	Ar	-189	-186	1.78		1894	18	[Ne] 3s2 3p6	15.7596" << endl;}
     void potassium() {cout << "19		39.0983	Potassium	K	64	774	0.86	2.58	1807	1	[Ar] 4s1	4.3407" << endl;}
     void calcium() {cout << "20		40.078	Calcium	Ca	839	1484	1.55	3.65	1808	2	[Ar] 4s2	6.1132" << endl;}
+    void scandium() {cout << "21		44.9559	Scandium	Sc	1539	2832	2.99		1879	3	[Ar] 3d1 4s2	6.5615" << endl;}
+    void titanium() {cout << "22		47.867	Titanium	Ti	1660	3287	4.54	0.62	1791	4	[Ar] 3d2 4s2	6.8281" << endl;}
+    void vanadium() {cout << "23		50.9415	Vanadium	V	1890	3380	6.11		1830	5	[Ar] 3d3 4s2	6.7462" << endl;}
+    void chromium() {cout << "24		51.9961	Chromium	Cr	1857	2672	7.19	0.035	1797	6	[Ar] 3d5 4s1	6.7665" << endl;}
+    void manganese() {cout << "25		54.938	Manganese	Mn	1245	1962	7.43	0.09	1774	7	[Ar] 3d5 4s2	7.434" << endl;}
+    void iron() {cout << "26		55.845	Iron	Fe	1535	2750	7.87	5.05	ancient	8	[Ar] 3d6 4s2	7.9024" << endl;}
 };
 
 class pgraphics
