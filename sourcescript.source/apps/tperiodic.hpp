@@ -1,5 +1,4 @@
 /*
-26		55.845	Iron	Fe	1535	2750	7.87	5.05	ancient	8	[Ar] 3d6 4s2	7.9024
 27		58.9332	Cobalt	Co	1495	2870	8.9		1735	9	[Ar] 3d7 4s2	7.881
 28		58.6934	Nickel	Ni	1453	2732	8.9	0.019	1751	10	[Ar] 3d8 4s2	7.6398
 29		63.546	Copper	Cu	1083	2567	8.96		ancient	11	[Ar] 3d10 4s1	7.7264
@@ -274,8 +273,11 @@ public:
         cout << "  --show-e         SHOW EXTENDED PERIODIC TABLE\n";
         cout << "  --list           SHOW ATOM LIST\n";
         cout << "  -s g<num>           SHOW ATOM GRAPHIC LOCATION\n";
+        cout << "  -s g<letter>           SHOW ATOM GRAPHIC LOCATION\n";
         cout << "  -s <num>            SHOW ATOM DESCRIPTION\n";
         cout << "  -s <letters>        SHOW ATOM DESCRIPTION\n";
+        cout << "  -s e<num>        SHOW EXTENDED ATOM DESCRIPTION\n";
+        cout << "  -s e<letter>        SHOW EXTENDED ATOM DESCRIPTION\n";
     }
     void variables(char* argm)
     {

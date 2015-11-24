@@ -448,3 +448,88 @@
 1446920303 c:\users\lsferreira\github\sourcescript\sourcescript.source\crypto\base64.h
 	"../lib/libs.hpp"
 
+1448394324 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\md5.cpp
+	"md5.h"
+	<cstdio>
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\md5.h
+	<cstring>
+	<iostream>
+
+1448394324 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha1.cpp
+	"../lib/libs.hpp"
+	"sha1.h"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<cstring>
+	<sys/types.h>
+	<sys/stat.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+	<unistd.h>
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha1.h
+	<iostream>
+	<string>
+
+1448394324 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha2.cpp
+	"../lib/libs.hpp"
+	"sha2.h"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha2.h
+	<string>
+
+1448394711 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\sourcescript.cpp
+	"lib/libs.hpp"
+	"lib/pilib.hpp"
+	"lib/stdutils.hpp"
+	"lib/stdfile.hpp"
+	"lib/stdprint.hpp"
+	"lib/printdef.hpp"
+	"apps/tperiodic.hpp"
+	"crypto/hex.h"
+	"crypto/md5.h"
+	"crypto/sha1.h"
+	"crypto/sha2.h"
+	"crypto/base64.h"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\pilib.hpp
+	"libs.hpp"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdutils.hpp
+	"libs.hpp"
+	"../crypto/hex.h"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\hex.h
+	"../lib/libs.hpp"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdfile.hpp
+	"libs.hpp"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdprint.hpp
+	"libs.hpp"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\printdef.hpp
+
+1448395137 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\apps\tperiodic.hpp
+	"../lib/libs.hpp"
+
+1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\base64.h
+	"../lib/libs.hpp"
+

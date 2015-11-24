@@ -308,6 +308,10 @@ int main(int argc, char *argv[])
                 {
                     ptable.list_pt();
                 }
+                else if(string(argv[3])=="-s")
+                {
+                    ptable.variables(argv[4]);
+                }
             }
             else if(string(argv[2])=="school-pt")
             {
