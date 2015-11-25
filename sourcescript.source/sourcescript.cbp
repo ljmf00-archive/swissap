@@ -12,6 +12,12 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="apps/ptable_elements.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="apps/ptable_graphics.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="apps/tperiodic.hpp" />
 		<Unit filename="client.py" />
 		<Unit filename="crypto/base64.h">
