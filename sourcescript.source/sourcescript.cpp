@@ -20,13 +20,14 @@
 #include "lib/printdef.hpp"
 
 #include "apps/tperiodic.hpp"
+#include "apps/ptable_elements.hpp"
+#include "apps/ptable_graphics.hpp"
 
 #include "crypto/hex.h"
 #include "crypto/md5.h"
 #include "crypto/sha1.h"
 #include "crypto/sha2.h"
 #include "crypto/base64.h"
-
 
 //Used namespaces
 using namespace std;
@@ -44,7 +45,8 @@ file file; //file by file
 wincolor wincolor; //wincolor by wincolor
 ptable ptable; //ptable by ptable
 base64 base64; //base64 by base64
-
+pelements pelements; //pelements by pelements
+pgraphics pgraphics; //pgraphics by pgraphics
 // ...
 
 //Main Function
@@ -288,17 +290,17 @@ int main(int argc, char *argv[])
             {
                 if(string(argv[3])=="--show-n")
                 {
-                    ptable.normal_pt();
+                    pgraphics.normal_pt();
                 }
                 else if(string(argv[3])=="--show-e")
                 {
-                    ptable.extended_pt();
+                    pgraphics.extended_pt();
                 }
                 else if(string(argv[3])=="--show-all")
                 {
-                    ptable.normal_pt();
+                    pgraphics.normal_pt();
                     cout << endl;
-                    ptable.extended_pt();
+                    pgraphics.extended_pt();
                 }
                 else if(string(argv[3])=="--help")
                 {
@@ -306,7 +308,7 @@ int main(int argc, char *argv[])
                 }
                 else if(string(argv[3])=="--list")
                 {
-                    ptable.list_pt();
+                    pelements.list_pt();
                 }
                 else if(string(argv[3])=="-s")
                 {
