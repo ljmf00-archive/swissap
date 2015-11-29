@@ -4,6 +4,16 @@
 ![Downloads](https://img.shields.io/github/downloads/ljmf00/sourcescript/total.svg)
 ![License](https://img.shields.io/badge/License-CreativeCommons-lightgrey.svg)
 
+```
+                                              _       _
+                                             (_)     | |
+  ___  ___  _   _ _ __ ___ ___  ___  ___ _ __ _ _ __ | |_
+ / __|/ _ \| | | | '__/ __/ _ \/ __|/ __| '__| | '_ \| __|
+ \__ \ (_) | |_| | | | (_|  __/\__ \ (__| |  | | |_) | |_
+ |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
+                                               | |
+                                               |_|
+```
 Project in C/C++ and Python Language
 
 ## Libraries
