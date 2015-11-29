@@ -131,3 +131,5 @@ Project in C/C++ and Python Language
 * base64 base64gui; 
 * pelements pelementsgui;
 * pgraphics pgraphicsgui; 
+
+This document was written with [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) and [Emoji](http://www.emoji-cheat-sheet.com/)
