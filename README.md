@@ -54,6 +54,8 @@ Project in C/C++ and Python Language
 * util.hourconvert(hours);
 * util.is_valid_domain_name(str);
 * util.urlencode(c);
+* md5(hash);
+* sha
 
 
 ## Defenitions
@@ -97,3 +99,25 @@ Project in C/C++ and Python Language
 * UNIXSCREEN_CLEAR_ENDLINE
 * UNIXSCREEN_CLEAR_BEGINNINGLINE
 * UNIXSCREEN_CLEAR_ENDSCREEN
+
+## Classes
+
+* utils utils;
+* printing printing;
+* picalc picalc;
+* file file;
+* wincolor wincolor;
+* ptable ptable;
+* base64 base64;
+* pelements pelements;
+* pgraphics pgraphics;
+* ssgui ssgui;
+* utils utilsgui;
+* printing printinggui; 
+* picalc picalcgui; 
+* file filegui;
+* wincolor wincolorgui;
+* ptable ptablegui;
+* base64 base64gui; 
+* pelements pelementsgui;
+* pgraphics pgraphicsgui; 
