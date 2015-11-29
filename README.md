@@ -1,4 +1,9 @@
 # sourcescript
+![Build](https://img.shields.io/github/release/ljmf00/sourcescript.svg)
+![Issues](https://img.shields.io/github/issues/ljmf00/sourcescript.svg)
+![Downloads](https://img.shields.io/github/downloads/ljmf00/sourcescript/total.svg)
+![License](https://img.shields.io/badge/License-CreativeCommons-lightgrey.svg)
+
 Project in C/C++ and Python Language
 
 ## Libraries
