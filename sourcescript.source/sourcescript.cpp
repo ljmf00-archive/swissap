@@ -19,6 +19,8 @@
 #include "lib/stdprint.hpp"
 #include "lib/printdef.hpp"
 
+#include "lib/gui.hpp"
+
 #include "apps/tperiodic.hpp"
 #include "apps/ptable_elements.hpp"
 #include "apps/ptable_graphics.hpp"
@@ -47,6 +49,7 @@ ptable ptable; //ptable by ptable
 base64 base64; //base64 by base64
 pelements pelements; //pelements by pelements
 pgraphics pgraphics; //pgraphics by pgraphics
+ssgui ssgui; //gui by gui
 // ...
 
 //Main Function
@@ -264,6 +267,7 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--gui")
         {
+            ssgui.main();
         }
         else if (string(argv[1]) == "--getpath")
         {

@@ -495,13 +495,14 @@
 1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha2.h
 	<string>
 
-1448462240 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\sourcescript.cpp
+1448796255 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\sourcescript.cpp
 	"lib/libs.hpp"
 	"lib/pilib.hpp"
 	"lib/stdutils.hpp"
 	"lib/stdfile.hpp"
 	"lib/stdprint.hpp"
 	"lib/printdef.hpp"
+	"lib/gui.hpp"
 	"apps/tperiodic.hpp"
 	"apps/ptable_elements.hpp"
 	"apps/ptable_graphics.hpp"
@@ -540,4 +541,20 @@
 
 1448462082 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\apps\ptable_graphics.hpp
 	"../lib/libs.hpp"
+
+1448799064 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\gui.hpp
+	"libs.hpp"
+	"pilib.hpp"
+	"stdutils.hpp"
+	"stdfile.hpp"
+	"stdprint.hpp"
+	"printdef.hpp"
+	"../apps/tperiodic.hpp"
+	"../apps/ptable_elements.hpp"
+	"../apps/ptable_graphics.hpp"
+	"../crypto/hex.h"
+	"../crypto/md5.h"
+	"../crypto/sha1.h"
+	"../crypto/sha2.h"
+	"../crypto/base64.h"
 

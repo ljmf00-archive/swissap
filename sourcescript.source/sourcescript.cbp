@@ -39,6 +39,9 @@
 		<Unit filename="crypto/utf8.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="lib/gui.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="lib/libs.hpp" />
 		<Unit filename="lib/pilib.hpp" />
 		<Unit filename="lib/printdef.hpp" />
