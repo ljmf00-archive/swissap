@@ -45,9 +45,9 @@ Project in C/C++ and Python Language
 * help();										
 * helpwinlib();					
 * logo();							
-* ptable.normal_pt();
-* ptable.extended_pt();
-* ptable.list_pt();
+* pgraphics.normal_pt();
+* pgraphics.extended_pt();
+* pelements.list_pt();
 * ptable.help();
 * ptable.variables(argm);
 * util.getOsName();
@@ -55,7 +55,17 @@ Project in C/C++ and Python Language
 * util.is_valid_domain_name(str);
 * util.urlencode(c);
 * md5(hash);
-* sha
+* base64.encode();
+* base64.decode();
+* sha256(hash);
+* sha224(hash);
+* sha384(hash);
+* sha512(hash);
+* ssgui.main();
+* utils.win_correntdirectory()
+* ptable.variables(var);
+* ssgui.pause();
+* ssgui.logo();
 
 
 ## Defenitions
