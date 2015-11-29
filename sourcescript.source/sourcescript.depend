@@ -460,7 +460,7 @@
 	"../lib/libs.hpp"
 	"sha1.h"
 
-1448462165 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\libs.hpp
+1448804489 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\libs.hpp
 	<windows.h>
 	<conio.h>
 	<tchar.h>
@@ -482,7 +482,6 @@
 	<stdlib.h>
 	<string.h>
 	<fcntl.h>
-	<unistd.h>
 
 1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha1.h
 	<iostream>
@@ -522,7 +521,7 @@
 1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\hex.h
 	"../lib/libs.hpp"
 
-1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdfile.hpp
+1448804775 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdfile.hpp
 	"libs.hpp"
 
 1448394324 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdprint.hpp

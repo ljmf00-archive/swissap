@@ -53,6 +53,6 @@
 #include <string.h>
 
 #include <fcntl.h>
-#include <unistd.h>
+//#include <unistd.h>
 
 #endif // LSCLIBLIBS_H_INCLUDED

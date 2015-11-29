@@ -47,7 +47,7 @@ public:
         fclose(fp);
     }
 
-    int delfile(const char* file_name)
+    void delfile(const char* file_name)
     {
         int status;
         status = remove(file_name);
