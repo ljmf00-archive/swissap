@@ -118,6 +118,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="keypp_esender.h" />
+    <ClInclude Include="keypp_stdafx.h" />
+    <ClInclude Include="keypp_targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="keypp-tester.cpp" />
+    <ClCompile Include="keypp_stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
