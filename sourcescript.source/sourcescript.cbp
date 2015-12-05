@@ -12,6 +12,9 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="apps/mcalc.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="apps/ptable_elements.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

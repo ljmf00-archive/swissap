@@ -1,14 +1,78 @@
-﻿Build started 02/12/2015 18:54:04.
+﻿Build started 05/12/2015 00:09:13.
      1>Project "C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.source\sourcescript.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.core\Debug\sourcescript.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.core\Debug\sourcescript.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\md5.obj
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _AFXDLL /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib sourcescript.cpp
+         sourcescript.cpp
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/pilib.hpp(142): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\../crypto/hex.h(52): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(41): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(42): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(43): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(50): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(72): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(73): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdutils.hpp(104): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdfile.hpp(39): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdfile.hpp(67): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/stdfile.hpp(73): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\../crypto/base64.h(14): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/gui.hpp(99): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/gui.hpp(100): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib/gui.hpp(101): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(85): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(86): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(87): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(172): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(173): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(174): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(206): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(207): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(208): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(209): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(210): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(225): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(226): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(227): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\string.h(90): note: see declaration of 'strcat'
+     1>sourcescript.cpp(59): warning C4101: 'choise': unreferenced local variable
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdfile.hpp(48): warning C4715: 'file::readfile': not all control paths return a value
+     1>c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\stdfile.hpp(85): warning C4715: 'file::copyfile': not all control paths return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.source\Debug\sourcescript.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.source\Debug\sourcescript.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\md5.obj
          Debug\sha1.obj
          Debug\sha2.obj
          Debug\sourcescript.obj
          "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
-         sourcescript.vcxproj -> C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.core\Debug\sourcescript.exe
+         sourcescript.vcxproj -> C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.source\Debug\sourcescript.exe
      1>Done Building Project "C:\Users\luis_\OneDrive\Documentos\GitHub\sourcescript\sourcescript.source\sourcescript.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.58
+Time Elapsed 00:00:04.18

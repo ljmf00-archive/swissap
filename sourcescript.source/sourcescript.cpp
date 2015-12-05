@@ -24,6 +24,7 @@
 #include "apps/tperiodic.hpp"
 #include "apps/ptable_elements.hpp"
 #include "apps/ptable_graphics.hpp"
+#include "apps/mcalc.hpp"
 
 #include "crypto/hex.h"
 #include "crypto/md5.h"
@@ -319,14 +320,15 @@ int main(int argc, char *argv[])
                     ptable.variables(argv[4]);
                 }
             }
-            else if(string(argv[2])=="school-pt")
+            else if(string(argv[2])=="mcalc")
             {
-
+				mcalc();
             }
             else if(string(argv[2])=="--help")
             {
                 cout << "List of Applications: \n" << endl;
                 cout << "periodic-table" << endl;
+				cout << "mcalc" << endl;
             }
         }
     }

@@ -80,5 +80,8 @@
     <ClInclude Include="lib\stdutils.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="apps\mcalc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

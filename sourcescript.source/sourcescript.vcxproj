@@ -109,6 +109,7 @@
     <ClCompile Include="sourcescript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="apps\mcalc.hpp" />
     <ClInclude Include="apps\ptable_elements.hpp" />
     <ClInclude Include="apps\ptable_graphics.hpp" />
     <ClInclude Include="apps\tperiodic.hpp" />
