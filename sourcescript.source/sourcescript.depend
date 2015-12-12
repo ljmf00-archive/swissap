@@ -456,11 +456,11 @@
 	<cstring>
 	<iostream>
 
-1448394324 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha1.cpp
+1448805824 source:c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\crypto\sha1.cpp
 	"../lib/libs.hpp"
 	"sha1.h"
 
-1448804489 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\libs.hpp
+1448805824 c:\users\luis_\onedrive\documentos\github\sourcescript\sourcescript.source\lib\libs.hpp
 	<windows.h>
 	<conio.h>
 	<tchar.h>

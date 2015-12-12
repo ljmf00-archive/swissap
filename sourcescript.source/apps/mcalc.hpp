@@ -5,7 +5,7 @@
 #define MCALC_HPP_INCLUDED
 
 //Include libraries
-#include "lib/libs.hpp"
+#include "../lib/libs.hpp"
 //Used namespaces
 using namespace std;
 
@@ -14,7 +14,7 @@ using namespace std;
 		cout << "PT(1)/EN(2)?: ";
 		int choiselang;
 		cin >> choiselang;
-		if (choiselang == 1) 
+		if (choiselang == 1)
 		{
 			cout << "Numero de disciplinas?: ";
 			int numsubjects;
@@ -43,7 +43,7 @@ using namespace std;
 
 					mt += t / choisent;
 				}
-				
+
 				cout << "Numero de Trabalhos?: ";
 				int choisentr;
 				cin >> choisentr;
@@ -61,7 +61,7 @@ using namespace std;
 
 					mtr += tr / choisentr;
 				}
-				
+
 
 				cout << "% Atitudes e valores: ";
 				int choisepcav;
@@ -76,11 +76,11 @@ using namespace std;
 			}
 			cout << "A tua media e: " << avarg << endl;
 		}
-		else if (choiselang == 2) 
+		else if (choiselang == 2)
 		{
-			
+
 		}
-		
+
 
 	}
 

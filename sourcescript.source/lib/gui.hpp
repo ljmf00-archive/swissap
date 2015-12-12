@@ -18,6 +18,7 @@ using namespace std;
 
 //Include libraries
 
+//General libraries
 #include "libs.hpp"
 #include "pilib.hpp"
 #include "stdutils.hpp"
@@ -25,10 +26,12 @@ using namespace std;
 #include "stdprint.hpp"
 #include "printdef.hpp"
 
+//Apps libraries
 #include "../apps/tperiodic.hpp"
 #include "../apps/ptable_elements.hpp"
 #include "../apps/ptable_graphics.hpp"
 
+//Cryptography libraries
 #include "../crypto/hex.h"
 #include "../crypto/md5.h"
 #include "../crypto/sha1.h"
@@ -46,7 +49,7 @@ base64 base64gui; //base64 by base64
 pelements pelementsgui; //pelements by pelements
 pgraphics pgraphicsgui; //pgraphics by pgraphics
 
-
+//GUI Class
 class ssgui
 {
 public:

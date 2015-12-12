@@ -19,13 +19,16 @@
 #include "lib/stdprint.hpp"
 #include "lib/printdef.hpp"
 
+//Gui libraries
 #include "lib/gui.hpp"
 
+//Apps libraries
 #include "apps/tperiodic.hpp"
 #include "apps/ptable_elements.hpp"
 #include "apps/ptable_graphics.hpp"
 #include "apps/mcalc.hpp"
 
+//Cryptography libraries
 #include "crypto/hex.h"
 #include "crypto/md5.h"
 #include "crypto/sha1.h"
@@ -51,6 +54,7 @@ base64 base64; //base64 by base64
 pelements pelements; //pelements by pelements
 pgraphics pgraphics; //pgraphics by pgraphics
 ssgui ssgui; //gui by gui
+
 // ...
 
 //Main Function
@@ -62,6 +66,11 @@ int main(int argc, char *argv[])
     {
         if(string(argv[1]) == "--pi")
         {
+            /* Summary: This argument run a pi() function and it will calculate
+             * a specific number of pi cases.
+             * Used for: PI CALCULATION;
+             *           */
+
             logo();
             int i=atoi(argv[2]);
             printf("[+] Calculating pi number with %d cases\n",i);
@@ -72,16 +81,27 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--download")
         {
+            /* Summary: This argument execute a python script and it
+             * will download a specific file from an weblink (URL)
+             * Used for: DOWNLOAD A CONTENT FORM URL;
+                         USE WGET FUNCTION IN PYTHON FOR OTHER PROPOSE;
+						 DISPLAY SOURCECODE FROM AN URL;
+             *           */
+
             logo(); //Print logo
             printf("[+] Downloading file from, \n");
             printf("[-]URL: %s\n",argv[2]);
             printf("[-]OUTPUT: %s\n",argv[3]);
             printf("==============================\n\n");
-#if !(_WIN32) //If dont support Windows :: Do Def. Inst.
+
+            /* Multiplataform python executation */
+
+            #if !(_WIN32) //If dont support Windows :: Do Def. Inst.
             char cmd[] = "python wget.py --output "; //Add "python" word
-#else //If support, then...
+            #else //If support, then...
             char cmd[] = "wget.py --output ";
-#endif //end if !(_WIN32)
+            #endif //end if !(_WIN32)
+
             strcat(cmd, argv[3]);
             strcat(cmd, " ");
             strcat(cmd, argv[2]);
@@ -91,6 +111,12 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--speedtest")
         {
+            /* Summary:  This argument is used to do a
+             * speedtest test from speedtest.net website
+             * using python script.
+             * Used for: SPEEDTEST TEST WITH PYTHON SCRIPT;
+             *           */
+
             logo(); //Print logo
             printf("[+] Doing a speedtest... \n");
             printf("==============================\n\n");
@@ -101,11 +127,18 @@ int main(int argc, char *argv[])
 #endif //end if !(_WIN32)
             printf("\n[-] Done.\n");
             exit(0);
+
         }
         else if (string(argv[1]) == "-c")
         {
+            /* This short argument is used for clear
+             * unix terminal with easy command script */
             if(string(argv[2]) == "-ww")
             {
+                // Without print logo() function;
+
+                // ...
+
             }
             else logo(); //Print logo
 
@@ -118,23 +151,42 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--gisocket")
         {
+			// Unnamed arguments ??? 12-12-2015
+			/* Summary: 
+			 * Used for: 
+						*/
             logo();
 
         }
         else if (string(argv[1]) == "--os")
         {
+
+			/* Summary: This argument display Operation System Informations 
+			 * from a python script
+			 * Used for: DISPLAY OS INFO;
+			 *			 */
+
+
             logo(); //Print logo
             printf("[+] Operation System Information... \n");
             printf("==============================\n\n");
+
+			//Multiplataform python exec optimization
 #if !(_WIN32) //If dont support Windows :: Do Def. Inst.
             system("python os.py"); // ...
 #else //If support, then...
             system("os.py");
 #endif //end if !(_WIN32)
             printf("\n[-] Done.\n");
+
         }
         else if (string(argv[1]) == "--readfile")
         {
+			/* Summary: This argument run a readfile() function and display a
+			 * content of an file
+			 * Used for: READ AN FILE 
+			 *			 */
+
             if(strcmp(argv[3], "-ww")==0)
             {
 
@@ -142,10 +194,15 @@ int main(int argc, char *argv[])
             else logo();
             printf("==============================\n\n");
 
+			//Run readfile() function on file object
             file.readfile(argv[2]);
         }
         else if (string(argv[1]) == "--delfile")
         {
+			/* Summary: this argument run a delfile() function and delete a file
+			* from system path 
+			* Used for:  DELETE AN FILE;
+			*			 */
             logo();
             printf("==============================\n\n");
 
@@ -153,17 +210,31 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--copyfile")
         {
+			/* Summary: This function run copyfile() function and copy a file by an
+			* patch and write in specific system path 
+			* Used for: COPY AN FILE; 
+			*			*/
             logo();
             printf("==============================\n\n");
+			// Run copyfile() function on file object, with 2 arguments
+			/* argv2 = path1
+			 * argv3 = path2 
+			 *				 */
+
             file.copyfile(argv[2], argv[3]);
         }
         else if (string(argv[1]) == "--sourcecode")
         {
+			/* This argument run wget python script to display
+			 * a sourcecode from an URL */
+
             logo(); //Print logo
             printf("[+] Downloading file from, \n");
             printf("[-]URL: %s\n",argv[2]);
             printf("[-]OUTPUT: temp.text\n");
             printf("==============================\n\n");
+
+			//Multiplataform python exec optimization
 #if !(_WIN32) //If dont support Windows :: Do Def. Inst.
             char cmd[] = "python wget.py --output "; //Add "python" word
 #else //If support, then...
@@ -181,6 +252,11 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--whosts")
         {
+			/* This function use hosts system file path to write/append
+			 * an ip address and dns record for block/redirection proposes 
+			 * REQUIREMENTS: Need Administrator Permissions */
+
+
             logo(); //print logo
             printf("[+] Changing windows hosts file...\n");
             printf("[-] IP: %s\n", argv[2]);
@@ -191,6 +267,10 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--sckt")
         {
+			/* Summary: This argument run socket script in python and communicate with
+			 * any server with sourcescript socket client script, running --mksckt 
+			 * argument */
+
             logo(); //print logo
             printf("[+] Connect to a socket with...\n");
             if (strcmp(argv[2], "--this")==0) printf("[-] IP: socket localhost\n");
@@ -212,6 +292,9 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--mksckt")
         {
+			/* Summary: This argument run a server socket python script 
+			 * Used for: Communicate with client --sckt sourcescript argument */
+
             logo(); //print logo
             cout << "[+] Creating a socket with...\n";
             cout << "[-] Port: " << argv[2] << endl;
@@ -229,65 +312,112 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--slprint")
         {
+			/* Summary: This short argument run a slprint() function and
+			 * display/print in console the text in slow motion animation 
+			 * This function used only for fun :D */
+
             printing.slprint(argv[2]);
         }
         else if (string(argv[1]) == "--hourconvert")
         {
+			/* Summary: This argument run hourconvert() function and 
+			* display/print in console the convertion of hour number */
+
             utils.hourconvert(string(argv[2]));
         }
         else if (string(argv[1]) == "--md5")
         {
+			/* Summary: this argument ecrypt any string in md5 hash
+			 * generator */
+
             cout << md5(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--base64e")
         {
+			/* Summary: this argument encrypt any string in base64 phrase */
             cout << base64.encode(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--base64d")
         {
+			/* Summary: this argument decrypt any phrase in base64 string*/
             cout << base64.decode(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--sha256")
         {
+			/* Summary: this argument ecrypt any string in sha hash
+			* generator */
             cout << sha256(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--sha224")
         {
+			/* Summary: this argument ecrypt any string in sha hash
+			* generator */
             cout << sha224(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--sha384")
         {
+			/* Summary: this argument ecrypt any string in sha hash
+			* generator */
             cout << sha384(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--sha512")
         {
+			/* Summary: this argument ecrypt any string in sha hash
+			* generator */
             cout << sha512(argv[2]) << endl;
         }
         else if (string(argv[1]) == "--choise")
         {
+			//Unnamed argument ??? 12-12-2015
+			/* Summary: 
+			 *		    */
+
         }
         else if (string(argv[1]) == "--gui")
         {
+			/* Summary: This argument run a gui mode for 
+			 * sourcescript script */
+
+			//Using ssgui object !
+
             ssgui.main();
         }
         else if (string(argv[1]) == "--getpath")
         {
+			/* This short argument print in console the
+			* sourcescript executation path */
+
             cout << utils.win_correntdirectory() << endl;
         }
         else if (string(argv[1])== "--winlib")
         {
+			/* Summary:  This argument use windows.h library 
+			 * Used for: WINDOWS.H INCLUDE LIB FUNCTIONS PROPOSE; 
+			 *			 */
+
             logo(); //Print logo
+
+			//--help argument 
             if(string(argv[2])=="--help")
             {
                 helpwinlib();
             }
+
+			// systemprop argument
             else if (string(argv[2])=="systemprop")
             {
+				/* This use bath command and open various system shell's*/
+
                 cout << "[+] Loading..." << endl;
                 system("sysdm.cpl");
                 cout << "[+] Done." << endl;
             }
         }
+		/* Summary: This function run the apps of sourcescript script, this
+		 * include: periodictable
+		 *			mcalc */
+
+
         else if (string(argv[1])== "--app")
         {
             logo();
@@ -326,6 +456,8 @@ int main(int argc, char *argv[])
             }
             else if(string(argv[2])=="--help")
             {
+				/* Summary: This argument show list of apps */
+
                 cout << "List of Applications: \n" << endl;
                 cout << "periodic-table" << endl;
 				cout << "mcalc" << endl;
