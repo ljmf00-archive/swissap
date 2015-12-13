@@ -9,9 +9,13 @@
  |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
                                                | |
                                                |_|
-*/
+			Copyright  (c) lsferreira programming - 2015
+											   */
+
 
 //Include libraries
+
+//General libraries
 #include "lib/libs.hpp"
 #include "lib/pilib.hpp"
 #include "lib/stdutils.hpp"
@@ -245,6 +249,7 @@ int main(int argc, char *argv[])
             strcat(cmd, argv[2]);
             system(cmd);
             printf("\n==============================\n\n");
+			//Function readfile() to read file in stream on file object
             file.readfile("temp.text");
             printf("\n[-] Done.\n\n");
             file.delfile("temp.text");
@@ -262,8 +267,12 @@ int main(int argc, char *argv[])
             printf("[-] IP: %s\n", argv[2]);
             printf("[-] HOST: %s\n", argv[3]);
             printf("\n==============================\n\n");
+			//Read function whostfile() on file object
+			/* argument 1: IP Address
+			 * argument 2: Host/DNS name */
             file.whostfile(argv[2],argv[3]);
             exit(0);
+
         }
         else if (string(argv[1]) == "--sckt")
         {
@@ -420,36 +429,63 @@ int main(int argc, char *argv[])
 
         else if (string(argv[1])== "--app")
         {
+			/* Summary: This argument run periodic-table app with others 
+			 * sub-arguments 
+			 * NOTE: Don't do this argument without another argument/sub-argument 
+			 *		*/
+
             logo();
             if(string(argv[2])=="periodic-table")
             {
+				/* Summary: This sub-argument show the normal periodic table
+				 * in graphical mode */
                 if(string(argv[3])=="--show-n")
                 {
                     pgraphics.normal_pt();
                 }
+
+				/* Summary: This sub-argument show the extended periodic table
+				 * in graphical mode */
+
                 else if(string(argv[3])=="--show-e")
                 {
                     pgraphics.extended_pt();
                 }
+
+				/* Summary: This sub-argument show the normal and extended periodic
+				 * table in graphical mode */
+
                 else if(string(argv[3])=="--show-all")
                 {
                     pgraphics.normal_pt();
                     cout << endl;
                     pgraphics.extended_pt();
                 }
+
+				/* Summary:  This sub-argument show the help menu for periodic-table 
+				 * app */
+
                 else if(string(argv[3])=="--help")
                 {
                     ptable.help();
                 }
+
+				// This sub-argument show a list menu for periodic-table app
                 else if(string(argv[3])=="--list")
                 {
                     pelements.list_pt();
                 }
+
+				//This sub-argument show a determinate element of periodic table
                 else if(string(argv[3])=="-s")
                 {
                     ptable.variables(argv[4]);
                 }
             }
+			
+			/* Summary: This argument run mcalc app and is used with another sub-argument
+			 * NOTE: Don't do this argument without another argument/sub-argument
+			 *		*/
             else if(string(argv[2])=="mcalc")
             {
 				mcalc();
@@ -485,7 +521,9 @@ void logo(void)
          << "                                               |_|        \n\n";
 }
 
-//Function to print help menu
+/* Summary:  This function is used to print help menu for
+ * main app, sourcescript*/
+
 void help(void)
 {
     cout << "Usage: sourcescript (--argv) [argv] ...\n\n";
@@ -514,6 +552,10 @@ void help(void)
     cout << "  --sha384 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA384\n";//sha
     cout << "  --sha512 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA512\n";//sha
 }
+
+/* Summary:  This function is used for show/display in console the 
+ * help menu for windows.h header library */
+
 void helpwinlib(void)
 {
     cout << "Usage: sourcescript --winlib (--argv) [argv] ...\n\n";

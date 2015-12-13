@@ -12,6 +12,7 @@
  |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
                                                | |
                                                |_|
+			 Copyright  (c) lsferreira programming - 2015
 */
 
 using namespace std;
