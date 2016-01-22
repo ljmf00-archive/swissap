@@ -452,7 +452,7 @@ def main():
             print('    "ecdsa-public-key-compressed": "{}",'.format(bytes2hex(compressed_public_key)))
 
             addr = base58_check(hash160(compressed_public_key), version_bytes=coin['prefix'])
-            print('    "bitcoin-address-compressed-length": "{}",'.format(len(addr)))
+            print('    "bitcoin-address-compressed-length":{},'.format(len(addr)))
             print('    "bitcoin-address-compressed": "{}",'.format(addr))
 
         else:
@@ -462,7 +462,7 @@ def main():
                 print('    "ecdsa-public-key-uncompressed": "{}",'.format(bytes2hex(public_key)))
 
             addr = address_from_data(public_key, version_bytes=coin['prefix'])
-            print('    "bitcoin-address-uncompressed-length": "{}",'.format(len(addr)))
+            print('    "bitcoin-address-uncompressed-length":{},'.format(len(addr)))
             print('    "bitcoin-address-uncompressed": "{}",'.format(addr))
 
     if bip32_public_key is not None:
