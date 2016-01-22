@@ -378,7 +378,7 @@ def parse_args():
 def main():
     args = parse_args()
     coin = args.coin
-
+    print("{");
     bip32_private_key = None
     bip32_public_key = None
 
@@ -427,45 +427,50 @@ def main():
     if private_key is not None:
         assert len(private_key) == 32
 
-        print("ECDSA private key (random number / secret exponent)\n    {}".format(bytes2hex(private_key)))
+        print('    "ecdsa-private-key": "{}",'.format(bytes2hex(private_key)))
         if args.compressed:
-            print("Bitcoin private key (Base58Check, compressed)\n    {}".format(base58_check(private_key + bytes([0x01]), version_bytes=coin['private_prefix'])))
+            print('    "bitcoin-private-key-base58check-compressed": "{}",'.format(base58_check(private_key + bytes([0x01]), version_bytes=coin['private_prefix'])))
         else:
-            print("Bitcoin private key (Base58Check, uncompressed)\n    {}".format(base58_check(private_key, version_bytes=coin['private_prefix'])))
+            print('    "bitcoin-private-key-base58check-uncompressed": "{}",'.format(base58_check(private_key, version_bytes=coin['private_prefix'])))
 
         if 'bip32_private' in coin:
             bip32_public_key, bip32_private_key = bip32(private_key, coin)
 
     if bip32_private_key is not None:
-        print("Bitcoin extended private key (Base58Check)\n    {}".format(bip32_private_key))
-        print("    (embedded private key) -> {}".format(base58_check(bip32_extract_private_key(bip32_private_key) + bytes([0x01]), version_bytes=239 if args.testnet else 128)))
+        print('    "bitcoin-extended-private-key-base58check": "{}",'.format(bip32_private_key))
+        print('    "embedded-private-key": "{}",'.format(base58_check(bip32_extract_private_key(bip32_private_key) + bytes([0x01]), version_bytes=239 if args.testnet else 128)))
 
-    if public_key is not None or bip32_public_key is not None:
-        print('------')
+        #Remove unsupported tab in json
+    """if public_key is not None or bip32_public_key is not None:
+        print('------')"""
 
     if public_key is not None:
         assert len(public_key) in (33, 65)
 
         if args.compressed:
             compressed_public_key = compress(public_key)
-            print("ECDSA public key (compressed)\n    {}".format(bytes2hex(compressed_public_key)))
+            print('    "ecdsa-public-key-compressed": "{}",'.format(bytes2hex(compressed_public_key)))
 
             addr = base58_check(hash160(compressed_public_key), version_bytes=coin['prefix'])
-            print("Bitcoin Address (compressed, length={}):\n    {}".format(len(addr), addr))
+            print('    "bitcoin-address-compressed-length": "{}",'.format(len(addr)))
+            print('    "bitcoin-address-compressed": "{}",'.format(addr))
+
         else:
             if args.address_only:
-                print("Public key source\n    {}".format(bytes2hex(public_key)))
+                print('    "public-key-source": "{}",'.format(bytes2hex(public_key)))
             else:
-                print("ECDSA public key (uncompressed)\n    {}".format(bytes2hex(public_key)))
+                print('    "ecdsa-public-key-uncompressed": "{}",'.format(bytes2hex(public_key)))
 
             addr = address_from_data(public_key, version_bytes=coin['prefix'])
-            print("Bitcoin Address (uncompressed, length={}):\n    {}".format(len(addr), addr))
+            print('    "bitcoin-address-uncompressed-length": "{}",'.format(len(addr)))
+            print('    "bitcoin-address-uncompressed": "{}",'.format(addr))
 
     if bip32_public_key is not None:
-        print("Bitcoin extended public key\n    {}".format(bip32_public_key))
-        print("    (embedded public key) -> {}".format(bytes2hex(bip32_extract_public_key(bip32_public_key))))
-        print("    (bitcoin address) -> {}".format(base58_check(hash160(bip32_extract_public_key(bip32_public_key)), version_bytes=coin['prefix'])))
+        print('    "bitcoin-extended-public-key": "{}",'.format(bip32_public_key))
+        print('    "embedded-public-key": "{}",'.format(bytes2hex(bip32_extract_public_key(bip32_public_key))))
+        print('    "bitcoin-address": "{}"'.format(base58_check(hash160(bip32_extract_public_key(bip32_public_key)), version_bytes=coin['prefix'])))
 
+    print("}");
 if __name__ == "__main__":
     main()
 

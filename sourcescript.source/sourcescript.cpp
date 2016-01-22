@@ -544,6 +544,9 @@ void help(void)
     cout << "  --hourconvert <hour>             CONVERT HOUR TO MINUTE, DAY, SECOND...\n";//Hour convert function
     cout << "  --winlib (--help) [argv]...      ACCESS TO WINDOWS LIBRARY SUBARGUMENT (WINDOWS ONLY)\n";//windows lib subargument
     cout << "  --app (name-of-app)              RUN AN INTEGRATE SOURCE SCRIPT APPLICATION\n";// run an sourcescript app || created
+    cout << "        periodic-table --help      \n";
+    cout << "        mcalc --help               \n";
+    cout << endl;
     cout << "  --md5 (phrase)                   ENCRYPT/HASH AN PHRASE IN MD5\n";//MD5
     cout << "  --base64e (phrase)               ENCRYPT AN PHRASE IN BASE64\n";//base64
     cout << "  --base64d (byte)                 DECRYPT A BASE64 BYTE\n";//base64
