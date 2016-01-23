@@ -1,1 +1,0 @@
-http://www.iconarchive.com/show/polygon-icons-by-graphicloads/tools-icon.html
