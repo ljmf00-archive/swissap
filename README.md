@@ -1,9 +1,4 @@
-# sourcescript
-[![Build Status](https://travis-ci.org/ljmf00/sourcescript.svg?branch=master)](https://travis-ci.org/ljmf00/sourcescript)
-![Build](https://img.shields.io/github/release/ljmf00/sourcescript.svg)
-![Issues](https://img.shields.io/github/issues/ljmf00/sourcescript.svg)
-![Downloads](https://img.shields.io/github/downloads/ljmf00/sourcescript/total.svg)
-![License](https://img.shields.io/badge/License-CreativeCommons-lightgrey.svg)
+# sourcescript [![Build Status](https://travis-ci.org/ljmf00/sourcescript.svg?branch=master)](https://travis-ci.org/ljmf00/sourcescript) ![License](https://img.shields.io/badge/License-CreativeCommons-lightgrey.svg) ![Build](https://img.shields.io/github/release/ljmf00/sourcescript.svg) ![Issues](https://img.shields.io/github/issues/ljmf00/sourcescript.svg) ![Downloads](https://img.shields.io/github/downloads/ljmf00/sourcescript/total.svg)
 
 ```
                                               _       _
