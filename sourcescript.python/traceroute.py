@@ -1,11 +1,5 @@
 #!/usr/bin/python
 
-"""
-Phllip Calvin's python-traceroute.py, from http://gist.github.com/502451
-based on Leonid Grinberg's traceroute, from
-http://blog.ksplice.com/2010/07/learning-by-doing-writing-your-own-traceroute-in-8-easy-steps/
-"""
-
 import socket
 import struct
 import sys
