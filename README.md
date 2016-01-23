@@ -6,6 +6,9 @@
 ### Version / Build
 Stable Version - Build 151129174740
 
+### Installation
+* Coming Soon!
+
 ### Contributors
  - **Luís Ferreira** - General Developer
 
