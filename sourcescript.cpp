@@ -395,8 +395,9 @@ int main(int argc, char *argv[])
         {
 			/* This short argument print in console the
 			* sourcescript executation path */
-
+            #if (WIN32)
             cout << utils.win_correntdirectory() << endl;
+            #endif
         }
         else if (string(argv[1])== "--winlib")
         {
