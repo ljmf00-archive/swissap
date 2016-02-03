@@ -12,9 +12,18 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="apps/mcalc.constants.hpp" />
+		<Unit filename="apps/mcalc.error.cpp" />
+		<Unit filename="apps/mcalc.error.hpp" />
+		<Unit filename="apps/mcalc.functions.cpp" />
+		<Unit filename="apps/mcalc.functions.hpp" />
 		<Unit filename="apps/mcalc.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="apps/mcalc.parser.cpp" />
+		<Unit filename="apps/mcalc.parser.hpp" />
+		<Unit filename="apps/mcalc.variablelist.cpp" />
+		<Unit filename="apps/mcalc.variablelist.hpp" />
 		<Unit filename="apps/ptable_elements.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -22,7 +31,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="apps/tperiodic.hpp" />
+		<Unit filename="base58.py" />
 		<Unit filename="client.py" />
+		<Unit filename="coinkeygen.py" />
 		<Unit filename="crypto/base64.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -52,10 +63,12 @@
 		<Unit filename="lib/stdprint.hpp" />
 		<Unit filename="lib/stdutils.hpp" />
 		<Unit filename="os.py" />
+		<Unit filename="scr.py" />
 		<Unit filename="server.py" />
 		<Unit filename="sourcescript.cpp" />
 		<Unit filename="speedtest.py" />
 		<Unit filename="telnet.py" />
+		<Unit filename="traceroute.py" />
 		<Unit filename="wget.py" />
 		<Extensions>
 			<code_completion />
