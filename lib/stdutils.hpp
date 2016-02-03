@@ -36,14 +36,14 @@ crypto crypto; //crypto by crypto
 
 // ...
 
-/* Sumary: This class is used for list a lot of functions with 
+/* Sumary: This class is used for list a lot of functions with
 utils defenitions */
 
 class utils
 {
 //Public functions
 public:
-	/* Summary: This function is used to edit mode console in 
+	/* Summary: This function is used to edit mode console in
 	 * windows libraries */
 
     void win_sysmode(char x[], char y[])
@@ -55,7 +55,7 @@ public:
         system(charxy);
     }
 
-	/* Summary:  This function is used to edit color console in 
+	/* Summary:  This function is used to edit color console in
 	* windows libraries */
 
     void win_syscolor(char x[])
@@ -69,7 +69,7 @@ public:
 	 * the script, in this case, this script */
 
     #if (WIN32)
-    std::string win_correntdirectory()
+    string win_correntdirectory()
     {
         char buffer[MAX_PATH];
         GetModuleFileName( NULL, buffer, MAX_PATH );
@@ -77,9 +77,9 @@ public:
         return string( buffer ).substr( 0, pos);
     }
     #endif
-    
 
-	/* Summary: This function is used to clear windows console with 
+
+	/* Summary: This function is used to clear windows console with
 	 *  system() function */
 
     void win_sysclear(void)
@@ -138,7 +138,7 @@ public:
     }
 
 	/* Summary:  This function is used to display a convertion of an
-	 * specific number of hours 
+	 * specific number of hours
 	 * It convert hours to: YEAERS;
 							WEEKS;
 							DAYS;
@@ -208,7 +208,7 @@ public:
         return true;
     }
 
-	/* Summary: This function is used to encode an URL 
+	/* Summary: This function is used to encode an URL
 	 * (special char in hex format) */
 
     //based on javascript encodeURIComponent()

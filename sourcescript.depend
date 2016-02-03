@@ -603,3 +603,153 @@
 1453044241 c:\users\lsferreira\documents\github\sourcescript\sourcescript.source\crypto\sha2.h
 	<string>
 
+1453554165 source:c:\users\lsferreira\documents\github\sourcescript\crypto\md5.cpp
+	"md5.h"
+	<cstdio>
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\crypto\md5.h
+	<cstring>
+	<iostream>
+
+1453554165 source:c:\users\lsferreira\documents\github\sourcescript\crypto\sha1.cpp
+	"../lib/libs.hpp"
+	"sha1.h"
+
+1454535975 c:\users\lsferreira\documents\github\sourcescript\lib\libs.hpp
+	<windows.h>
+	<conio.h>
+	<tchar.h>
+	"TargetConditionals.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<iomanip>
+	<vector>
+	<cstdlib>
+	<ciso646>
+	<cassert>
+	<cmath>
+	<clocale>
+	<cstring>
+	<cstdio>
+	<cstdlib>
+	<cctype>
+	<sys/types.h>
+	<sys/stat.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\crypto\sha1.h
+	<iostream>
+	<string>
+
+1453554165 source:c:\users\lsferreira\documents\github\sourcescript\crypto\sha2.cpp
+	"../lib/libs.hpp"
+	"sha2.h"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\crypto\sha2.h
+	<string>
+
+1454534905 source:c:\users\lsferreira\documents\github\sourcescript\sourcescript.cpp
+	"lib/libs.hpp"
+	"lib/pilib.hpp"
+	"lib/stdutils.hpp"
+	"lib/stdfile.hpp"
+	"lib/stdprint.hpp"
+	"lib/printdef.hpp"
+	"lib/gui.hpp"
+	"apps/tperiodic.hpp"
+	"apps/ptable_elements.hpp"
+	"apps/ptable_graphics.hpp"
+	"apps/mcalc.hpp"
+	"crypto/hex.h"
+	"crypto/md5.h"
+	"crypto/sha1.h"
+	"crypto/sha2.h"
+	"crypto/base64.h"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\lib\pilib.hpp
+	"libs.hpp"
+
+1454533713 c:\users\lsferreira\documents\github\sourcescript\lib\stdutils.hpp
+	"libs.hpp"
+	"../crypto/hex.h"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\crypto\hex.h
+	"../lib/libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\lib\stdfile.hpp
+	"libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\lib\stdprint.hpp
+	"libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\lib\printdef.hpp
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\lib\gui.hpp
+	"libs.hpp"
+	"pilib.hpp"
+	"stdutils.hpp"
+	"stdfile.hpp"
+	"stdprint.hpp"
+	"printdef.hpp"
+	"../apps/tperiodic.hpp"
+	"../apps/ptable_elements.hpp"
+	"../apps/ptable_graphics.hpp"
+	"../crypto/hex.h"
+	"../crypto/md5.h"
+	"../crypto/sha1.h"
+	"../crypto/sha2.h"
+	"../crypto/base64.h"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\apps\tperiodic.hpp
+	"../lib/libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\apps\ptable_elements.hpp
+	"../lib/libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\apps\ptable_graphics.hpp
+	"../lib/libs.hpp"
+
+1453554165 c:\users\lsferreira\documents\github\sourcescript\crypto\base64.h
+	"../lib/libs.hpp"
+
+1454538446 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.hpp
+	"../lib/libs.hpp"
+	"mcalc.parser.hpp"
+
+1454535947 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.parser.hpp
+	"mcalc.constants.hpp"
+	"mcalc.error.hpp"
+	"mcalc.functions.hpp"
+	"mcalc.variablelist.hpp"
+
+1454535494 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.constants.hpp
+
+1454536612 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.functions.hpp
+	"../lib/libs.hpp"
+
+1454538112 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.variablelist.hpp
+	"../lib/libs.hpp"
+	"mcalc.constants.hpp"
+
+1454536065 c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.error.hpp
+
+1454536525 source:c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.error.cpp
+	"../lib/libs.hpp"
+	"mcalc.error.hpp"
+
+1454537232 source:c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.functions.cpp
+	"../lib/libs.hpp"
+	"mcalc.error.hpp"
+	"mcalc.functions.hpp"
+
+1454538242 source:c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.parser.cpp
+	"mcalc.parser.hpp"
+
+1454536425 source:c:\users\lsferreira\documents\github\sourcescript\apps\mcalc.variablelist.cpp
+	"mcalc.variablelist.hpp"
+

@@ -101,9 +101,9 @@ int main(int argc, char *argv[])
             /* Multiplataform python executation */
 
             #if !(_WIN32) //If dont support Windows :: Do Def. Inst.
-            char cmd[] = "python wget.py --output "; //Add "python" word
+            char cmd[] = "./py/wget.py --output "; //Add "python" word
             #else //If support, then...
-            char cmd[] = "wget.py --output ";
+            char cmd[] = "py wget.py --output ";
             #endif //end if !(_WIN32)
 
             strcat(cmd, argv[3]);
@@ -125,9 +125,9 @@ int main(int argc, char *argv[])
             printf("[+] Doing a speedtest... \n");
             printf("==============================\n\n");
 #if !(_WIN32) //If dont support Windows :: Do Def. Inst.
-            system("python speedtest.py"); // ...
+            system("./speedtest.py"); // ...
 #else //If support, then...
-            system("speedtest.py");
+            system("py speedtest.py");
 #endif //end if !(_WIN32)
             printf("\n[-] Done.\n");
             exit(0);
@@ -156,8 +156,8 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--gisocket")
         {
 			// Unnamed arguments ??? 12-12-2015
-			/* Summary: 
-			 * Used for: 
+			/* Summary:
+			 * Used for:
 						*/
             logo();
 
@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--os")
         {
 
-			/* Summary: This argument display Operation System Informations 
+			/* Summary: This argument display Operation System Informations
 			 * from a python script
 			 * Used for: DISPLAY OS INFO;
 			 *			 */
@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
         {
 			/* Summary: This argument run a readfile() function and display a
 			 * content of an file
-			 * Used for: READ AN FILE 
+			 * Used for: READ AN FILE
 			 *			 */
 
             if(strcmp(argv[3], "-ww")==0)
@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--delfile")
         {
 			/* Summary: this argument run a delfile() function and delete a file
-			* from system path 
+			* from system path
 			* Used for:  DELETE AN FILE;
 			*			 */
             logo();
@@ -215,14 +215,14 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--copyfile")
         {
 			/* Summary: This function run copyfile() function and copy a file by an
-			* patch and write in specific system path 
-			* Used for: COPY AN FILE; 
+			* patch and write in specific system path
+			* Used for: COPY AN FILE;
 			*			*/
             logo();
             printf("==============================\n\n");
 			// Run copyfile() function on file object, with 2 arguments
 			/* argv2 = path1
-			 * argv3 = path2 
+			 * argv3 = path2
 			 *				 */
 
             file.copyfile(argv[2], argv[3]);
@@ -258,7 +258,7 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--whosts")
         {
 			/* This function use hosts system file path to write/append
-			 * an ip address and dns record for block/redirection proposes 
+			 * an ip address and dns record for block/redirection proposes
 			 * REQUIREMENTS: Need Administrator Permissions */
 
 
@@ -277,7 +277,7 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--sckt")
         {
 			/* Summary: This argument run socket script in python and communicate with
-			 * any server with sourcescript socket client script, running --mksckt 
+			 * any server with sourcescript socket client script, running --mksckt
 			 * argument */
 
             logo(); //print logo
@@ -301,7 +301,7 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1]) == "--mksckt")
         {
-			/* Summary: This argument run a server socket python script 
+			/* Summary: This argument run a server socket python script
 			 * Used for: Communicate with client --sckt sourcescript argument */
 
             logo(); //print logo
@@ -322,14 +322,14 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--slprint")
         {
 			/* Summary: This short argument run a slprint() function and
-			 * display/print in console the text in slow motion animation 
+			 * display/print in console the text in slow motion animation
 			 * This function used only for fun :D */
 
             printing.slprint(argv[2]);
         }
         else if (string(argv[1]) == "--hourconvert")
         {
-			/* Summary: This argument run hourconvert() function and 
+			/* Summary: This argument run hourconvert() function and
 			* display/print in console the convertion of hour number */
 
             utils.hourconvert(string(argv[2]));
@@ -378,13 +378,13 @@ int main(int argc, char *argv[])
         else if (string(argv[1]) == "--choise")
         {
 			//Unnamed argument ??? 12-12-2015
-			/* Summary: 
+			/* Summary:
 			 *		    */
 
         }
         else if (string(argv[1]) == "--gui")
         {
-			/* Summary: This argument run a gui mode for 
+			/* Summary: This argument run a gui mode for
 			 * sourcescript script */
 
 			//Using ssgui object !
@@ -401,13 +401,13 @@ int main(int argc, char *argv[])
         }
         else if (string(argv[1])== "--winlib")
         {
-			/* Summary:  This argument use windows.h library 
-			 * Used for: WINDOWS.H INCLUDE LIB FUNCTIONS PROPOSE; 
+			/* Summary:  This argument use windows.h library
+			 * Used for: WINDOWS.H INCLUDE LIB FUNCTIONS PROPOSE;
 			 *			 */
 
             logo(); //Print logo
 
-			//--help argument 
+			//--help argument
             if(string(argv[2])=="--help")
             {
                 helpwinlib();
@@ -430,9 +430,9 @@ int main(int argc, char *argv[])
 
         else if (string(argv[1])== "--app")
         {
-			/* Summary: This argument run periodic-table app with others 
-			 * sub-arguments 
-			 * NOTE: Don't do this argument without another argument/sub-argument 
+			/* Summary: This argument run periodic-table app with others
+			 * sub-arguments
+			 * NOTE: Don't do this argument without another argument/sub-argument
 			 *		*/
 
             logo();
@@ -463,7 +463,7 @@ int main(int argc, char *argv[])
                     pgraphics.extended_pt();
                 }
 
-				/* Summary:  This sub-argument show the help menu for periodic-table 
+				/* Summary:  This sub-argument show the help menu for periodic-table
 				 * app */
 
                 else if(string(argv[3])=="--help")
@@ -483,7 +483,7 @@ int main(int argc, char *argv[])
                     ptable.variables(argv[4]);
                 }
             }
-			
+
 			/* Summary: This argument run mcalc app and is used with another sub-argument
 			 * NOTE: Don't do this argument without another argument/sub-argument
 			 *		*/
@@ -557,7 +557,7 @@ void help(void)
     cout << "  --sha512 (phrase)                ENCRYPT/HASH AN PHRASE IN SHA512\n";//sha
 }
 
-/* Summary:  This function is used for show/display in console the 
+/* Summary:  This function is used for show/display in console the
  * help menu for windows.h header library */
 
 void helpwinlib(void)

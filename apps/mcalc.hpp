@@ -1,87 +1,60 @@
 /*lsferreira programming */
 
+/*
+                                              _       _
+                                             (_)     | |
+  ___  ___  _   _ _ __ ___ ___  ___  ___ _ __ _ _ __ | |_
+ / __|/ _ \| | | | '__/ __/ _ \/ __|/ __| '__| | '_ \| __|
+ \__ \ (_) | |_| | | | (_|  __/\__ \ (__| |  | | |_) | |_
+ |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
+                                               | |
+                                               |_|
+			 Copyright  (c) lsferreira programming - 2015
+*/
 
 #ifndef MCALC_HPP_INCLUDED
 #define MCALC_HPP_INCLUDED
 
 //Include libraries
 #include "../lib/libs.hpp"
+
+#include "mcalc.parser.hpp"
+
 //Used namespaces
 using namespace std;
 
 	void mcalc()
 	{
-		cout << "PT(1)/EN(2)?: ";
-		int choiselang;
-		cin >> choiselang;
-		if (choiselang == 1)
-		{
-			cout << "Numero de disciplinas?: ";
-			int numsubjects;
-			cin >> numsubjects;
-			int avarg = 0;
-			for (int i = 1; i <= numsubjects; i++)
-			{
-				cout << "Nome da disciplina?: ";
-				string choisename;
-				cin >> choisename;
+		char expr[255];
 
-				cout << "Numero de Testes?: ";
-				int choisent;
-				cin >> choisent;
-				int mt = 0;
-				for (int i = 1; i <= choisent; i++)
-				{
-					cout << "% Testes?: ";
-					int choisepct;
-					cin >> choisepct;
-					int pct = choisepct / 100;
-					cout << "Testes?: ";
-					int choiset;
-					cin >> choiset;
-					int t = choiset * pct;
+    // create a parser object
+    Parser prs;
 
-					mt += t / choisent;
-				}
+    puts("ENTER EXPRESSION");
+    puts("NULL EXPRESSION TO EXIT");
+    puts("");
 
-				cout << "Numero de Trabalhos?: ";
-				int choisentr;
-				cin >> choisentr;
-				int mtr = 0;
-				for (int i = 1; i <= choisentr; i++)
-				{
-					cout << "% Trabalhos?: ";
-					int choisepctr;
-					cin >> choisepctr;
-					int pctr = choisepctr / 100;
-					cout << "Trabalhos?: ";
-					int choisetr;
-					cin >> choisetr;
-					int tr = choisetr * pctr;
+    do
+    {
+        // request an expression
+        printf("> ");
+        gets(expr);
 
-					mtr += tr / choisentr;
-				}
-
-
-				cout << "% Atitudes e valores: ";
-				int choisepcav;
-				cin >> choisepcav;
-				int pcav = choisepcav / 100;
-				cout << "Atitudes e valores: ";
-				int choiseav;
-				cin >> choiseav;
-				int av = choiseav * pcav;
-
-				avarg += (mt + mtr + av) / numsubjects;
-			}
-			cout << "A tua media e: " << avarg << endl;
-		}
-		else if (choiselang == 2)
-		{
-
-		}
-
-
+        if (strcmp(expr, "") != 0)
+        {
+            try
+            {
+                // evaluate the expression
+                char* result;
+                result = prs.parse(expr);
+                printf("\t%s\n", result);
+            }
+            catch (...)
+            {
+                printf("\tERROR: Unknown error\n");
+            }
+        }
+    } while (strcmp(expr, "") != 0);
 	}
 
 #endif // MCALC_HPP_INCLUDED

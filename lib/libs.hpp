@@ -52,6 +52,7 @@
 //General Libraries
 #include <string>
 #include <iomanip>
+#include <vector>
 
 //C++ Import C Libraries
 #include <cstdlib>
@@ -60,6 +61,9 @@
 #include <cmath>
 #include <clocale>
 #include <cstring>
+#include <cstdio>
+#include <cstdlib>
+#include <cctype>
 
 //System Libraries
 #include <sys/types.h>
