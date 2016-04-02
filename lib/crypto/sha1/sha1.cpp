@@ -1,270 +1,326 @@
-/*
-    sha1.cpp - source code of
- 
-    ============
-    SHA-1 in C++
-    ============
- 
-    100% Public Domain.
- 
-    Original C Code
-        -- Steve Reid <steve@edmweb.com>
-    Small changes to fit into bglibs
-        -- Bruce Guenter <bruce@untroubled.org>
-    Translation to simpler C++ Code
-        -- Volker Grabsch <vog@notjusthosting.com>
-*/
- 
+// //////////////////////////////////////////////////////////
+// sha1.cpp
+// Copyright (c) 2014,2015 Stephan Brumme. All rights reserved.
+// see http://create.stephan-brumme.com/disclaimer.html
+//
+
 #include "sha1.h"
-#include <sstream>
-#include <iomanip>
-#include <fstream>
- 
-/* Help macros */
-#define SHA1_ROL(value, bits) (((value) << (bits)) | (((value) & 0xffffffff) >> (32 - (bits))))
-#define SHA1_BLK(i) (block[i&15] = SHA1_ROL(block[(i+13)&15] ^ block[(i+8)&15] ^ block[(i+2)&15] ^ block[i&15],1))
- 
-/* (R0+R1), R2, R3, R4 are the different operations used in SHA1 */
-#define SHA1_R0(v,w,x,y,z,i) z += ((w&(x^y))^y)     + block[i]    + 0x5a827999 + SHA1_ROL(v,5); w=SHA1_ROL(w,30);
-#define SHA1_R1(v,w,x,y,z,i) z += ((w&(x^y))^y)     + SHA1_BLK(i) + 0x5a827999 + SHA1_ROL(v,5); w=SHA1_ROL(w,30);
-#define SHA1_R2(v,w,x,y,z,i) z += (w^x^y)           + SHA1_BLK(i) + 0x6ed9eba1 + SHA1_ROL(v,5); w=SHA1_ROL(w,30);
-#define SHA1_R3(v,w,x,y,z,i) z += (((w|x)&y)|(w&x)) + SHA1_BLK(i) + 0x8f1bbcdc + SHA1_ROL(v,5); w=SHA1_ROL(w,30);
-#define SHA1_R4(v,w,x,y,z,i) z += (w^x^y)           + SHA1_BLK(i) + 0xca62c1d6 + SHA1_ROL(v,5); w=SHA1_ROL(w,30);
- 
+
+// big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
+#ifndef _MSC_VER
+#include <endian.h>
+#endif
+
+
+/// same as reset()
 SHA1::SHA1()
 {
-    reset();
+  reset();
 }
- 
- 
-void SHA1::update(const std::string &s)
-{
-    std::istringstream is(s);
-    update(is);
-}
- 
- 
-void SHA1::update(std::istream &is)
-{
-    std::string rest_of_buffer;
-    read(is, rest_of_buffer, BLOCK_BYTES - buffer.size());
-    buffer += rest_of_buffer;
- 
-    while (is)
-    {
-        uint32 block[BLOCK_INTS];
-        buffer_to_block(buffer, block);
-        transform(block);
-        read(is, buffer, BLOCK_BYTES);
-    }
-}
- 
- 
-/*
- * Add padding and return the message digest.
- */
- 
-std::string SHA1::final()
-{
-    /* Total number of hashed bits */
-    uint64 total_bits = (transforms*BLOCK_BYTES + buffer.size()) * 8;
- 
-    /* Padding */
-    buffer += 0x80;
-    unsigned int orig_size = buffer.size();
-    while (buffer.size() < BLOCK_BYTES)
-    {
-        buffer += (char)0x00;
-    }
- 
-    uint32 block[BLOCK_INTS];
-    buffer_to_block(buffer, block);
- 
-    if (orig_size > BLOCK_BYTES - 8)
-    {
-        transform(block);
-        for (unsigned int i = 0; i < BLOCK_INTS - 2; i++)
-        {
-            block[i] = 0;
-        }
-    }
- 
-    /* Append total_bits, split this uint64 into two uint32 */
-    block[BLOCK_INTS - 1] = total_bits;
-    block[BLOCK_INTS - 2] = (total_bits >> 32);
-    transform(block);
- 
-    /* Hex std::string */
-    std::ostringstream result;
-    for (unsigned int i = 0; i < DIGEST_INTS; i++)
-    {
-        result << std::hex << std::setfill('0') << std::setw(8);
-        result << (digest[i] & 0xffffffff);
-    }
- 
-    /* Reset for next run */
-    reset();
- 
-    return result.str();
-}
- 
- 
-std::string SHA1::from_file(const std::string &filename)
-{
-    std::ifstream stream(filename.c_str(), std::ios::binary);
-    SHA1 checksum;
-    checksum.update(stream);
-    return checksum.final();
-}
- 
- 
+
+
+/// restart
 void SHA1::reset()
 {
-    /* SHA1 initialization constants */
-    digest[0] = 0x67452301;
-    digest[1] = 0xefcdab89;
-    digest[2] = 0x98badcfe;
-    digest[3] = 0x10325476;
-    digest[4] = 0xc3d2e1f0;
- 
-    /* Reset counters */
-    transforms = 0;
-    buffer = "";
+  m_numBytes   = 0;
+  m_bufferSize = 0;
+
+  // according to RFC 1321
+  m_hash[0] = 0x67452301;
+  m_hash[1] = 0xefcdab89;
+  m_hash[2] = 0x98badcfe;
+  m_hash[3] = 0x10325476;
+  m_hash[4] = 0xc3d2e1f0;
 }
- 
- 
-/*
- * Hash a single 512-bit block. This is the core of the algorithm.
- */
- 
-void SHA1::transform(uint32 block[BLOCK_BYTES])
+
+
+namespace
 {
-    /* Copy digest[] to working vars */
-    uint32 a = digest[0];
-    uint32 b = digest[1];
-    uint32 c = digest[2];
-    uint32 d = digest[3];
-    uint32 e = digest[4];
- 
- 
-    /* 4 rounds of 20 operations each. Loop unrolled. */
-    SHA1_R0(a,b,c,d,e, 0);
-    SHA1_R0(e,a,b,c,d, 1);
-    SHA1_R0(d,e,a,b,c, 2);
-    SHA1_R0(c,d,e,a,b, 3);
-    SHA1_R0(b,c,d,e,a, 4);
-    SHA1_R0(a,b,c,d,e, 5);
-    SHA1_R0(e,a,b,c,d, 6);
-    SHA1_R0(d,e,a,b,c, 7);
-    SHA1_R0(c,d,e,a,b, 8);
-    SHA1_R0(b,c,d,e,a, 9);
-    SHA1_R0(a,b,c,d,e,10);
-    SHA1_R0(e,a,b,c,d,11);
-    SHA1_R0(d,e,a,b,c,12);
-    SHA1_R0(c,d,e,a,b,13);
-    SHA1_R0(b,c,d,e,a,14);
-    SHA1_R0(a,b,c,d,e,15);
-    SHA1_R1(e,a,b,c,d,16);
-    SHA1_R1(d,e,a,b,c,17);
-    SHA1_R1(c,d,e,a,b,18);
-    SHA1_R1(b,c,d,e,a,19);
-    SHA1_R2(a,b,c,d,e,20);
-    SHA1_R2(e,a,b,c,d,21);
-    SHA1_R2(d,e,a,b,c,22);
-    SHA1_R2(c,d,e,a,b,23);
-    SHA1_R2(b,c,d,e,a,24);
-    SHA1_R2(a,b,c,d,e,25);
-    SHA1_R2(e,a,b,c,d,26);
-    SHA1_R2(d,e,a,b,c,27);
-    SHA1_R2(c,d,e,a,b,28);
-    SHA1_R2(b,c,d,e,a,29);
-    SHA1_R2(a,b,c,d,e,30);
-    SHA1_R2(e,a,b,c,d,31);
-    SHA1_R2(d,e,a,b,c,32);
-    SHA1_R2(c,d,e,a,b,33);
-    SHA1_R2(b,c,d,e,a,34);
-    SHA1_R2(a,b,c,d,e,35);
-    SHA1_R2(e,a,b,c,d,36);
-    SHA1_R2(d,e,a,b,c,37);
-    SHA1_R2(c,d,e,a,b,38);
-    SHA1_R2(b,c,d,e,a,39);
-    SHA1_R3(a,b,c,d,e,40);
-    SHA1_R3(e,a,b,c,d,41);
-    SHA1_R3(d,e,a,b,c,42);
-    SHA1_R3(c,d,e,a,b,43);
-    SHA1_R3(b,c,d,e,a,44);
-    SHA1_R3(a,b,c,d,e,45);
-    SHA1_R3(e,a,b,c,d,46);
-    SHA1_R3(d,e,a,b,c,47);
-    SHA1_R3(c,d,e,a,b,48);
-    SHA1_R3(b,c,d,e,a,49);
-    SHA1_R3(a,b,c,d,e,50);
-    SHA1_R3(e,a,b,c,d,51);
-    SHA1_R3(d,e,a,b,c,52);
-    SHA1_R3(c,d,e,a,b,53);
-    SHA1_R3(b,c,d,e,a,54);
-    SHA1_R3(a,b,c,d,e,55);
-    SHA1_R3(e,a,b,c,d,56);
-    SHA1_R3(d,e,a,b,c,57);
-    SHA1_R3(c,d,e,a,b,58);
-    SHA1_R3(b,c,d,e,a,59);
-    SHA1_R4(a,b,c,d,e,60);
-    SHA1_R4(e,a,b,c,d,61);
-    SHA1_R4(d,e,a,b,c,62);
-    SHA1_R4(c,d,e,a,b,63);
-    SHA1_R4(b,c,d,e,a,64);
-    SHA1_R4(a,b,c,d,e,65);
-    SHA1_R4(e,a,b,c,d,66);
-    SHA1_R4(d,e,a,b,c,67);
-    SHA1_R4(c,d,e,a,b,68);
-    SHA1_R4(b,c,d,e,a,69);
-    SHA1_R4(a,b,c,d,e,70);
-    SHA1_R4(e,a,b,c,d,71);
-    SHA1_R4(d,e,a,b,c,72);
-    SHA1_R4(c,d,e,a,b,73);
-    SHA1_R4(b,c,d,e,a,74);
-    SHA1_R4(a,b,c,d,e,75);
-    SHA1_R4(e,a,b,c,d,76);
-    SHA1_R4(d,e,a,b,c,77);
-    SHA1_R4(c,d,e,a,b,78);
-    SHA1_R4(b,c,d,e,a,79);
- 
-    /* Add the working vars back into digest[] */
-    digest[0] += a;
-    digest[1] += b;
-    digest[2] += c;
-    digest[3] += d;
-    digest[4] += e;
- 
-    /* Count the number of transformations */
-    transforms++;
+  // mix functions for processBlock()
+  inline uint32_t f1(uint32_t b, uint32_t c, uint32_t d)
+  {
+    return d ^ (b & (c ^ d)); // original: f = (b & c) | ((~b) & d);
+  }
+
+  inline uint32_t f2(uint32_t b, uint32_t c, uint32_t d)
+  {
+    return b ^ c ^ d;
+  }
+
+  inline uint32_t f3(uint32_t b, uint32_t c, uint32_t d)
+  {
+    return (b & c) | (b & d) | (c & d);
+  }
+
+  inline uint32_t rotate(uint32_t a, uint32_t c)
+  {
+    return (a << c) | (a >> (32 - c));
+  }
+
+  inline uint32_t swap(uint32_t x)
+  {
+#if defined(__GNUC__) || defined(__clang__)
+    return __builtin_bswap32(x);
+#endif
+#ifdef MSC_VER
+    return _byteswap_ulong(x);
+#endif
+
+    return (x >> 24) |
+          ((x >>  8) & 0x0000FF00) |
+          ((x <<  8) & 0x00FF0000) |
+           (x << 24);
+  }
 }
- 
- 
-void SHA1::buffer_to_block(const std::string &buffer, uint32 block[BLOCK_BYTES])
+
+
+/// process 64 bytes
+void SHA1::processBlock(const void* data)
 {
-    /* Convert the std::string (byte buffer) to a uint32 array (MSB) */
-    for (unsigned int i = 0; i < BLOCK_INTS; i++)
+  // get last hash
+  uint32_t a = m_hash[0];
+  uint32_t b = m_hash[1];
+  uint32_t c = m_hash[2];
+  uint32_t d = m_hash[3];
+  uint32_t e = m_hash[4];
+
+  // data represented as 16x 32-bit words
+  const uint32_t* input = (uint32_t*) data;
+  // convert to big endian
+  uint32_t words[80];
+  for (int i = 0; i < 16; i++)
+#if defined(__BYTE_ORDER) && (__BYTE_ORDER != 0) && (__BYTE_ORDER == __BIG_ENDIAN)
+    words[i] = input[i];
+#else
+    words[i] = swap(input[i]);
+#endif
+
+  // extend to 80 words
+  for (int i = 16; i < 80; i++)
+    words[i] = rotate(words[i-3] ^ words[i-8] ^ words[i-14] ^ words[i-16], 1);
+
+  // first round
+  for (int i = 0; i < 4; i++)
+  {
+    int offset = 5*i;
+    e += rotate(a,5) + f1(b,c,d) + words[offset  ] + 0x5a827999; b = rotate(b,30);
+    d += rotate(e,5) + f1(a,b,c) + words[offset+1] + 0x5a827999; a = rotate(a,30);
+    c += rotate(d,5) + f1(e,a,b) + words[offset+2] + 0x5a827999; e = rotate(e,30);
+    b += rotate(c,5) + f1(d,e,a) + words[offset+3] + 0x5a827999; d = rotate(d,30);
+    a += rotate(b,5) + f1(c,d,e) + words[offset+4] + 0x5a827999; c = rotate(c,30);
+  }
+
+  // second round
+  for (int i = 4; i < 8; i++)
+  {
+    int offset = 5*i;
+    e += rotate(a,5) + f2(b,c,d) + words[offset  ] + 0x6ed9eba1; b = rotate(b,30);
+    d += rotate(e,5) + f2(a,b,c) + words[offset+1] + 0x6ed9eba1; a = rotate(a,30);
+    c += rotate(d,5) + f2(e,a,b) + words[offset+2] + 0x6ed9eba1; e = rotate(e,30);
+    b += rotate(c,5) + f2(d,e,a) + words[offset+3] + 0x6ed9eba1; d = rotate(d,30);
+    a += rotate(b,5) + f2(c,d,e) + words[offset+4] + 0x6ed9eba1; c = rotate(c,30);
+  }
+
+  // third round
+  for (int i = 8; i < 12; i++)
+  {
+    int offset = 5*i;
+    e += rotate(a,5) + f3(b,c,d) + words[offset  ] + 0x8f1bbcdc; b = rotate(b,30);
+    d += rotate(e,5) + f3(a,b,c) + words[offset+1] + 0x8f1bbcdc; a = rotate(a,30);
+    c += rotate(d,5) + f3(e,a,b) + words[offset+2] + 0x8f1bbcdc; e = rotate(e,30);
+    b += rotate(c,5) + f3(d,e,a) + words[offset+3] + 0x8f1bbcdc; d = rotate(d,30);
+    a += rotate(b,5) + f3(c,d,e) + words[offset+4] + 0x8f1bbcdc; c = rotate(c,30);
+  }
+
+  // fourth round
+  for (int i = 12; i < 16; i++)
+  {
+    int offset = 5*i;
+    e += rotate(a,5) + f2(b,c,d) + words[offset  ] + 0xca62c1d6; b = rotate(b,30);
+    d += rotate(e,5) + f2(a,b,c) + words[offset+1] + 0xca62c1d6; a = rotate(a,30);
+    c += rotate(d,5) + f2(e,a,b) + words[offset+2] + 0xca62c1d6; e = rotate(e,30);
+    b += rotate(c,5) + f2(d,e,a) + words[offset+3] + 0xca62c1d6; d = rotate(d,30);
+    a += rotate(b,5) + f2(c,d,e) + words[offset+4] + 0xca62c1d6; c = rotate(c,30);
+  }
+
+  // update hash
+  m_hash[0] += a;
+  m_hash[1] += b;
+  m_hash[2] += c;
+  m_hash[3] += d;
+  m_hash[4] += e;
+}
+
+
+/// add arbitrary number of bytes
+void SHA1::add(const void* data, size_t numBytes)
+{
+  const uint8_t* current = (const uint8_t*) data;
+
+  if (m_bufferSize > 0)
+  {
+    while (numBytes > 0 && m_bufferSize < BlockSize)
     {
-        block[i] = (buffer[4*i+3] & 0xff)
-                   | (buffer[4*i+2] & 0xff)<<8
-                   | (buffer[4*i+1] & 0xff)<<16
-                   | (buffer[4*i+0] & 0xff)<<24;
+      m_buffer[m_bufferSize++] = *current++;
+      numBytes--;
     }
+  }
+
+  // full buffer
+  if (m_bufferSize == BlockSize)
+  {
+    processBlock((void*)m_buffer);
+    m_numBytes  += BlockSize;
+    m_bufferSize = 0;
+  }
+
+  // no more data ?
+  if (numBytes == 0)
+    return;
+
+  // process full blocks
+  while (numBytes >= BlockSize)
+  {
+    processBlock(current);
+    current    += BlockSize;
+    m_numBytes += BlockSize;
+    numBytes   -= BlockSize;
+  }
+
+  // keep remaining bytes in buffer
+  while (numBytes > 0)
+  {
+    m_buffer[m_bufferSize++] = *current++;
+    numBytes--;
+  }
 }
- 
- 
-void SHA1::read(std::istream &is, std::string &s, int max)
+
+
+/// process final block, less than 64 bytes
+void SHA1::processBuffer()
 {
-    char sbuf[max];
-    is.read(sbuf, max);
-    s.assign(sbuf, is.gcount());
+  // the input bytes are considered as bits strings, where the first bit is the most significant bit of the byte
+
+  // - append "1" bit to message
+  // - append "0" bits until message length in bit mod 512 is 448
+  // - append length as 64 bit integer
+
+  // number of bits
+  size_t paddedLength = m_bufferSize * 8;
+
+  // plus one bit set to 1 (always appended)
+  paddedLength++;
+
+  // number of bits must be (numBits % 512) = 448
+  size_t lower11Bits = paddedLength & 511;
+  if (lower11Bits <= 448)
+    paddedLength +=       448 - lower11Bits;
+  else
+    paddedLength += 512 + 448 - lower11Bits;
+  // convert from bits to bytes
+  paddedLength /= 8;
+
+  // only needed if additional data flows over into a second block
+  unsigned char extra[BlockSize];
+
+  // append a "1" bit, 128 => binary 10000000
+  if (m_bufferSize < BlockSize)
+    m_buffer[m_bufferSize] = 128;
+  else
+    extra[0] = 128;
+
+  size_t i;
+  for (i = m_bufferSize + 1; i < BlockSize; i++)
+    m_buffer[i] = 0;
+  for (; i < paddedLength; i++)
+    extra[i - BlockSize] = 0;
+
+  // add message length in bits as 64 bit number
+  uint64_t msgBits = 8 * (m_numBytes + m_bufferSize);
+  // find right position
+  unsigned char* addLength;
+  if (paddedLength < BlockSize)
+    addLength = m_buffer + paddedLength;
+  else
+    addLength = extra + paddedLength - BlockSize;
+
+  // must be big endian
+  *addLength++ = (unsigned char)((msgBits >> 56) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >> 48) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >> 40) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >> 32) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >> 24) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >> 16) & 0xFF);
+  *addLength++ = (unsigned char)((msgBits >>  8) & 0xFF);
+  *addLength   = (unsigned char)( msgBits        & 0xFF);
+
+  // process blocks
+  processBlock(m_buffer);
+  // flowed over into a second block ?
+  if (paddedLength > BlockSize)
+    processBlock(extra);
 }
- 
- 
-std::string sha1(const std::string &string)
+
+
+/// return latest hash as 40 hex characters
+std::string SHA1::getHash()
 {
-    SHA1 checksum;
-    checksum.update(string);
-    return checksum.final();
+  // compute hash (as raw bytes)
+  unsigned char rawHash[HashBytes];
+  getHash(rawHash);
+
+  // convert to hex string
+  std::string result;
+  result.reserve(2 * HashBytes);
+  for (int i = 0; i < HashBytes; i++)
+  {
+    static const char dec2hex[16+1] = "0123456789abcdef";
+    result += dec2hex[(rawHash[i] >> 4) & 15];
+    result += dec2hex[ rawHash[i]       & 15];
+  }
+
+  return result;
+}
+
+
+/// return latest hash as bytes
+void SHA1::getHash(unsigned char buffer[SHA1::HashBytes])
+{
+  // save old hash if buffer is partially filled
+  uint32_t oldHash[HashValues];
+  for (int i = 0; i < HashValues; i++)
+    oldHash[i] = m_hash[i];
+
+  // process remaining bytes
+  processBuffer();
+
+  unsigned char* current = buffer;
+  for (int i = 0; i < HashValues; i++)
+  {
+    *current++ = (m_hash[i] >> 24) & 0xFF;
+    *current++ = (m_hash[i] >> 16) & 0xFF;
+    *current++ = (m_hash[i] >>  8) & 0xFF;
+    *current++ =  m_hash[i]        & 0xFF;
+
+    // restore old hash
+    m_hash[i] = oldHash[i];
+  }
+}
+
+
+/// compute SHA1 of a memory block
+std::string SHA1::operator()(const void* data, size_t numBytes)
+{
+  reset();
+  add(data, numBytes);
+  return getHash();
+}
+
+
+/// compute SHA1 of a string, excluding final zero
+std::string SHA1::operator()(const std::string& text)
+{
+  reset();
+  add(text.c_str(), text.size());
+  return getHash();
 }

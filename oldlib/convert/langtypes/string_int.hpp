@@ -1,9 +1,8 @@
-#ifndef STDCRYPTOGRAPHY_H_INCLUDED
-#define STDCRYPTOGRAPHY_H_INCLUDED
+#ifndef SSSTRINGINTCONVERT_H_INCLUDED
+#define SSSTRINGINTCONVERT_H_INCLUDED
 
-#include "../lib/libs.hpp"
 
-class crypt
+class TypesConverter
 {
 public:
     int string_to_int(const string &s)
@@ -23,4 +22,4 @@ public:
     }
 };
 
-#endif // STDCRYPTOGRAPHY_H_INCLUDED
+#endif // SSSTRINGINTCONVERT_H_INCLUDED

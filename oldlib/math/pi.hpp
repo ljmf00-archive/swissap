@@ -9,30 +9,28 @@
  |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
                                                | |
                                                |_|
+			Copyright 2016 (c) lsferreira programming
 */
 
-#ifndef LSCLIBPILIB_H_INCLUDED
-#define LSCLIBPILIB_H_INCLUDED
-
-#if !(_WIN32) //If dont support Windows :: Do Def. Inst.
-
-#endif
+#ifndef SSMATHPI_H_INCLUDED
+#define SSMATHPI_H_INCLUDED
 
 #include "libs.hpp"
-#define FPINUMBASE    10000
+#define FPINUMBASE 10000
 
 // ...
-
-class picalc
+namespace SSMATH {
+	class PI;
+}
+class SSMATH::PI
 {
-public:
-    int nblock;
+private:
+	int nblock;
     int *tot;
     int *t1;
     int *t2;
     int *t3;
-
-    void arctan(int* result, int* w1, int* w2, int denom, int onestep)
+	void arctan(int* result, int* w1, int* w2, int denom, int onestep)
     {
         int denom2 = denom*denom;
         int k = 1;
@@ -58,29 +56,7 @@ public:
         }
         while(!zero(w2));
     }
-    void pi(int ndigit)
-    {
-        if(ndigit < 20) ndigit = 20;
-        nblock = ndigit/4;
-        tot = (int *)malloc(nblock*sizeof(int));
-        t1 = (int *)malloc(nblock*sizeof(int));
-        t2 = (int *)malloc(nblock*sizeof(int));
-        t3 = (int *)malloc(nblock*sizeof(int));
-        if(!tot || !t1 || !t2 || !t3)
-        {
-            fprintf(stderr, "Not enough memory\n");
-            exit(1);
-        }
-        arctan(tot, t1, t2, 5, 1);
-        mult(tot, 4);
-        arctan(t3, t1, t2, 239, 2);
-        sub(tot, t3);
-        mult(tot, 4);
-        print(tot);
-    }
-
-
-    void copy(int* result, int* from)
+	void copy(int* result, int* from)
     {
         int i;
         for(i=0; i<nblock; i++)
@@ -163,6 +139,27 @@ public:
             carry = result[i] % denom;
             result[i] /= denom;
         }
+    }
+public:
+    static void pi(int ndigit)
+    {
+        if(ndigit < 20) ndigit = 20;
+        nblock = ndigit/4;
+        tot = (int *)malloc(nblock*sizeof(int));
+        t1 = (int *)malloc(nblock*sizeof(int));
+        t2 = (int *)malloc(nblock*sizeof(int));
+        t3 = (int *)malloc(nblock*sizeof(int));
+        if(!tot || !t1 || !t2 || !t3)
+        {
+            fprintf(stderr, "Not enough memory\n");
+            exit(1);
+        }
+        arctan(tot, t1, t2, 5, 1);
+        mult(tot, 4);
+        arctan(t3, t1, t2, 239, 2);
+        sub(tot, t3);
+        mult(tot, 4);
+        print(tot);
     }
 };
 

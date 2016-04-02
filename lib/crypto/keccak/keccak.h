@@ -1,5 +1,5 @@
 // //////////////////////////////////////////////////////////
-// sha1.h
+// keccak.h
 // Copyright (c) 2014,2015 Stephan Brumme. All rights reserved.
 // see http://create.stephan-brumme.com/disclaimer.html
 //
@@ -13,7 +13,6 @@
 #ifdef _MSC_VER
 // Windows
 typedef unsigned __int8  uint8_t;
-typedef unsigned __int32 uint32_t;
 typedef unsigned __int64 uint64_t;
 #else
 // GCC
@@ -21,58 +20,62 @@ typedef unsigned __int64 uint64_t;
 #endif
 
 
-/// compute SHA1 hash
+/// compute Keccak hash (designated SHA3)
 /** Usage:
-    SHA1 sha1;
-    std::string myHash  = sha1("Hello World");     // std::string
-    std::string myHash2 = sha1("How are you", 11); // arbitrary data, 11 bytes
+    Keccak keccak;
+    std::string myHash  = keccak("Hello World");     // std::string
+    std::string myHash2 = keccak("How are you", 11); // arbitrary data, 11 bytes
 
     // or in a streaming fashion:
 
-    SHA1 sha1;
+    Keccak keccak;
     while (more data available)
-      sha1.add(pointer to fresh data, number of new bytes);
-    std::string myHash3 = sha1.getHash();
+      keccak.add(pointer to fresh data, number of new bytes);
+    std::string myHash3 = keccak.getHash();
   */
-class SHA1 //: public Hash
+class Keccak //: public Hash
 {
 public:
-  /// split into 64 byte blocks (=> 512 bits), hash is 20 bytes long
-  enum { BlockSize = 512 / 8, HashBytes = 20 };
+  /// algorithm variants
+  enum Bits { Keccak224 = 224, Keccak256 = 256, Keccak384 = 384, Keccak512 = 512 };
 
   /// same as reset()
-  SHA1();
+  explicit Keccak(Bits bits = Keccak256);
 
-  /// compute SHA1 of a memory block
+  /// compute hash of a memory block
   std::string operator()(const void* data, size_t numBytes);
-  /// compute SHA1 of a string, excluding final zero
+  /// compute hash of a string, excluding final zero
   std::string operator()(const std::string& text);
 
   /// add arbitrary number of bytes
   void add(const void* data, size_t numBytes);
 
-  /// return latest hash as 40 hex characters
+  /// return latest hash as hex characters
   std::string getHash();
-  /// return latest hash as bytes
-  void        getHash(unsigned char buffer[HashBytes]);
 
   /// restart
   void reset();
 
 private:
-  /// process 64 bytes
+  /// process a full block
   void processBlock(const void* data);
   /// process everything left in the internal buffer
   void processBuffer();
 
+  /// 1600 bits, stored as 25x64 bit, BlockSize is no more than 1152 bits (Keccak224)
+  enum { StateSize    = 1600 / (8 * 8),
+         MaxBlockSize =  200 - 2 * (224 / 8) };
+
+  /// hash
+  uint64_t m_hash[StateSize];
   /// size of processed data in bytes
   uint64_t m_numBytes;
+  /// block size (less or equal to MaxBlockSize)
+  size_t   m_blockSize;
   /// valid bytes in m_buffer
   size_t   m_bufferSize;
   /// bytes not processed yet
-  uint8_t  m_buffer[BlockSize];
-
-  enum { HashValues = HashBytes / 4 };
-  /// hash, stored as integers
-  uint32_t m_hash[HashValues];
+  uint8_t  m_buffer[MaxBlockSize];
+  /// variant
+  Bits     m_bits;
 };
