@@ -2,15 +2,5 @@
 ###### :ghost: Project in C/C++ and Python Language
 ------------------------------------------
 
-### Directories & Files
-```
-+
-|- LICENSE
-|- iterators.hpp
-|- print.hpp
-|- utils.hpp
-\- xml.hpp
-```
-
 ### Libraries
 - [RapidXML](http://rapidxml.sourceforge.net/)
