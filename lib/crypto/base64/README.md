@@ -2,7 +2,7 @@
 ###### :ghost: Project in C/C++ and Python Language
 ------------------------------------------
 
-### Directories
+### Directories & Files
 ```
 +
 |- cdecode.c
