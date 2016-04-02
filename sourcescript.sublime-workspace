@@ -1,0 +1,373 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"welcome",
+				"welcomeDialogCloseState"
+			],
+			[
+				"deb",
+				"debconf-set-selections"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "remove",
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Pac",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"help",
+			"git",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/lsferreira/Documents/Git/Github/ljmf00/sourcescript"
+	],
+	"file_history":
+	[
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/core/config/pathConfig.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/game/panel/assets/js/console.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/core/config/linksConfig.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/core/library/vigiloHTML.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/resources/css/style.css",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/index.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/resources/css/main.css",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/assets/js/typed-js/typed.js",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/web/resources/js/type.js",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/core/config/idConfig.php",
+		"/C/Users/lsferreira/Documents/Git/Github/vigiloproject/vigilo/vigilo.sublime-workspace",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-firefox-addon/manifest.json",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-design/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-gh-pages/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-js/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-msedge-addon/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-chrome-addon/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-firefox-addon/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo-repository/LICENSE",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/shutdown.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/main.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/validation/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/fullscreen.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/calculator.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/type.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/console.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/register/confirmation/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/.htaccess",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/css/type.css",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/css/main.css",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/register/validation/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/terms/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/css/background.css",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/register/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/mobile/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/main.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/apps/console/consoleAJAX.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/logout/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/validation/captcha/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/forgot/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/mobile.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/.travis.yml",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/clock.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/boot.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/smoothscroll.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/https.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/antipub.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/vigiloGenerateTools.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/index.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/validation/validationFunctions.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/validation/validationConstants.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/sessionConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/pathConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/messageConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/linksConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/infoConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/idConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/config/databaseConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/vigiloHTML.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/.vagrant/Vagrantfile",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/.vagrant/bootstrap.sh",
+		"/C/Users/lsferreira/vagrant/Vagrantfile",
+		"/C/Users/lsferreira/vagrant/bootstrap.sh",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/.htaccess",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/.htaccess",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/assets/js/mobile-detect.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/cgi-bin/hello.pl",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/cgi-bin/index.pl",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/assets/js/checkbox.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/validation/validationVariables.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/controllers/sessionController.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/panel/apps/console.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/README.md",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/assets/js/jquery-eu-cookie-law-popup/jquery-eu-cookie-law-popup.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/controllers/register/emailController.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/controllers/captchaController.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/cookies-law/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/validation/validationVariables.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/validation/validationFunctions.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/game/login/validation/validationConstants.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/web/resources/js/vigilo-js.lic",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/core/library/vigiloTools.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/library/vigiloTools.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/sessionConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/pathConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/messageConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/linksConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/library/vigiloHTML.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/idConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/infoConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/config/databaseConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/library/vigiloGenerateTools.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/vigilo.sublime-project",
+		"/C/Users/lsferreira/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/lsferreira/AppData/Roaming/Sublime Text 3/Packages/User/HaiInsertDateVersion.py",
+		"/C/Users/lsferreira/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/vigilolibrary.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/kernel/library/generateTools.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/archived/404.shtml",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/archived/500.shtml",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/archived/403.shtml",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/archived/400.shtml",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/sessionConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/messageConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/databaseConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/idConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/linksConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/pathConfig.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/config/Config.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/cookies-law/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/register/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/register/validation/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/register/confirmation/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/login/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/apps/console.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/apps/oldconsole.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/tab_settings.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/mobile/index.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/res/vigilolibrary.php",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/splash.js",
+		"/C/Users/lsferreira/Documents/GitHub/vigilo/gamedir/panel/splash.css"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"eeeeee",
+			" class=\"list-inline\"",
+			"You have a lot of things to do in-game: ",
+			"Complete Missions",
+			"Install viruses",
+			"elem",
+			"divObj",
+			"showMenu",
+			"consoleState",
+			"/register",
+			"mariadb-server-10.1",
+			"apt-get",
+			"top",
+			"left",
+			"\n					",
+			"				",
+			"redirect_time",
+			"information_msg",
+			"MsgConfig",
+			"json_parse_array",
+			"captcha_response_json_success",
+			"captcha_response_body",
+			"ch",
+			"query",
+			"Functions1",
+			"Vars1",
+			"MsgConfig",
+			"information_msg",
+			"captcha_response_json_success",
+			"ch",
+			"Kernel",
+			"kernel",
+			"Kernel",
+			"rootpath",
+			"business",
+			"configLinks",
+			"Kernel2_configLinks",
+			"configLinks_msgconfig",
+			"input",
+			"button",
+			"string",
+			"addMessage",
+			"RewriteCond",
+			"div",
+			"center>",
+			"root_remotepath"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"DDoS Attacks",
+			"Create a clan / guild",
+			"Research Software",
+			"Upgrade hardware",
+			"Mine bitcoins",
+			"Hack players",
+			"Install viruses",
+			"rootpath"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sourcescript.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 220.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
