@@ -6,7 +6,11 @@
 ```
 +
 |+ base64
+|+ crc32
+|+ keccak
 |+ md5
 |+ sha1
-\+ sha2
+|+ sha2
+|+ sha3
+\- hmac.h
 ```
