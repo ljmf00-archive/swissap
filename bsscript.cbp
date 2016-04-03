@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="bsscript" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug">
+				<Option output="bin/debug/bss" prefix_auto="1" extension_auto="1" />
+				<Option object_output="bin/obj/debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="release">
+				<Option output="bin/release/bss" prefix_auto="1" extension_auto="1" />
+				<Option object_output="bin/obj/release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="lib/check/domain.hpp" />
+		<Unit filename="lib/check/ipaddr.hpp" />
+		<Unit filename="lib/core/asciiart.hpp" />
+		<Unit filename="lib/core/errors.hpp" />
+		<Unit filename="lib/core/help.hpp" />
+		<Unit filename="lib/crypto/sha1/sha1.cpp" />
+		<Unit filename="lib/crypto/sha1/sha1.h" />
+		<Unit filename="lib/crypto/sha2/sha2.cpp" />
+		<Unit filename="lib/crypto/sha2/sha2.h" />
+		<Unit filename="lib/crypto/sha3/sha3.cpp" />
+		<Unit filename="lib/crypto/sha3/sha3.h" />
+		<Unit filename="lib/main.cpp" />
+		<Unit filename="lib/misc/files.cpp" />
+		<Unit filename="lib/misc/files.h" />
+		<Unit filename="lib/parser/json/json.hpp" />
+		<Unit filename="lib/parser/xml/iterators.hpp" />
+		<Unit filename="lib/parser/xml/print.hpp" />
+		<Unit filename="lib/parser/xml/utils.hpp" />
+		<Unit filename="lib/parser/xml/xml.hpp" />
+		<Unit filename="lib/port/endian.h" />
+		<Unit filename="lib/win32/colordef.hpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

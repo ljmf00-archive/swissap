@@ -1,8 +1,15 @@
-// //////////////////////////////////////////////////////////
-// sha3.h
-// Copyright (c) 2014,2015 Stephan Brumme. All rights reserved.
-// see http://create.stephan-brumme.com/disclaimer.html
-//
+/*
+ * __________  _________ _________
+ * \______   \/   _____//   _____/  | BigSource Script
+ *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
+ *  |    |   \/        \/        \  |
+ *  |______  /_______  /_______  /  | @author Luís Ferreira
+ *         \/        \/        \/   | @license GNU Public License v3
+ *
+ * Copyright (C) 2014,2015 - Stephan Brumme. All rights reserved.
+ * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * More information in: https://github.com/ljmf00/ (Github Page)
+ */
 
 #pragma once
 

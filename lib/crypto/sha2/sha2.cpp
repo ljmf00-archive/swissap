@@ -1,44 +1,22 @@
 /*
- * Updated to C++, zedwood.com 2012
- * Based on Olivier Gay's version
- * See Modified BSD License below: 
- *
- * FIPS 180-2 SHA-224/256/384/512 implementation
- * Issue date:  04/30/2005
- * http://www.ouah.org/ogay/sha2/
+ * __________  _________ _________
+ * \______   \/   _____//   _____/  | BigSource Script
+ *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
+ *  |    |   \/        \/        \  |
+ *  |______  /_______  /_______  /  | @author Luís Ferreira
+ *         \/        \/        \/   | @license GNU Public License v3
+ * Forked file: Olivier Gay - FIPS 180-2 SHA-224/256/384/512
  *
  * Copyright (C) 2005, 2007 Olivier Gay <olivier.gay@a3.epfl.ch>
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 3. Neither the name of the project nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
+ * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * More information in: https://github.com/ljmf00/ (Github Page)
+ * More information for forked file in: http://www.ouah.org/ogay/sha2/ (Source file Page)
  */
 
 #include <cstring>
 #include <fstream>
 #include "sha2.h"
- 
+
 const unsigned int SHA256::sha256_k[64] = //UL = uint32
             {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
              0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -97,7 +75,7 @@ const unsigned long long SHA512::sha512_k[80] = //ULL = uint64
              0x3c9ebe0a15c9bebcULL, 0x431d67c49c100d4cULL,
              0x4cc5d4becb3e42b6ULL, 0x597f299cfc657e2aULL,
              0x5fcb6fab3ad6faecULL, 0x6c44198c4a475817ULL};
- 
+
 void SHA224::init()
 {
     m_h[0]=0xc1059ed8;
@@ -111,7 +89,7 @@ void SHA224::init()
     m_len = 0;
     m_tot_len = 0;
 }
- 
+
 void SHA224::update(const unsigned char *message, unsigned int len)
 {
     unsigned int block_nb;
@@ -134,7 +112,7 @@ void SHA224::update(const unsigned char *message, unsigned int len)
     m_len = rem_len;
     m_tot_len += (block_nb + 1) << 6;
 }
- 
+
 void SHA224::final(unsigned char *digest)
 {
     unsigned int block_nb;
@@ -153,7 +131,7 @@ void SHA224::final(unsigned char *digest)
         SHA2_UNPACK32(m_h[i], &digest[i << 2]);
     }
 }
- 
+
 void SHA256::transform(const unsigned char *message, unsigned int block_nb)
 {
     uint32 w[64];
@@ -191,7 +169,7 @@ void SHA256::transform(const unsigned char *message, unsigned int block_nb)
         }
     }
 }
- 
+
 void SHA256::init()
 {
     m_h[0] = 0x6a09e667;
@@ -205,7 +183,7 @@ void SHA256::init()
     m_len = 0;
     m_tot_len = 0;
 }
- 
+
 void SHA256::update(const unsigned char *message, unsigned int len)
 {
     unsigned int block_nb;
@@ -228,7 +206,7 @@ void SHA256::update(const unsigned char *message, unsigned int len)
     m_len = rem_len;
     m_tot_len += (block_nb + 1) << 6;
 }
- 
+
 void SHA256::final(unsigned char *digest)
 {
     unsigned int block_nb;
@@ -247,7 +225,7 @@ void SHA256::final(unsigned char *digest)
         SHA2_UNPACK32(m_h[i], &digest[i << 2]);
     }
 }
- 
+
 void SHA384::init()
 {
     m_h[0] = 0xcbbb9d5dc1059ed8ULL;
@@ -261,7 +239,7 @@ void SHA384::init()
     m_len = 0;
     m_tot_len = 0;
 }
- 
+
 void SHA384::update(const unsigned char *message, unsigned int len)
 {
     unsigned int block_nb;
@@ -284,7 +262,7 @@ void SHA384::update(const unsigned char *message, unsigned int len)
     m_len = rem_len;
     m_tot_len += (block_nb + 1) << 7;
 }
- 
+
 void SHA384::final(unsigned char *digest)
 {
     unsigned int block_nb;
@@ -303,7 +281,7 @@ void SHA384::final(unsigned char *digest)
         SHA2_UNPACK64(m_h[i], &digest[i << 3]);
     }
 }
- 
+
 void SHA512::transform(const unsigned char *message, unsigned int block_nb)
 {
     uint64 w[80];
@@ -338,10 +316,10 @@ void SHA512::transform(const unsigned char *message, unsigned int block_nb)
         for (j = 0; j < 8; j++) {
             m_h[j] += wv[j];
         }
- 
+
     }
 }
- 
+
 void SHA512::init()
 {
     m_h[0] = 0x6a09e667f3bcc908ULL;
@@ -350,12 +328,12 @@ void SHA512::init()
     m_h[3] = 0xa54ff53a5f1d36f1ULL;
     m_h[4] = 0x510e527fade682d1ULL;
     m_h[5] = 0x9b05688c2b3e6c1fULL;
-    m_h[6] = 0x1f83d9abfb41bd6bULL; 
+    m_h[6] = 0x1f83d9abfb41bd6bULL;
     m_h[7] = 0x5be0cd19137e2179ULL;
     m_len = 0;
     m_tot_len = 0;
 }
- 
+
 void SHA512::update(const unsigned char *message, unsigned int len)
 {
     unsigned int block_nb;
@@ -378,7 +356,7 @@ void SHA512::update(const unsigned char *message, unsigned int len)
     m_len = rem_len;
     m_tot_len += (block_nb + 1) << 7;
 }
- 
+
 void SHA512::final(unsigned char *digest)
 {
     unsigned int block_nb;
@@ -397,7 +375,7 @@ void SHA512::final(unsigned char *digest)
         SHA2_UNPACK64(m_h[i], &digest[i << 3]);
     }
 }
- 
+
 std::string sha224(std::string input)
 {
     unsigned char digest[SHA224::DIGEST_SIZE];
@@ -406,31 +384,31 @@ std::string sha224(std::string input)
     ctx.init();
     ctx.update((unsigned char*)input.c_str(), input.length());
     ctx.final(digest);
- 
+
     char buf[2*SHA224::DIGEST_SIZE+1];
     buf[2*SHA224::DIGEST_SIZE] = 0;
     for (int i = 0; i < SHA224::DIGEST_SIZE; i++)
         sprintf(buf+i*2, "%02x", digest[i]);
     return std::string(buf);
 }
- 
+
 std::string sha256(std::string input)
 {
     unsigned char digest[SHA256::DIGEST_SIZE];
     memset(digest,0,SHA256::DIGEST_SIZE);
- 
+
     SHA256 ctx = SHA256();
     ctx.init();
     ctx.update( (unsigned char*)input.c_str(), input.length());
     ctx.final(digest);
- 
+
     char buf[2*SHA256::DIGEST_SIZE+1];
     buf[2*SHA256::DIGEST_SIZE] = 0;
     for (int i = 0; i < SHA256::DIGEST_SIZE; i++)
         sprintf(buf+i*2, "%02x", digest[i]);
     return std::string(buf);
 }
- 
+
 std::string sha384(std::string input)
 {
     unsigned char digest[SHA384::DIGEST_SIZE];
@@ -439,14 +417,14 @@ std::string sha384(std::string input)
     ctx.init();
     ctx.update((unsigned char*)input.c_str(), input.length());
     ctx.final(digest);
- 
+
     char buf[2*SHA384::DIGEST_SIZE+1];
     buf[2*SHA384::DIGEST_SIZE] = 0;
     for (int i = 0; i < SHA384::DIGEST_SIZE; i++)
         sprintf(buf+i*2, "%02x", digest[i]);
     return std::string(buf);
 }
- 
+
 std::string sha512(std::string input)
 {
     unsigned char digest[SHA512::DIGEST_SIZE];
@@ -455,7 +433,7 @@ std::string sha512(std::string input)
     ctx.init();
     ctx.update((unsigned char*)input.c_str(), input.length());
     ctx.final(digest);
- 
+
     char buf[2*SHA512::DIGEST_SIZE+1];
     buf[2*SHA512::DIGEST_SIZE] = 0;
     for (int i = 0; i < SHA512::DIGEST_SIZE; i++)
