@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="lib/check/domain.hpp" />
 		<Unit filename="lib/check/ipaddr.hpp" />
+		<Unit filename="lib/convert/binary.hpp" />
 		<Unit filename="lib/core/asciiart.hpp" />
 		<Unit filename="lib/core/errors.hpp" />
 		<Unit filename="lib/core/help.hpp" />
