@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -30,11 +32,13 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="lib/check/domain.hpp" />
 		<Unit filename="lib/check/ipaddr.hpp" />
 		<Unit filename="lib/convert/binary.hpp" />
+		<Unit filename="lib/convert/types/string_int.hpp" />
 		<Unit filename="lib/core/asciiart.hpp" />
 		<Unit filename="lib/core/errors.hpp" />
 		<Unit filename="lib/core/help.hpp" />
@@ -54,6 +58,7 @@
 		<Unit filename="lib/parser/xml/xml.hpp" />
 		<Unit filename="lib/port/endian.h" />
 		<Unit filename="lib/win32/colordef.hpp" />
+		<Unit filename="lib/win32/netsocket/server.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

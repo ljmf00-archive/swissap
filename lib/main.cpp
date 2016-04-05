@@ -24,12 +24,17 @@
 //Cryptography Library
 #include "crypto/sha1/sha1.h"
 #include "crypto/sha2/sha2.h"
+#include "crypto/sha3/sha3.h"
+
+//Convert Libraries
+#include "convert/types/string_int.hpp"
 
 ///Used namespaces
 using namespace std;
 
 ///Objects
 SHA1 sha1;
+SHA3 sha3;
 
 /// Main Function
 int main(int argc, char* argv[])
@@ -40,22 +45,22 @@ int main(int argc, char* argv[])
         {
             if(argc==2)
             {
-                bssCore::exitCode(301);
+                bssCore::exitCode(0x12D);
             }
             else if (string(argv[2])=="sha1")
             {
                 if(argc==4)
                 {
                     cout << sha1(argv[3]);
-                    bssCore::exitCode(0);
+                    bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(302);
+                    bssCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(301);
+                    bssCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha224")
@@ -63,15 +68,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha224(argv[3]);
-                    bssCore::exitCode(0);
+                    bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(302);
+                    bssCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(301);
+                    bssCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha256")
@@ -79,15 +84,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha256(argv[3]);
-                    bssCore::exitCode(0);
+                    bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(302);
+                    bssCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(301);
+                    bssCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha384")
@@ -95,15 +100,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha384(argv[3]);
-                    bssCore::exitCode(0);
+                    bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(302);
+                    bssCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(301);
+                    bssCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha512")
@@ -111,20 +116,40 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha512(argv[3]);
-                    bssCore::exitCode(0);
+                    bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(302);
+                    bssCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(301);
+                    bssCore::exitCode(0x12D);
+                }
+            }
+            else if (string(argv[2])=="sha3")
+            {
+                if(argc==4)
+                {
+                    cout << sha3(argv[3]);
+                    bssCore::exitCode(0x0);
+                }
+                else if (argc=5)
+                {
+                    cout << sha3(argv[3], bssConvert::stringToInt(string(argv[4])));
+                }
+                else if(argc>5)
+                {
+                    bssCore::exitCode(0x12E);
+                }
+                else
+                {
+                    bssCore::exitCode(0x12D);
                 }
             }
             else
             {
-                bssCore::exitCode(303);
+                bssCore::exitCode(0x12F);
             }
         }
         else
@@ -134,7 +159,7 @@ int main(int argc, char* argv[])
     }
     else
     {
-        bssCore::exitCode(301);
+        bssCore::exitCode(0x12D);
     }
     bssCore::exitCode(0x0);
 }

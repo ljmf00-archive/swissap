@@ -38,9 +38,11 @@ void helpSpecific(std::string name)
                   << "       sha224 <string>         SHA-224 Hash Calculation" << std::endl
                   << "       sha256 <string>         SHA-256 Hash Calculation" << std::endl
                   << "       sha384 <string>         SHA-384 Hash Calculation" << std::endl
-                  << "       sha512 <string>         SHA-512 Hash Calculation" << std::endl;
+                  << "       sha512 <string>         SHA-512 Hash Calculation" << std::endl
+                  << "       sha3 <string> [bits]    SHA-3 Hash Calculation" << std::endl;
     }
-    else if(name=="win32lib"){
+    else if(name=="win32lib")
+    {
         std::cout << "  --win32" << std::endl
                   << "       " << std::endl;
     }

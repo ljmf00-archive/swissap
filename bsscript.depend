@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1459722145 source:c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\main.cpp
+1459899290 source:c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\main.cpp
 	<iostream>
 	"core/help.hpp"
 	"core/errors.hpp"
 	"core/asciiart.hpp"
 	"crypto/sha1/sha1.h"
 	"crypto/sha2/sha2.h"
+	"crypto/sha3/sha3.h"
+	"convert/types/string_int.hpp"
 
 1459699105 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\misc\help.hpp
 	<iostream>
@@ -27,11 +29,11 @@
 	<winsock2.h>
 	<sys/param.h>
 
-1459722145 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\core\help.hpp
+1459903237 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\core\help.hpp
 	<iostream>
 	"errors.hpp"
 
-1459722145 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\core\errors.hpp
+1459903166 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\core\errors.hpp
 	<cstdlib>
 	"asciiart.hpp"
 	"help.hpp"
@@ -61,4 +63,7 @@
 	"files.h"
 
 1459722145 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\misc\files.h
+
+1459898970 c:\users\lsferreira\documents\git\github\ljmf00\sourcescript\lib\convert\types\string_int.hpp
+	<sstream>
 

@@ -34,15 +34,33 @@ void exitCode(int e_code)
     case 0x0:
         exit(e_code);
         break;
-    case 2:
+    case 0x2:
         msgCode(e_code, "FATAL", "Unknown fatal error", true);
         exit(e_code);
         break;
-    case 3:
+    case 0x3:
         msgCode(e_code, "FATAL", "Invalid string in bssCore::helpSpecific()", true);
         exit(e_code);
         break;
-    case 100:
+    case 0x131:
+        msgCode(e_code, "WIN32", "WSAStartup failed with an error");
+        break;
+    case 0x132:
+        msgCode(e_code, "WIN32", "getaddrinfo failed with an error");
+        break;
+    case 0x133:
+        msgCode(e_code, "WIN32", "socket failed with an error");
+        break;
+    case 0x134:
+        msgCode(e_code, "WIN32", "bind failed with an error");
+        break;
+    case 0x135:
+        msgCode(e_code, "WIN32", "listen failed with an error");
+        break;
+    case 0x136:
+        msgCode(e_code, "WIN32", "accept failed with an error");
+        break;
+    case 0x64:
         msgCode(e_code, "INFORMATION", "Success exit in debug mode, return 0x0", false);
         exit(e_code);
         break;
@@ -50,16 +68,16 @@ void exitCode(int e_code)
     bssASCII::logo();
     switch(e_code)
     {
-    case 301:
+    case 0x12D:
         msgCode(e_code, "ERROR", "Argument missing", true);
         break;
-    case 302:
+    case 0x12E:
         msgCode(e_code, "ERROR", "Too much arguments", true);
         break;
-    case 303:
+    case 0x12F:
         msgCode(e_code, "ERROR", "Invalid argument", true);
         break;
-    case 304:
+    case 0x130:
         msgCode(e_code, "ERROR", "Win32Lib not founded");
         exit(e_code);
         break;
