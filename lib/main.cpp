@@ -3,9 +3,9 @@
  * \______   \/   _____//   _____/  | BigSource Script
  *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
  *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Luís Ferreira
+ *  |______  /_______  /_______  /  | @author LuÃ­s Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * Copyright (C) 2016 - LuÃ­s Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
@@ -163,4 +163,3 @@ int main(int argc, char* argv[])
     }
     bssCore::exitCode(0x0);
 }
-
