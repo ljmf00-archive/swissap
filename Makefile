@@ -16,7 +16,8 @@ CPP = g++
 RM = rm -rf
 MKDIR = mkdir -p
 
-all: 
+all:
+	$(RM) bin
 	$(MKDIR) bin/obj/crypto
 	$(MKDIR) bin/obj/misc
 	$(CPP) -c lib/main.cpp -o bin/obj/main.o
