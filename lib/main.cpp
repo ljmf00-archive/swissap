@@ -154,12 +154,14 @@ int main(int argc, char* argv[])
         }
         else
         {
-
+            bssCore::exitCode(0x12F);
         }
     }
     else
     {
-        bssCore::exitCode(0x12D);
+        bssASCII::logo();
+        bssCore::help();
+        bssCore::exitCode(0x0);
     }
     bssCore::exitCode(0x0);
 }
