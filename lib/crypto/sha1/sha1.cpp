@@ -3,11 +3,11 @@
  * \______   \/   _____//   _____/  | BigSource Script
  *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
  *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Luís Ferreira
+ *  |______  /_______  /_______  /  | @author Luï¿½s Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
  *
  * Copyright (C) 2014,2015 - Stephan Brumme. All rights reserved.
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * Copyright (C) 2016 - Luï¿½s Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
@@ -15,7 +15,7 @@
 
 // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 #ifndef _MSC_VER
-#ifdef _WIN32
+#if defined (_WIN32) || defined (__APPLE__)
 #include "../../port/endian.h"
 #else
 #include <endian.h>
