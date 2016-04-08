@@ -24,7 +24,8 @@ all:
 	$(CPP) -c lib/crypto/sha1/sha1.cpp -o bin/obj/crypto/sha1.o
 	$(CPP) -c lib/crypto/sha2/sha2.cpp -o bin/obj/crypto/sha2.o
 	$(CPP) -c lib/crypto/sha3/sha3.cpp -o bin/obj/crypto/sha3.o
-	$(CPP) -o bin/bss bin/obj/main.o bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o
+	$(CPP) -c lib/crypto/md5/md5.cpp -o bin/obj/crypto/md5.o
+	$(CPP) -o bin/bss bin/obj/main.o bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o
 
 clean:
 	$(RM) bin

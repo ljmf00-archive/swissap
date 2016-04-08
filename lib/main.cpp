@@ -25,6 +25,7 @@
 #include "crypto/sha1/sha1.h"
 #include "crypto/sha2/sha2.h"
 #include "crypto/sha3/sha3.h"
+#include "crypto/md5/md5.h"
 
 //Convert Libraries
 #include "convert/types/string_int.hpp"
@@ -35,6 +36,7 @@ using namespace std;
 ///Objects
 SHA1 sha1;
 SHA3 sha3;
+MD5 md5;
 
 /// Main Function
 int main(int argc, char* argv[])
@@ -51,7 +53,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha1(argv[3]);
+                    cout << sha1(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
@@ -67,7 +69,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha224(argv[3]);
+                    cout << sha224(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
@@ -83,7 +85,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha256(argv[3]);
+                    cout << sha256(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
@@ -99,7 +101,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha384(argv[3]);
+                    cout << sha384(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
@@ -115,7 +117,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha512(argv[3]);
+                    cout << sha512(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if(argc>4)
@@ -131,7 +133,7 @@ int main(int argc, char* argv[])
             {
                 if(argc==4)
                 {
-                    cout << sha3(argv[3]);
+                    cout << sha3(argv[3]) << endl;
                     bssCore::exitCode(0x0);
                 }
                 else if (argc==5)
@@ -139,6 +141,22 @@ int main(int argc, char* argv[])
                     cout << sha3(argv[3], bssConvert::stringToInt(string(argv[4])));
                 }
                 else if(argc>5)
+                {
+                    bssCore::exitCode(0x12E);
+                }
+                else
+                {
+                    bssCore::exitCode(0x12D);
+                }
+            }
+            else if (string(argv[2])=="md5")
+            {
+                if(argc==4)
+                {
+                    cout << md5(argv[3]) << endl;
+                    bssCore::exitCode(0x0);
+                }
+                else if(argc>4)
                 {
                     bssCore::exitCode(0x12E);
                 }
