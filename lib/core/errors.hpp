@@ -60,6 +60,15 @@ void exitCode(int e_code)
     case 0x136:
         msgCode(e_code, "WIN32", "accept failed with an error");
         break;
+    case 0x137:
+        msgCode(e_code, "WIN32", "send failed with an error");
+        break;
+    case 0x138:
+        msgCode(e_code, "WIN32", "recv failed with an error");
+        break;
+    case 0x139:
+        msgCode(e_code, "WIN32", "shutdown failed with an error");
+        break;
     case 0x64:
         msgCode(e_code, "INFORMATION", "Success exit in debug mode, return 0x0", false);
         exit(e_code);

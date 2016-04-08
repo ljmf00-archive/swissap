@@ -1,3 +1,14 @@
+/*
+ * __________  _________ _________
+ * \______   \/   _____//   _____/  | BigSource Script
+ *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
+ *  |    |   \/        \/        \  |
+ *  |______  /_______  /_______  /  | @author Lu�s Ferreira
+ *         \/        \/        \/   | @license GNU Public License v3
+ * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * More information in: https://github.com/ljmf00/ (Github Page)
+ */
+
 #ifndef BSSSERVER_HPP_INCLUDED
 #define BSSSERVER_HPP_INCLUDED
 
@@ -19,7 +30,7 @@ namespace bssWin32
 {
 struct Socket
 {
-    void create(int port)
+    void create(int port=27015, int buffersize=512)
     {
         WSADATA wsaData;
         int iResult;
@@ -31,8 +42,8 @@ struct Socket
         struct addrinfo hints;
 
         int iSendResult;
-        char recvbuf[DEFAULT_BUFLEN];
-        int recvbuflen = DEFAULT_BUFLEN;
+        char recvbuf[buffersize];
+        int recvbuflen = buffersize;
 
         // Initialize Winsock
         iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
@@ -50,7 +61,7 @@ struct Socket
         hints.ai_flags = AI_PASSIVE;
 
         // Resolve the server address and port
-        iResult = getaddrinfo(NULL, DEFAULT_PORT, &hints, &result);
+        iResult = getaddrinfo(NULL, port, &hints, &result);
         if ( iResult != 0 )
         {
             bssCore::exitCode(0x132);
@@ -117,27 +128,30 @@ struct Socket
             iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
             if (iResult > 0)
             {
-                printf("Bytes received: %d\n", iResult);
+                std::cout << "Bytes received: " << iResult << std::endl;
 
                 // Echo the buffer back to the sender
                 iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
                 if (iSendResult == SOCKET_ERROR)
                 {
-                    printf("send failed with error: %d\n", WSAGetLastError());
+                    bssCore::exitCode(0x137);
+                    std::cout << WSAGetLastError() << std::endl;
                     closesocket(ClientSocket);
                     WSACleanup();
-                    return 1;
+                    exit(0x137);
                 }
-                printf("Bytes sent: %d\n", iSendResult);
+                std::cout << "Bytes sent: " << iSendResult << std::endl;
             }
             else if (iResult == 0)
-                printf("Connection closing...\n");
+                std::cout << "Connection closing..." << std::endl;
             else
             {
-                printf("recv failed with error: %d\n", WSAGetLastError());
+                
+                bssCore::exitCode(0x138);
+                std::cout << WSAGetLastError() << std::endl;
                 closesocket(ClientSocket);
                 WSACleanup();
-                return 1;
+                exit(0x138);
             }
 
         }
@@ -147,15 +161,17 @@ struct Socket
         iResult = shutdown(ClientSocket, SD_SEND);
         if (iResult == SOCKET_ERROR)
         {
-            printf("shutdown failed with error: %d\n", WSAGetLastError());
+            bssCore::exitCode(0x139);
+            std::cout << WSAGetLastError() << std::endl;
             closesocket(ClientSocket);
             WSACleanup();
-            return 1;
+            exit(0x139);
         }
 
         // cleanup
         closesocket(ClientSocket);
         WSACleanup();
+        bssCore::exitCode(0x0);
     }
 };
 }
