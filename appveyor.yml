@@ -22,7 +22,7 @@ clone_folder: c:\bsscript
 
 # scripts that run after cloning repository
 install:
-  - cmd: C:\MinGW\bin\mingw32-make.exe -f C:\bsscript\Makefile.win build
+  - cmd: C:\MinGW\bin\mingw32-make.exe -f C:\bsscript\Makefile.appveyor build
   
 build: off
 
