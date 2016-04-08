@@ -3,7 +3,7 @@
  * \______   \/   _____//   _____/  | BigSource Script
  *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
  *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Lu�s Ferreira
+ *  |______  /_______  /_______  /  | @author Luís Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
  * Copyright (C) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
@@ -33,6 +33,9 @@
 #define WINSYSCOLOR_BLACKGRAY 0x08
 #define WINSYSCOLOR_BALCKLIGHTBLUE 0x09
 #define WINSYSCOLOR_BLACKLIGHTGREEN 0x0A
-#define WINSYSCOLRO_BLACKLIGHTAQUA 0x0B
+#define WINSYSCOLOR_BLACKLIGHTAQUA 0x0B
+#define WINSYSCOLOR_BLACKLIGHTRED 0x0C
+#define WINSYSCOLOR_BLACKLIGHTYELLOW 0x0E
+#define WINSYSCOLOR_BLACKBRIGHT WHITE 0x0F
 
 #endif // COLORDEF_HPP_INCLUDED
