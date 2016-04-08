@@ -5,7 +5,7 @@
  *  |    |   \/        \/        \  |
  *  |______  /_______  /_______  /  | @author Lu�s Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Lu�s Ferreira. All right reserved
+ * Copyright (C) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 

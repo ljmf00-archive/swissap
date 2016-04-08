@@ -3,9 +3,9 @@
  * \______   \/   _____//   _____/  | BigSource Script
  *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
  *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Luís Ferreira
+ *  |______  /_______  /_______  /  | @author LuÃ­s Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ * Copyright (C) 2016 - Luï¿½s Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
@@ -20,7 +20,7 @@ void logoOnce()
               << "\\______   \\/   _____//   _____/ | BigSource Script" << std::endl
               << " |    |  _/\\_____  \\ \\_____  \\  | Project in C/C++ Language" << std::endl
               << " |    |   \\/        \\/        \\ |" << std::endl
-              << " |______  /_______  /_______  / | @author Luís Ferreira" << std::endl
+              << " |______  /_______  /_______  / | @author LuÃ­s Ferreira" << std::endl
               << "        \\/        \\/        \\/  | @license GNU Public License v3" << std::endl;
 }
 void logo()
