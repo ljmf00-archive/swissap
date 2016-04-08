@@ -12,7 +12,7 @@
 
 NAME = bss
 CPP = g++.exe
-RM = rmdir /s /q
+RM = rd /s /q
 MKDIR = mkdir
 
 all: build
