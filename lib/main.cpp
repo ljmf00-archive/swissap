@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
                     cout << sha3(argv[3]);
                     bssCore::exitCode(0x0);
                 }
-                else if (argc=5)
+                else if (argc==5)
                 {
                     cout << sha3(argv[3], bssConvert::stringToInt(string(argv[4])));
                 }

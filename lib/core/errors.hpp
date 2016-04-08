@@ -20,7 +20,7 @@ namespace bssCore
 {
 void msgCode(int e_code, std::string name, std::string value, bool endline=false) {
     std::cout <<std::hex<< name <<"(0x" << e_code << "): " << value;
-    if(endline=true){
+    if(endline==true){
         std::cout << std::endl;
     }
 }
