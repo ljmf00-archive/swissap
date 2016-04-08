@@ -18,9 +18,9 @@ MKDIR = mkdir
 all: build
 
 build:
-	$(RM) bin
-	$(MKDIR) bin\obj\crypto
-	$(MKDIR) bin\obj\misc
+	if exist "bin\" $(RM) bin\
+	if not exist "bin\obj\crypto" $(MKDIR) bin\obj\crypto
+	if not exist "bin\obj\misc" $(MKDIR) bin\obj\misc
 	$(CPP) -c lib\main.cpp -o bin\obj\main.o
 	$(CPP) -c lib\crypto\sha1\sha1.cpp -o bin\obj\crypto\sha1.o
 	$(CPP) -c lib\crypto\sha2\sha2.cpp -o bin\obj\crypto\sha2.o
