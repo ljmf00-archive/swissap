@@ -13,11 +13,12 @@
 #define BSSHELP_HPP_INCLUDED
 
 #include <iostream>
-
+#include "errors.hpp"
 
 namespace bssCore
 {
 void help();
+void exitCode(int e_code);
 }
 
 #include "errors.hpp"
@@ -34,12 +35,16 @@ void helpSpecific(std::string name)
     if(name=="cryptography")
     {
         std::cout << "  -cR --cryptography" << std::endl
-                  << "       sha1 <string>           SHA-1 Hash Calculation" << std::endl
-                  << "       sha224 <string>         SHA-224 Hash Calculation" << std::endl
-                  << "       sha256 <string>         SHA-256 Hash Calculation" << std::endl
-                  << "       sha384 <string>         SHA-384 Hash Calculation" << std::endl
-                  << "       sha512 <string>         SHA-512 Hash Calculation" << std::endl
-                  << "       sha3 <string> [bits]    SHA-3 Hash Calculation" << std::endl;
+                  << "       aes" << std::endl
+                  << "          decrypt <key> <keylen> <string>   AES Decryptation Algoritm" << std::endl
+                  << "          encrypt <key> <keylen> <string>   AES Encryptation Algoritm" << std::endl
+                  << "       md5 <string>                         MD5 Hash Calculation" << std::endl
+                  << "       sha1 <string>                        SHA-1 Hash Calculation" << std::endl
+                  << "       sha224 <string>                      SHA-224 Hash Calculation" << std::endl
+                  << "       sha256 <string>                      SHA-256 Hash Calculation" << std::endl
+                  << "       sha384 <string>                      SHA-384 Hash Calculation" << std::endl
+                  << "       sha512 <string>                      SHA-512 Hash Calculation" << std::endl
+                  << "       sha3 <string> [bits]                 SHA-3 Hash Calculation" << std::endl;
     }
     else if(name=="win32lib")
     {

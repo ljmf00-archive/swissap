@@ -12,6 +12,8 @@
 #ifndef BSSASCIIART_HPP_INCLUDED
 #define BSSASCIIART_HPP_INCLUDED
 
+#include <iostream>
+
 namespace bssASCII
 {
 void logoOnce()

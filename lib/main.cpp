@@ -26,6 +26,7 @@
 #include "crypto/sha2/sha2.h"
 #include "crypto/sha3/sha3.h"
 #include "crypto/md5/md5.h"
+#include "crypto/aes/decrypt.hpp"
 
 //Convert Libraries
 #include "convert/types/string_int.hpp"

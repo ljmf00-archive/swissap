@@ -18,6 +18,11 @@
 
 namespace bssCore
 {
+void help();
+}
+
+namespace bssCore
+{
 void msgCode(int e_code, std::string name, std::string value, bool endline=false) {
     std::cout <<std::hex<< name <<"(0x" << e_code << "): " << value;
     if(endline==true){
@@ -68,6 +73,15 @@ void exitCode(int e_code)
         break;
     case 0x139:
         msgCode(e_code, "WIN32", "shutdown failed with an error");
+        break;
+    case 0x13A:
+        msgCode(e_code, "WIN32", "unable to connect to server");
+        break;
+    case 0x13B:
+        msgCode(e_code, "WIN32", "send failed with an error");
+        break;
+    case 0x13C:
+        msgCode(e_code, "WIN32", "recv failed with an error");
         break;
     case 0x64:
         msgCode(e_code, "INFORMATION", "Success exit in debug mode, return 0x0", false);

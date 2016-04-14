@@ -3,14 +3,14 @@
  * \______   \/   _____//   _____/  | BigSource Script
  *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
  *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Lu�s Ferreira
+ *  |______  /_______  /_______  /  | @author Luís Ferreira
  *         \/        \/        \/   | @license GNU Public License v3
  * Copyright (C) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSSERVER_HPP_INCLUDED
-#define BSSSERVER_HPP_INCLUDED
+#ifndef BSSWIN32_SERVER_HPP_INCLUDED
+#define BSSWIN32_SERVER_HPP_INCLUDED
 
 #include "../../core/errors.hpp"
 
@@ -176,4 +176,4 @@ struct Socket
 };
 }
 
-#endif // BSSSERVER_HPP_INCLUDED
+#endif // BSSWIN32_SERVER_HPP_INCLUDED

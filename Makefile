@@ -20,7 +20,7 @@ all:
 	$(RM) bin
 	$(MKDIR) bin/obj/crypto
 	$(MKDIR) bin/obj/misc
-	$(CPP) -c lib/main.cpp -o bin/obj/main.o
+	$(CPP) -std=gnu++11 -c lib/main.cpp -o bin/obj/main.o
 	$(CPP) -c lib/crypto/sha1/sha1.cpp -o bin/obj/crypto/sha1.o
 	$(CPP) -c lib/crypto/sha2/sha2.cpp -o bin/obj/crypto/sha2.o
 	$(CPP) -c lib/crypto/sha3/sha3.cpp -o bin/obj/crypto/sha3.o
