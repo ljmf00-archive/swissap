@@ -22,15 +22,10 @@ addons:
    - gcc-4.8
    - g++-4.8
 
-install:
-  - if [ "$CC" = "gcc" ]; then export CC="gcc-4.8"; fi
-  - if [ "$CPP" = "g++" ]; then export CPP="g++-4.8"; fi
-
-
-
-before_script: 
-  - sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc
-  - sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++
+before_script:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++; fi
   - make
 
 script: ./bin/bss
