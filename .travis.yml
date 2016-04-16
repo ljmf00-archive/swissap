@@ -6,6 +6,8 @@ compiler:
   - g++
   - clang++
 
+dist: trusty
+
 os:
   - linux
   - osx
