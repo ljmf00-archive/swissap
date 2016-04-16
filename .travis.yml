@@ -29,8 +29,8 @@ install:
 
 
 before_script: 
-  - sudo ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
-  - sudo ln -s /usr/bin/g++-4.8 /usr/bin/g++
+  - sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc
+  - sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++
   - make
 
 script: ./bin/bss
