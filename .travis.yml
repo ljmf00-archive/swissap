@@ -20,6 +20,10 @@ addons:
    - gcc-4.8
    - g++-4.8
 
+install:
+  - if [ "$CC" = "gcc" ]; then export CC="gcc-4.8"; fi
+  - if [ "$CPP" = "gcc" ]; then export CPP="g++-4.8"; fi
+
 before_script: make
 
 script: ./bin/bss
