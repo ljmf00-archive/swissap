@@ -27,7 +27,6 @@ install:
 
 
 before_script: 
-  - sudo ln -s /usr/bin/cpp-4.8 /usr/bin/cpp
   - sudo ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
   - sudo ln -s /usr/bin/g++-4.8 /usr/bin/g++
   - make
