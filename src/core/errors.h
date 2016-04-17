@@ -9,12 +9,12 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSERRORS_HPP_INCLUDED
-#define BSSERRORS_HPP_INCLUDED
+#ifndef BSSERRORS_H_INCLUDED
+#define BSSERRORS_H_INCLUDED
 
 #include <cstdlib>
-#include "asciiart.hpp"
-#include "help.hpp"
+#include "asciiart.h"
+#include "help.h"
 
 namespace bssCore
 {
@@ -29,9 +29,7 @@ void msgCode(int e_code, std::string name, std::string value, bool endline=false
         std::cout << std::endl;
     }
 }
-void debugCode(int d_code)
-{
-}
+
 void exitCode(int e_code)
 {
     switch(e_code)
@@ -124,4 +122,4 @@ void exitCode(int e_code)
 }
 }
 
-#endif // BSSERRORS_HPP_INCLUDED
+#endif // BSSERRORS_H_INCLUDED

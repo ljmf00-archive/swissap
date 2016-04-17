@@ -1,14 +1,7 @@
 #ifndef HEX_H_INCLUDED
 #define HEX_H_INCLUDED
 
-#include "../lib/libs.hpp"
-
-//Used namespaces
-using namespace std;
-
-class crypt
-{
-public:
+namespace bssConvert {
     string char2hex( char dec )
     {
         char dig1 = (dec&0xF0)>>4;
@@ -36,6 +29,13 @@ public:
         }
         return r;
     }
+}
+
+class crypt
+{
+public:
+    
+    
     string dec2hex(unsigned long long i)
     {
         stringstream ss;

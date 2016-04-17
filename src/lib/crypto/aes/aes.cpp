@@ -9,20 +9,11 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef AES_H_INCLUDED
-#define AES_H_INCLUDED
+#include "aes.h"
 
-#include "../../core/errors.hpp"
+#include "../../../core/errors.h"
 
-#include <iostream>
-#include <cstring>
 
-#include <string>
-
-//#include <stdio.h>
-//#include <iostream>
-//#include <fstream>
-//#include <stdlib.h>
 
 /* 
  * The number of columns comprising a state in AES.
@@ -36,23 +27,7 @@
 // Multiplty is a macro used to multiply numbers in the field GF(2^8)
 #define Multiply(x,y) (((y & 1) * x) ^ ((y>>1 & 1) * xtime(x)) ^ ((y>>2 & 1) * xtime(xtime(x))) ^ ((y>>3 & 1) * xtime(xtime(xtime(x)))) ^ ((y>>4 & 1) * xtime(xtime(xtime(xtime(x))))))
 
-
-struct AES{
-private:
-	int Nr, Nk;
-
-	/* in - it is the array that holds the CipherText to be decrypted.
-	 * out - it is the array that holds the output of the for decryption.
-     * state - the array that holds the intermediate results during decryption.
-     */
-	unsigned char in[16], out[16], state[4][4];
-
-	// The array that stores the round keys.
-	unsigned char RoundKey[240];
-	// The Key input to the AES Program
-	unsigned char Key[32];
-
-	int getSBoxValue(int num)
+	int AES::getSBoxValue(int num)
 	{
 		int sbox[256] =   {
 		//0     1    2      3     4    5     6     7      8    9     A      B    C     D     E     F
@@ -74,30 +49,7 @@ private:
 		0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16 }; //F
 		return sbox[num];
 	}
-
-	/* 
-	 * The round constant word array, Rcon[i], contains the values given by 
-	 * x to th e power (i-1) being powers of x (x is denoted as {02}) in the field GF(2^8)
-	 * Note that i starts at 1, not 0).
-	 */
-	int Rcon[255] = {
-		0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a, 
-		0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 0xc5, 0x91, 0x39, 
-		0x72, 0xe4, 0xd3, 0xbd, 0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 
-		0x74, 0xe8, 0xcb, 0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 
-		0xab, 0x4d, 0x9a, 0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 
-		0xc5, 0x91, 0x39, 0x72, 0xe4, 0xd3, 0xbd, 0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 
-		0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 
-		0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a, 0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 
-		0x7d, 0xfa, 0xef, 0xc5, 0x91, 0x39, 0x72, 0xe4, 0xd3, 0xbd, 0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 
-		0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 
-		0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a, 0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 
-		0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 0xc5, 0x91, 0x39, 0x72, 0xe4, 0xd3, 0xbd, 0x61, 0xc2, 0x9f, 
-		0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d, 0x01, 0x02, 0x04, 
-		0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36, 0x6c, 0xd8, 0xab, 0x4d, 0x9a, 0x2f, 0x5e, 0xbc, 0x63, 
-		0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 0xc5, 0x91, 0x39, 0x72, 0xe4, 0xd3, 0xbd, 
-		0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb  };
-	int getSBoxInvert(int num)
+	int AES::getSBoxInvert(int num)
 	{
 	int rsbox[256] =
 	{ 0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40, 0xa3, 0x9e, 0x81, 0xf3, 0xd7, 0xfb
@@ -120,8 +72,7 @@ private:
 	return rsbox[num];
 	}
 
-	// This function produces Nb(Nr+1) round keys. The round keys are used in each round to decrypt the states. 
-	void KeyExpansion()
+	void AES::KeyExpansion()
 	{
 		int i,j;
 		unsigned char temp[4],k;
@@ -186,10 +137,8 @@ private:
 			i++;
 		}
 	}
-	/* This function adds the round key to state.
-	 * The round key is added to the state by an XOR function.
-	 */
-	void AddRoundKey(int round) 
+	
+	void AES::AddRoundKey(int round) 
 	{
 		int i,j;
 		for(i=0;i<4;i++)
@@ -200,10 +149,8 @@ private:
 			}
 		}
 	}
-	/* The SubBytes Function Substitutes the values in the
-	 * state matrix with values in an S-box.
-	 */
-	void SubBytes()
+	
+	void AES::SubBytes()
 	{
 		int i,j;
 		for(i=0;i<4;i++)
@@ -216,11 +163,7 @@ private:
 		}
 	}
 
-	/* The ShiftRows() function shifts the rows in the state to the left.
-	 * Each row is shifted with different offset.
-	 * Offset = Row number. So the first row is not shifted.
-	 */
-	void ShiftRows()
+	void AES::ShiftRows()
 	{
 		unsigned char temp;
 
@@ -248,8 +191,8 @@ private:
 		state[3][1]=temp;
 	}
 
-	// MixColumns function mixes the columns of the state matrix
-	void MixColumns()
+	
+	void AES::MixColumns()
 	{
 		int i;
 		unsigned char Tmp,Tm,t;
@@ -264,8 +207,7 @@ private:
 		}
 	}
 
-	// Cipher is the main function that encrypts the PlainText.
-	void Cipher()
+	void AES::Cipher()
 	{
 		int i,j,round=0;
 
@@ -309,10 +251,8 @@ private:
 		}
 	}
 
-	/* The SubBytes Function Substitutes the values in the
-	 * state matrix with values in an S-box.
-	 */
-	void InvSubBytes()
+	
+	void AES::InvSubBytes()
 	{
 		int i,j;
 		for(i=0;i<4;i++)
@@ -324,11 +264,8 @@ private:
 			}
 		}
 	}
-	/* The ShiftRows() function shifts the rows in the state to the left.
-	 * Each row is shifted with different offset.
-	 * Offset = Row number. So the first row is not shifted.
-	 */
-	void InvShiftRows()
+	
+	void AES::InvShiftRows()
 	{
 		unsigned char temp;
 
@@ -355,7 +292,7 @@ private:
 		state[3][2]=state[3][3];
 		state[3][3]=temp;
 	}
-	void InvMixColumns()
+	void AES::InvMixColumns()
 	{
 		int i;
 		unsigned char a,b,c,d;
@@ -374,7 +311,7 @@ private:
 			state[3][i] = Multiply(a, 0x0b) ^ Multiply(b, 0x0d) ^ Multiply(c, 0x09) ^ Multiply(d, 0x0e);
 		}
 	}
-	void InvCipher()
+	void AES::InvCipher()
 	{
 		int i,j,round=0;
 
@@ -417,16 +354,18 @@ private:
 			}
 		}
 	}
-public:
-	void encrypt(std::string key, int keysize, std::string plaintext)
+	void AES::encrypt(unsigned char key[32], int keysize, unsigned char plaintext[16])
 	{
 		if (keysize==128 || keysize==192 || keysize==256)
 		{
 			Nk = keysize / 32;
 			Nr = Nk + 6;
 
-			strcpy( (char*) Key, key.c_str());
-			strcpy( (char*) in, plaintext.c_str());
+			for(int i=0;i<Nk*4;i++)
+			{
+				Key[i]=key[i];
+				in[i]=plaintext[i];
+			}
 
 			// The KeyExpansion routine must be called before encryption.
 			KeyExpansion();
@@ -437,7 +376,7 @@ public:
 			// Output the encrypted text.
 			for(int i=0;i<STDAESCNUM*4;i++)
 			{
-				std::cout << out[i];
+				printf("%02x ",out[i]);
 			}
 			std::cout << std::endl;
 		}
@@ -446,15 +385,18 @@ public:
 			bssCore::exitCode(0x12F);
 		}
 	}
-	void decrypt(std::string key, int keysize, std::string ciphertext)
+	void AES::decrypt(unsigned char key[32], int keysize, unsigned char ciphertext[16])
 	{
 		if (keysize==128 || keysize==192 || keysize==256)
 		{
 			Nk = keysize / 32;
 			Nr = Nk + 6;
 
-			strcpy( (char*) Key, key.c_str());
-			strcpy( (char*) in, ciphertext.c_str());
+			for(int i=0;i<Nk*4;i++)
+			{
+				Key[i]=key[i];
+				in[i]=ciphertext[i];
+			}
 
 			//The Key-Expansion routine must be called before the decryption routine.
 			KeyExpansion();
@@ -465,7 +407,7 @@ public:
 			// Output the decrypted text.
 			for(int i=0;i<STDAESCNUM*4;i++)
 			{
-				std::cout << out[i];
+				printf("%02x ",out[i]);
 			}
 			std::cout << std::endl;
 		}
@@ -474,6 +416,4 @@ public:
 			bssCore::exitCode(0x12F);
 		}
 	}
-};
 
- #endif // AES_H_INCLUDED

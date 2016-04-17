@@ -9,8 +9,8 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSASCIIART_HPP_INCLUDED
-#define BSSASCIIART_HPP_INCLUDED
+#ifndef BSSASCIIART_H_INCLUDED
+#define BSSASCIIART_H_INCLUDED
 
 #include <iostream>
 
@@ -33,4 +33,4 @@ void logo()
 }
 }
 
-#endif // BSSASCIIART_HPP_INCLUDED
+#endif // BSSASCIIART_H_INCLUDED

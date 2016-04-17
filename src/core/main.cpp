@@ -17,19 +17,18 @@
 #include <iostream>
 
 //Core Library
-#include "core/help.hpp"
-#include "core/errors.hpp"
-#include "core/asciiart.hpp"
+#include "help.h"
+#include "errors.h"
+#include "asciiart.h"
 
 //Cryptography Library
-#include "crypto/sha1/sha1.h"
-#include "crypto/sha2/sha2.h"
-#include "crypto/sha3/sha3.h"
-#include "crypto/md5/md5.h"
-#include "crypto/aes/aes.hpp"
+#include "../lib/crypto/sha1/sha1.h"
+#include "../lib/crypto/sha2/sha2.h"
+#include "../lib/crypto/sha3/sha3.h"
+#include "../lib/crypto/md5/md5.h"
+#include "../lib/crypto/aes/aes.h"
 
 //Convert Libraries
-#include "convert/types/string_int.hpp"
 
 ///Used namespaces
 using namespace std;
@@ -140,7 +139,7 @@ int main(int argc, char* argv[])
                 }
                 else if (argc==5)
                 {
-                    cout << sha3(argv[3], bssConvert::stringToInt(string(argv[4])));
+                    cout << sha3(argv[3], atoi(argv[4]));
                 }
                 else if(argc>5)
                 {
@@ -178,9 +177,9 @@ int main(int argc, char* argv[])
                     {
                         if(string(argv[3])=="encrypt")
                         {
-                            if(atoi(string(argv[5]).c_str())==128 || atoi(string(argv[5]).c_str())==192 || atoi(string(argv[5]).c_str())==256)
+                            if(atoi(argv[5])==128 || atoi(argv[5])==192 || atoi(argv[5])==256)
                             {
-                                 aes.encrypt(string(argv[4]), atoi(string(argv[5]).c_str()), string(argv[6]));
+                                aes.encrypt((unsigned char*)argv[4], atoi(argv[5]), (unsigned char*)argv[6]);
                             }
                             else
                             {
@@ -189,9 +188,9 @@ int main(int argc, char* argv[])
                         }
                         else if(string(argv[3])=="decrypt")
                         {
-                            if(atoi(string(argv[5]).c_str())==128 || atoi(string(argv[5]).c_str())==192 || atoi(string(argv[5]).c_str())==256)
+                            if(atoi(argv[5])==128 || atoi(argv[5])==192 || atoi(argv[5])==256)
                             {
-                                 aes.decrypt(string(argv[4]), atoi(string(argv[5]).c_str()), string(argv[6]));
+                                aes.decrypt((unsigned char*)argv[4], atoi(argv[5]), (unsigned char*)argv[6]);
                             }
                             else
                             {
