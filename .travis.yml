@@ -6,6 +6,8 @@ compiler:
   - g++
   - clang++
 
+dist: trusty
+
 os:
   - linux
   - osx
@@ -20,16 +22,10 @@ addons:
    - gcc-4.8
    - g++-4.8
 
-install:
-  - if [ "$CC" = "gcc" ]; then export CC="gcc-4.8"; fi
-  - if [ "$CPP" = "g++" ]; then export CPP="g++-4.8"; fi
-
-
-
-before_script: 
-  - sudo ln -s /usr/bin/cpp-4.8 /usr/bin/cpp
-  - sudo ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
-  - sudo ln -s /usr/bin/g++-4.8 /usr/bin/g++
+before_script:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90;
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc;
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++;
   - make
 
 script: ./bin/bss
