@@ -104,6 +104,14 @@ void exitCode(int e_code)
         msgCode(e_code, "ERROR", "Win32Lib not founded");
         exit(e_code);
         break;
+    case 0x13D:
+        msgCode(e_code, "AESERROR", "Invalid key size");
+        std::cout << "  aes" << std::endl
+                  << "      decrypt <key> <keylen> <string>   AES Decryptation Algoritm" << std::endl
+                  << "      encrypt <key> <keylen> <string>   AES Encryptation Algoritm" << std::endl << std::endl
+                  << "<keylen> must be: 128, 192 or 256 bits!" << std::endl;
+        exit(e_code);
+        break;
     case 0x1:
         msgCode(e_code, "ERROR", "Unknown error", true);
         break;

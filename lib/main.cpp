@@ -26,7 +26,7 @@
 #include "crypto/sha2/sha2.h"
 #include "crypto/sha3/sha3.h"
 #include "crypto/md5/md5.h"
-#include "crypto/aes/decrypt.hpp"
+#include "crypto/aes/aes.hpp"
 
 //Convert Libraries
 #include "convert/types/string_int.hpp"
@@ -38,6 +38,7 @@ using namespace std;
 SHA1 sha1;
 SHA3 sha3;
 MD5 md5;
+AES aes;
 
 /// Main Function
 int main(int argc, char* argv[])
@@ -164,6 +165,56 @@ int main(int argc, char* argv[])
                 else
                 {
                     bssCore::exitCode(0x12D);
+                }
+            }
+            else if (string(argv[2])=="aes") {
+                if(argc<4)
+                {
+                    bssCore::exitCode(0x12D);
+                }
+                else if(argc>4)
+                {
+                    if (argc==7)
+                    {
+                        if(string(argv[3])=="encrypt")
+                        {
+                            if(atoi(string(argv[5]).c_str())==128 || atoi(string(argv[5]).c_str())==192 || atoi(string(argv[5]).c_str())==256)
+                            {
+                                 aes.encrypt(string(argv[4]), atoi(string(argv[5]).c_str()), string(argv[6]));
+                            }
+                            else
+                            {
+                                bssCore::exitCode(0x13D);
+                            }
+                        }
+                        else if(string(argv[3])=="decrypt")
+                        {
+                            if(atoi(string(argv[5]).c_str())==128 || atoi(string(argv[5]).c_str())==192 || atoi(string(argv[5]).c_str())==256)
+                            {
+                                 aes.decrypt(string(argv[4]), atoi(string(argv[5]).c_str()), string(argv[6]));
+                            }
+                            else
+                            {
+                                bssCore::exitCode(0x13D);
+                            }
+                        }
+                        else
+                        {
+                            bssCore::exitCode(0x12F);
+                        }
+                    }
+                    else if(argc>7)
+                    {
+                        bssCore::exitCode(0x12E);
+                    }
+                    else
+                    {
+                        bssCore::exitCode(0x12F);
+                    }
+                }
+                else
+                {
+                    bssCore::exitCode(0x12F);
                 }
             }
             else
