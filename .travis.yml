@@ -11,7 +11,6 @@ dist: trusty
 os:
   - linux
   - osx
-  - windows
 
 sudo: true
 
