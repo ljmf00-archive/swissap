@@ -23,9 +23,9 @@ addons:
    - g++-4.8
 
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90;
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc;
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++;
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++; fi
   - make
 
 script: ./bin/bss
