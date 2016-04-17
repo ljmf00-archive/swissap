@@ -7,7 +7,7 @@
  *         \/        \/        \/   | @license GNU Public License v3
  *
  * Copyright (C) 2014 - Stephan Brumme. All rights reserved.
- * Copyright (C) 2016 - Lu�s Ferreira. All right reserved
+ * Copyright (C) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 

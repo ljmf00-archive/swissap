@@ -9,10 +9,10 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSWIN32_CLIENT_HPP_INCLUDED
-#define BSSWIN32_CLIENT_HPP_INCLUDED
-
+#ifdef _WIN32 || _WIN64
 #define WIN32_LEAN_AND_MEAN
+
+#include "netsocket.h"
 
 #include "../../core/errors.hpp"
 
@@ -140,4 +140,4 @@ struct Socket {
 };
 }
 
-#endif // BSSWIN32_CLIENT_HPP_INCLUDED
+#endif // _WIN32 || _WIN64
