@@ -26,6 +26,8 @@ mkdirstep:
 	$(MKDIR) bin/obj
 	$(MKDIR) bin/obj/crypto
 	$(MKDIR) bin/obj/convert
+	$(MKDIR) bin/obj/win32
+	$(MKDIR) bin/obj/win32/netsocket
 
 build:
 	$(CXX) $(CFLAGS) $(CXX11) -c src/core/main.cpp -o bin/obj/main.o
@@ -35,8 +37,11 @@ build:
 	$(CXX) $(CFLAGS) -c -fpic src/lib/crypto/sha3/sha3.cpp -o bin/obj/crypto/sha3.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/crypto/md5/md5.cpp -o bin/obj/crypto/md5.o
 	$(CXX) $(CFLAGS) $(CXX11) -c -fpic src/lib/crypto/aes/aes.cpp -o bin/obj/crypto/aes.o
+	
+	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/client.cpp -o bin/obj/win32/netsocket/client.o
+	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/server.cpp -o bin/obj/win32/netsocket/server.o
 
-	$(CXX) $(CFLAGS) -shared -o bin/bslib.so bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o
+	$(CXX) $(CFLAGS) -shared -o bin/bslib.so bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o
 	$(CXX) $(CFLAGS) -o bin/bss bin/obj/main.o bin/bslib.so
 
 cleanobj:

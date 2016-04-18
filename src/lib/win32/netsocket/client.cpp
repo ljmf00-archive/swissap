@@ -9,7 +9,7 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifdef _WIN32 || _WIN64
+#if defined(_WIN32) || defined(_WIN64)
 #define WIN32_LEAN_AND_MEAN
 
 #include "netsocket.h"
@@ -31,8 +31,7 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 namespace bssWin32 {
-struct Socket {
-	void client(std::string sendmsg, int port=27015, int buffersize=512)
+	void Socket::client(std::string sendmsg, int port=27015, int buffersize=512)
 {
     WSADATA wsaData;
     SOCKET ConnectSocket = INVALID_SOCKET;
@@ -137,7 +136,6 @@ struct Socket {
     closesocket(ConnectSocket);
     WSACleanup();
 }
-};
 }
 
 #endif // _WIN32 || _WIN64

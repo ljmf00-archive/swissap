@@ -9,7 +9,10 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifdef _WIN32 || _WIN64
+#if defined(_WIN32) || defined(_WIN64)
+
+#include "netsocket.h"
+
 #include "../../core/errors.hpp"
 
 #include <iostream>
@@ -26,9 +29,7 @@
 
 namespace bssWin32
 {
-struct Socket
-{
-    void create(int port=27015, int buffersize=512)
+    void Socket::create(int port=27015, int buffersize=512)
     {
         WSADATA wsaData;
         int iResult;
@@ -171,6 +172,5 @@ struct Socket
         WSACleanup();
         bssCore::exitCode(0x0);
     }
-};
 }
 #endif // _WIN32 || _WIN64
