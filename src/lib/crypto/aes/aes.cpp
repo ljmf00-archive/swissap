@@ -13,13 +13,16 @@
 
 #include "../../../core/errors.h"
 
+#include <iostream>
+#include <cstdlib>
+
 
 
 /* 
  * The number of columns comprising a state in AES.
  * This is a constant in AES. Value=4
  */
-#define STDAESCNUM 4
+#define STDAES 4
 
 // xtime is a macro that finds the product of {02} and the argument to xtime modulo {1b}  
 #define xtime(x)   ((x<<1) ^ (((x>>7) & 1) * 0x1b))
@@ -87,7 +90,7 @@
 		}
 
 		// All other round keys are found from the previous round keys.
-		while (i < (STDAESCNUM * (Nr+1)))
+		while (i < (STDAES * (Nr+1)))
 		{
 			for(j=0;j<4;j++)
 			{
@@ -145,7 +148,7 @@
 		{
 			for(j=0;j<4;j++)
 			{
-				state[j][i] ^= RoundKey[round * STDAESCNUM * 4 + i * STDAESCNUM + j];
+				state[j][i] ^= RoundKey[round * STDAES * 4 + i * STDAES + j];
 			}
 		}
 	}
@@ -374,7 +377,7 @@
 			Cipher();
 
 			// Output the encrypted text.
-			for(int i=0;i<STDAESCNUM*4;i++)
+			for(int i=0;i<STDAES*4;i++)
 			{
 				printf("%02x ",out[i]);
 			}
@@ -405,7 +408,7 @@
 			InvCipher();
 
 			// Output the decrypted text.
-			for(int i=0;i<STDAESCNUM*4;i++)
+			for(int i=0;i<STDAES*4;i++)
 			{
 				printf("%02x ",out[i]);
 			}
