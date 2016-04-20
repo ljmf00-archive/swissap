@@ -23,9 +23,13 @@ void help();
 
 namespace bssCore
 {
-void msgCode(int e_code, std::string name, std::string value, bool endline=false) {
-    std::cout <<std::hex<< name <<"(0x" << e_code << "): " << value;
-    if(endline==true){
+void msgCode(int e_code, std::string name, std::string value, bool endline=false)
+    {
+    std::cout << std::hex<< name 
+              <<"(0x" << e_code << "): " << value;
+
+    if(endline==true)
+    {
         std::cout << std::endl;
     }
 }
@@ -93,7 +97,7 @@ void exitCode(int e_code)
         msgCode(e_code, "ERROR", "Argument missing", true);
         break;
     case 0x12E:
-        msgCode(e_code, "ERROR", "Too much arguments", true);
+        msgCode(e_code, "ERROR", "Too many arguments", true);
         break;
     case 0x12F:
         msgCode(e_code, "ERROR", "Invalid argument", true);
@@ -104,9 +108,9 @@ void exitCode(int e_code)
         break;
     case 0x13D:
         msgCode(e_code, "AESERROR", "Invalid key size");
-        std::cout << "  aes" << std::endl
-                  << "      decrypt <key> <keylen> <string>   AES Decryptation Algoritm" << std::endl
-                  << "      encrypt <key> <keylen> <string>   AES Encryptation Algoritm" << std::endl << std::endl
+        std::cout << "\taes" << std::endl
+                  << "\t\tdecrypt <key> <keylen> <string>\tAES Decryptation Algoritm" << std::endl
+                  << "\t\tencrypt <key> <keylen> <string>\tAES Encryptation Algoritm" << std::endl << std::endl
                   << "<keylen> must be: 128, 192 or 256 bits!" << std::endl;
         exit(e_code);
         break;

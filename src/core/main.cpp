@@ -13,6 +13,9 @@
  * main function and their content.
  */
 
+///Processor Directives
+#define BSSVERSION "V0.1BUILDundefinned"
+
 ///Libraries
 #include <iostream>
 
@@ -20,6 +23,7 @@
 #include "help.h"
 #include "errors.h"
 #include "asciiart.h"
+#include "debug.h"
 
 //Cryptography Library
 #include "../lib/crypto/sha1/sha1.h"
@@ -44,7 +48,23 @@ int main(int argc, char* argv[])
 {
     if(argc >=2)
     {
-        if(string(argv[1])=="--cryptography" || string(argv[1])=="-cR")
+        if(string(argv[1])=="--debug" || string(argv[1])=="-d")
+        {
+            if(argc==2)
+            {
+                bssCore::debug();
+            }
+            else if(string(argv[2])=="-e" || string(argv[2])=="--error")
+            {
+                if(argv[3]) bssCore::exitCode(atoi(argv[3]));
+                if(argc>4) bssCore::exitCode(0x12E);
+            }
+            else
+            {
+
+            }
+        }
+        else if(string(argv[1])=="--cryptography" || string(argv[1])=="-c")
         {
             if(argc==2)
             {

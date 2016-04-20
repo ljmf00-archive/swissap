@@ -27,29 +27,42 @@ namespace bssCore
 {
 void helpMain()
 {
-    std::cout << "Usage: bss (arg_choise) [argv] ...\n" << std::endl;
-    std::cout << "Available commands:" << std::endl;
+    std::cout << "Usage: bss <option(s)> SOURCES\n" << std::endl;
+    std::cout << "Options:" << std::endl;
 }
 void helpSpecific(std::string name)
 {
-    if(name=="cryptography")
+    if(name=="cryptography" || name=="cR")
     {
-        std::cout << "  -cR --cryptography" << std::endl
-                  << "       aes" << std::endl
-                  << "          decrypt <key> <keylen> <string>   AES Decryptation Algoritm (Hexadecimal Block)" << std::endl
-                  << "          encrypt <key> <keylen> <string>   AES Encryptation Algoritm (Hexadecimal Block)" << std::endl
-                  << "       md5 <string>                         MD5 Hash Calculation" << std::endl
-                  << "       sha1 <string>                        SHA-1 Hash Calculation" << std::endl
-                  << "       sha224 <string>                      SHA-224 Hash Calculation" << std::endl
-                  << "       sha256 <string>                      SHA-256 Hash Calculation" << std::endl
-                  << "       sha384 <string>                      SHA-384 Hash Calculation" << std::endl
-                  << "       sha512 <string>                      SHA-512 Hash Calculation" << std::endl
-                  << "       sha3 <string> [bits]                 SHA-3 Hash Calculation" << std::endl;
+        std::cout << "\t-c --cryptography" << std::endl
+                  << "\t\taes" << std::endl
+                  << "\t\t\tdecrypt <key> <keylen> <string>\tAES Decryptation Algoritm (Hexadecimal Block)" << std::endl
+                  << "\t\t\tencrypt <key> <keylen> <string>\tAES Encryptation Algoritm (Hexadecimal Block)" << std::endl
+                  << "\t\tmd5 <string>\t\t\t\tMD5 Hash Calculation" << std::endl
+                  << "\t\tsha1 <string>\t\t\t\tSHA-1 Hash Calculation" << std::endl
+                  << "\t\tsha224 <string>\t\t\t\tSHA-224 Hash Calculation" << std::endl
+                  << "\t\tsha256 <string>\t\t\t\tSHA-256 Hash Calculation" << std::endl
+                  << "\t\tsha384 <string>\t\t\t\tSHA-384 Hash Calculation" << std::endl
+                  << "\t\tsha512 <string>\t\t\t\tSHA-512 Hash Calculation" << std::endl
+                  << "\t\tsha3 <string> [bits]\t\t\tSHA-3 Hash Calculation" << std::endl;
     }
     else if(name=="win32lib")
     {
-        std::cout << "  --win32" << std::endl
-                  << "       " << std::endl;
+        std::cout << "\t-w --win32" << std::endl
+                  << "\t\t" << std::endl;
+    }
+    else if(name=="version")
+    {
+        std::cout << "\t-v --version\t\t\t\t\tShow app version" << std::endl;
+    }
+    else if(name=="debug")
+    {
+        std::cout << "\t-d --debug\t\t\t\t\t Full app debug" << std::endl
+                  << "\t\t-e --error <code>\t\t\tDisplay specific error" << std::endl;
+    }
+    else if(name=="help")
+    {
+        std::cout << "\t--help [section]\t\t\t\tShow app help" << std::endl;
     }
     else
     {
@@ -65,7 +78,10 @@ void help()
 {
     helpMain();
     helpSpecific("cryptography");
-
+    helpSpecific("debug");
+    helpSpecific("help");
+    helpSpecific("version");
+    helpSpecific("win32lib");
 }
 }
 
