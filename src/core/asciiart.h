@@ -9,12 +9,12 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSASCIIART_H_INCLUDED
-#define BSSASCIIART_H_INCLUDED
+#ifndef SWISSAPASCIIART_H_INCLUDED
+#define SWISSAPASCIIART_H_INCLUDED
 
 #include <iostream>
 
-namespace bssASCII
+namespace swissapCore
 {
 void logoOnce()
 {
@@ -22,7 +22,7 @@ void logoOnce()
               << " / _/_| |_\\_ \\ \\__  \\\\_  __ \\/     <   |  |\\____ \\  | Project in C/C++ Language" << std::endl
               << " || |_   _| ||  / __ \\|  | \\/  Y Y  \\___  ||  |_> > |" << std::endl
               << " ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira" << std::endl
-              << " \\__\\     /__/      \\/            \\/\\/     |__|     | @license GNU Public License v3" << std::endl;
+              << " \\__\\     /__/      \\/            \\/\\/     |__|     | @license GPLv3" << std::endl;
 }
 void logo()
 {
@@ -32,4 +32,4 @@ void logo()
 }
 }
 
-#endif // BSSASCIIART_H_INCLUDED
+#endif // SWISSAPASCIIART_H_INCLUDED

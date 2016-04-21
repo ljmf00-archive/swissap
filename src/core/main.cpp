@@ -1,11 +1,11 @@
 /*
- * __________  _________ _________
- * \______   \/   _____//   _____/  | BigSource Script
- *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
- *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Luís Ferreira
- *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ *  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
+ * / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
+ * || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
+ * ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira
+ * \__\     /__/      \/            \/\/     |__|     | @license GNU Public License v3
+ *
+ * Copyright (c) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
@@ -14,7 +14,7 @@
  */
 
 ///Processor Directives
-#define BSSVERSION "V0.1BUILDundefinned"
+#define SWISSAPVERSION "V0.1BUILDundefinned"
 
 ///Libraries
 #include <iostream>
@@ -52,12 +52,12 @@ int main(int argc, char* argv[])
         {
             if(argc==2)
             {
-                bssCore::debug();
+                swissapCore::debug();
             }
             else if(string(argv[2])=="-e" || string(argv[2])=="--error")
             {
-                if(argv[3]) bssCore::exitCode(atoi(argv[3]));
-                if(argc>4) bssCore::exitCode(0x12E);
+                if(argv[3]) swissapCore::exitCode(atoi(argv[3]));
+                if(argc>4) swissapCore::exitCode(0x12E);
             }
             else
             {
@@ -68,22 +68,22 @@ int main(int argc, char* argv[])
         {
             if(argc==2)
             {
-                bssCore::exitCode(0x12D);
+                swissapCore::exitCode(0x12D);
             }
             else if (string(argv[2])=="sha1")
             {
                 if(argc==4)
                 {
                     cout << sha1(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha224")
@@ -91,15 +91,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha224(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha256")
@@ -107,15 +107,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha256(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha384")
@@ -123,15 +123,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha384(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha512")
@@ -139,15 +139,15 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha512(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="sha3")
@@ -155,7 +155,7 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << sha3(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if (argc==5)
                 {
@@ -163,11 +163,11 @@ int main(int argc, char* argv[])
                 }
                 else if(argc>5)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="md5")
@@ -175,21 +175,21 @@ int main(int argc, char* argv[])
                 if(argc==4)
                 {
                     cout << md5(argv[3]) << endl;
-                    bssCore::exitCode(0x0);
+                    swissapCore::exitCode(0x0);
                 }
                 else if(argc>4)
                 {
-                    bssCore::exitCode(0x12E);
+                    swissapCore::exitCode(0x12E);
                 }
                 else
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
             }
             else if (string(argv[2])=="aes") {
                 if(argc<4)
                 {
-                    bssCore::exitCode(0x12D);
+                    swissapCore::exitCode(0x12D);
                 }
                 else if(argc>4)
                 {
@@ -203,7 +203,7 @@ int main(int argc, char* argv[])
                             }
                             else
                             {
-                                bssCore::exitCode(0x13D);
+                                swissapCore::exitCode(0x13D);
                             }
                         }
                         else if(string(argv[3])=="decrypt")
@@ -214,43 +214,43 @@ int main(int argc, char* argv[])
                             }
                             else
                             {
-                                bssCore::exitCode(0x13D);
+                                swissapCore::exitCode(0x13D);
                             }
                         }
                         else
                         {
-                            bssCore::exitCode(0x12F);
+                            swissapCore::exitCode(0x12F);
                         }
                     }
                     else if(argc>7)
                     {
-                        bssCore::exitCode(0x12E);
+                        swissapCore::exitCode(0x12E);
                     }
                     else
                     {
-                        bssCore::exitCode(0x12F);
+                        swissapCore::exitCode(0x12F);
                     }
                 }
                 else
                 {
-                    bssCore::exitCode(0x12F);
+                    swissapCore::exitCode(0x12F);
                 }
             }
             else
             {
-                bssCore::exitCode(0x12F);
+                swissapCore::exitCode(0x12F);
             }
         }
         else
         {
-            bssCore::exitCode(0x12F);
+            swissapCore::exitCode(0x12F);
         }
     }
     else
     {
-        bssASCII::logo();
-        bssCore::help();
-        bssCore::exitCode(0x0);
+        swissapCore::logo();
+        swissapCore::help();
+        swissapCore::exitCode(0x0);
     }
-    bssCore::exitCode(0x0);
+    swissapCore::exitCode(0x0);
 }

@@ -1,12 +1,11 @@
 # -*- Makefile -*- 
-# __________  _________ _________
-# \______   \/   _____//   _____/  | BigSource Script
-#  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
-#  |    |   \/        \/        \  |
-#  |______  /_______  /_______  /  | @author Luís Ferreira
-#         \/        \/        \/   | @license GNU Public License v3
-# Copyright (C) 2016 - Luís Ferreira. All right reserved
-#   
+#  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
+# / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
+# || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
+# ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira
+# \__\     /__/      \/            \/\/     |__|     | @license GNU Public License v3
+#
+# Copyright (c) 2016 - Luís Ferreira. All right reserved
 # More information in: https://github.com/ljmf00/ (Github Page)
 
 NAME = bss
@@ -14,22 +13,16 @@ CC = gcc
 CXX = g++
 CXX11 = -std=gnu++11
 CFLAGS = -Wall -Wextra
-CGUIFLAGS = `wx-config --cxxflags --libs`
 RM = rm -rf
 MKDIR = mkdir -p
 GDB = gdb
 
-script: debug_script cleanobj
 
 all: debug cleanobj
-
-gui: debug_gui cleanobj
 
 debug: mkdirstep build
 
 debug_script: mkdirstep build_lib build_script
-
-debug_gui: mkdirstep build_lib build_gui_lib build_gui
 
 debug_windows: win32_build win64_build
 
@@ -42,7 +35,7 @@ win32_build: mkdirstep build
 win64_build: CC = gcc-mingw-w64-x86-64
 win64_build: CXX = g++-mingw-w64-x86-64
 
-mkdirstep: mkdirstep_master mkdirstep_lib mkdirstep_gui
+mkdirstep: mkdirstep_master mkdirstep_lib
 
 mkdirstep_master:
 	$(MKDIR) bin
@@ -54,10 +47,7 @@ mkdirstep_lib:
 	$(MKDIR) bin/obj/win32
 	$(MKDIR) bin/obj/win32/netsocket
 
-mkdirstep_gui:
-	$(MKDIR) bin/obj/gui
-
-build: build_lib build_script build_gui_lib build_gui
+build: build_lib build_script
 
 build_lib:
 	$(CXX) $(CFLAGS) -c -fpic src/lib/crypto/sha1/sha1.cpp -o bin/obj/crypto/sha1.o
@@ -72,14 +62,6 @@ build_lib:
 build_script:
 	$(CXX) $(CFLAGS) $(CXX11) -c src/core/main.cpp -o bin/obj/main.o
 	$(CXX) $(CFLAGS) -o bin/bss bin/obj/main.o bin/bslib.so
-
-build_gui_lib:
-	$(CXX) $(CFLAGS) -c -fpic src/core/gui/main.cpp -o bin/obj/gui/main.o $(CGUIFLAGS)
-	$(CXX) $(CFLAGS) -c -fpic src/core/gui/app.cpp -o bin/obj/gui/app.o $(CGUIFLAGS)
-	$(CXX) $(CFLAGS) -shared -o bin/bsgui.so bin/obj/gui/main.o bin/obj/gui/app.o
-
-build_gui:
-	$(CXX) $(CFLAGS) $(CGUIFLAGS) -o bin/bsgui bin/bsgui.so bin/bslib.so $(CGUIFLAGS)
 
 cleanobj:
 	$(RM) bin/obj

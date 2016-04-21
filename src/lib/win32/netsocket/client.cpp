@@ -1,11 +1,11 @@
 /*
- * __________  _________ _________
- * \______   \/   _____//   _____/  | BigSource Script
- *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
- *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Luís Ferreira
- *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ *  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
+ * / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
+ * || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
+ * ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira
+ * \__\     /__/      \/            \/\/     |__|     | @license GNU Public License v3
+ *
+ * Copyright (c) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
@@ -30,7 +30,7 @@
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
-namespace bssWin32 {
+namespace swissapLib {
 	void Socket::client(std::string sendmsg, int port=27015, int buffersize=512)
 {
     WSADATA wsaData;

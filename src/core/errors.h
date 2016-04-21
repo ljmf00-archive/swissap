@@ -1,27 +1,27 @@
 /*
- * __________  _________ _________
- * \______   \/   _____//   _____/  | BigSource Script
- *  |    |  _/\_____  \ \_____  \   | Project in C/C++ Language
- *  |    |   \/        \/        \  |
- *  |______  /_______  /_______  /  | @author Lu�s Ferreira
- *         \/        \/        \/   | @license GNU Public License v3
- * Copyright (C) 2016 - Luís Ferreira. All right reserved
+ *  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
+ * / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
+ * || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
+ * ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira
+ * \__\     /__/      \/            \/\/     |__|     | @license GNU Public License v3
+ *
+ * Copyright (c) 2016 - Luís Ferreira. All right reserved
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#ifndef BSSERRORS_H_INCLUDED
-#define BSSERRORS_H_INCLUDED
+#ifndef SWISSAPERRORS_H_INCLUDED
+#define SWISSAPERRORS_H_INCLUDED
 
 #include <cstdlib>
 #include "asciiart.h"
 #include "help.h"
 
-namespace bssCore
+namespace swissapCore
 {
 void help();
 }
 
-namespace bssCore
+namespace swissapCore
 {
 void msgCode(int e_code, std::string name, std::string value, bool endline=false)
     {
@@ -90,7 +90,7 @@ void exitCode(int e_code)
         exit(e_code);
         break;
     }
-    bssASCII::logo();
+    swissapCore::logo();
     switch(e_code)
     {
     case 0x12D:
@@ -126,4 +126,4 @@ void exitCode(int e_code)
 }
 }
 
-#endif // BSSERRORS_H_INCLUDED
+#endif // SWISSAPERRORS_H_INCLUDED
