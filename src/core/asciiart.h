@@ -18,12 +18,11 @@ namespace bssASCII
 {
 void logoOnce()
 {
-    std::cout << "__________  _________ _________" << std::endl
-              << "\\______   \\/   _____//   _____/ | BigSource Script" << std::endl
-              << " |    |  _/\\_____  \\ \\_____  \\  | Project in C/C++ Language" << std::endl
-              << " |    |   \\/        \\/        \\ |" << std::endl
-              << " |______  /_______  /_______  / | @author Luís Ferreira" << std::endl
-              << "        \\/        \\/        \\/  | @license GNU Public License v3" << std::endl;
+    std::cout << "  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project" << std::endl
+              << " / _/_| |_\\_ \\ \\__  \\\\_  __ \\/     <   |  |\\____ \  | Project in C/C++ Language" << std::endl
+              << " || |_   _| ||  / __ \\|  | \\/  Y Y  \\___  ||  |_> > |" << std::endl
+              << " ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira" << std::endl
+              << " \__\     /__/      \\/            \\/\\/     |__|     | @license GNU Public License v3" << std::endl;
 }
 void logo()
 {
