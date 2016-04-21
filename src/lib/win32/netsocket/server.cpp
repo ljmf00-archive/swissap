@@ -29,7 +29,7 @@
 
 namespace swissapLib
 {
-    void Socket::create(int port=27015, int buffersize=512)
+    void Socket::create(int port, int buffersize)
     {
         WSADATA wsaData;
         int iResult;

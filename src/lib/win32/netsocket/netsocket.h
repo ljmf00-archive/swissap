@@ -14,6 +14,8 @@
 
 #if defined(_WIN32) || defined(_WIN64)
 
+#include <iostream>
+
 namespace swissapLib
 {
 	struct Socket

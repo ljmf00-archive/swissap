@@ -14,7 +14,7 @@
 
 #include "netsocket.h"
 
-#include "../../core/errors.hpp"
+#include "../../../core/errors.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -31,7 +31,7 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 namespace swissapLib {
-	void Socket::client(std::string sendmsg, int port=27015, int buffersize=512)
+	void Socket::client(std::string sendmsg, int port, int buffersize)
 {
     WSADATA wsaData;
     SOCKET ConnectSocket = INVALID_SOCKET;

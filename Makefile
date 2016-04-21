@@ -15,6 +15,8 @@ CXX11 = -std=gnu++11
 CFLAGS = -Wall -Wextra
 RM = rm -rf
 MKDIR = mkdir -p
+LIBEXT = .so
+EXECFILE = swissap
 
 
 all: debug cleanobj
@@ -25,14 +27,17 @@ debug_script: mkdirstep build_lib build_script
 
 debug_windows: win32_build win64_build
 
+windows: LIBEXT = .dll
+windows: EXECFILE = swissap.exe
 windows: win32_build win64_build cleanobj
 
-win32_build: CC = gcc-mingw-w64-i686
-win32_build: CXX = g++-mingw-w64-i686
-win32_build: mkdirstep build
+win32_build: CC = i686-w64-mingw32-gcc
+win32_build: CXX = i686-w64-mingw32-g++
+win32_build: debug
 
-win64_build: CC = gcc-mingw-w64-x86-64
-win64_build: CXX = g++-mingw-w64-x86-64
+win64_build: CC = x86_64-w64-mingw32-gcc
+win64_build: CXX = x86_64-w64-mingw32-g++
+win64_build: debug
 
 mkdirstep: mkdirstep_master mkdirstep_lib
 
@@ -58,11 +63,11 @@ build_lib:
 	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/client.cpp -o bin/obj/win32/netsocket/client.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/server.cpp -o bin/obj/win32/netsocket/server.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/math/pi/pi.cpp -o bin/obj/math/pi.o
-	$(CXX) $(CFLAGS) -shared -o bin/saplib.so bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o bin/obj/math/pi.o
+	$(CXX) $(CFLAGS) -shared -o bin/saplib$(LIBEXT) bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o bin/obj/math/pi.o
 
 build_script:
 	$(CXX) $(CFLAGS) $(CXX11) -c src/core/main.cpp -o bin/obj/main.o
-	$(CXX) $(CFLAGS) -o bin/swissap bin/obj/main.o bin/saplib.so
+	$(CXX) $(CFLAGS) -o bin/$(EXECFILE) bin/obj/main.o bin/saplib$(LIBEXT)
 
 cleanobj:
 	$(RM) bin/obj

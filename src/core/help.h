@@ -81,7 +81,7 @@ void help()
     helpSpecific("debug");
     helpSpecific("help");
     helpSpecific("version");
-    helpSpecific("win32lib");
+    //helpSpecific("win32lib");
 }
 }
 
