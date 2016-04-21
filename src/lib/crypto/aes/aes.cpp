@@ -16,8 +16,6 @@
 #include <iostream>
 #include <cstdlib>
 
-
-
 /* 
  * The number of columns comprising a state in AES.
  * This is a constant in AES. Value=4

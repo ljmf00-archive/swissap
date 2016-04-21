@@ -27,7 +27,7 @@ namespace swissapCore
 {
 void helpMain()
 {
-    std::cout << "Usage: bss <option(s)> SOURCES\n" << std::endl;
+    std::cout << "Usage: swissap <option(s)> SOURCES\n" << std::endl;
     std::cout << "Options:" << std::endl;
 }
 void helpSpecific(std::string name)

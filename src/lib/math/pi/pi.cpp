@@ -1,36 +1,28 @@
-/*lsferreira programming */
-
 /*
-                                              _       _
-                                             (_)     | |
-  ___  ___  _   _ _ __ ___ ___  ___  ___ _ __ _ _ __ | |_
- / __|/ _ \| | | | '__/ __/ _ \/ __|/ __| '__| | '_ \| __|
- \__ \ (_) | |_| | | | (_|  __/\__ \ (__| |  | | |_) | |_
- |___/\___/ \__,_|_|  \___\___||___/\___|_|  |_| .__/ \\__|
-                                               | |
-                                               |_|
-			Copyright 2016 (c) lsferreira programming
-*/
+ *  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
+ * / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
+ * || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
+ * ||_  |_|  _|| (____  /__|  |__|_|  / ____||   __/  | @author Luís Ferreira
+ * \__\     /__/      \/            \/\/     |__|     | @license GNU Public License v3
+ *
+ * Copyright (c) 2016 - Luís Ferreira. All right reserved
+ * More information in: https://github.com/ljmf00/ (Github Page)
+ */
+#include "pi.h"
 
-#ifndef SSMATHPI_H_INCLUDED
-#define SSMATHPI_H_INCLUDED
+#include <cstdio>
+#include <cstdlib>
 
-#include "libs.hpp"
-#define FPINUMBASE 10000
+#define STDPINUM 10000
 
-// ...
-namespace SSMATH {
-	class PI;
-}
-class SSMATH::PI
+namespace swissapCore
 {
-private:
-	int nblock;
-    int *tot;
-    int *t1;
-    int *t2;
-    int *t3;
-	void arctan(int* result, int* w1, int* w2, int denom, int onestep)
+    extern void exitCode(int e_code);
+}
+
+namespace swissapLib
+{
+	void pi::arctan(int* result, int* w1, int* w2, int denom, int onestep)
     {
         int denom2 = denom*denom;
         int k = 1;
@@ -56,13 +48,13 @@ private:
         }
         while(!zero(w2));
     }
-	void copy(int* result, int* from)
+	void pi::copy(int* result, int* from)
     {
         int i;
         for(i=0; i<nblock; i++)
             result[i] = from[i];
     }
-    bool zero(int* result)
+    bool pi::zero(int* result)
     {
         int i;
         for(i=0; i<nblock; i++)
@@ -70,20 +62,20 @@ private:
                 return 0;
         return 1;
     }
-    void add(int* result, int *increm)
+    void pi::add(int* result, int *increm)
     {
         int i;
         for(i=nblock-1; i>=0; i--)
         {
             result[i] += increm[i];
-            if(result[i] >= FPINUMBASE)
+            if(result[i] >= STDPINUM)
             {
-                result[i] -= FPINUMBASE;
+                result[i] -= STDPINUM;
                 result[i-1]++;
             }
         }
     }
-    void sub(int* result, int* decrem)
+    void pi::sub(int* result, int* decrem)
     {
         int i;
         for(i=nblock-1; i>=0; i--)
@@ -92,23 +84,23 @@ private:
 
             if(result[i] < 0)
             {
-                result[i] += FPINUMBASE;
+                result[i] += STDPINUM;
                 result[i-1]--;
             }
         }
     }
-    void mult(int* result, int factor)
+    void pi::mult(int* result, int factor)
     {
         int i, carry = 0;
         for(i=nblock-1; i>=0; i--)
         {
             result[i] *= factor;
             result[i] += carry;
-            carry = result[i]/FPINUMBASE;
-            result[i] %= FPINUMBASE;
+            carry = result[i]/STDPINUM;
+            result[i] %= STDPINUM;
         }
     }
-    void print(int* result)
+    void pi::print(int* result)
     {
         int i, k;
         char s[10];
@@ -123,25 +115,24 @@ private:
         }
         printf("\n");
     }
-    void set(int* result, int rhs)
+    void pi::set(int* result, int rhs)
     {
         int i;
         for(i=0; i<nblock; i++)
             result[i] = 0;
         result[0] = rhs;
     }
-    void div(int* result, int denom)
+    void pi::div(int* result, int denom)
     {
         int i, carry = 0;
         for(i=0; i<nblock; i++)
         {
-            result[i] += carry*FPINUMBASE;
+            result[i] += carry*STDPINUM;
             carry = result[i] % denom;
             result[i] /= denom;
         }
     }
-public:
-    static void pi(int ndigit)
+    void pi::calculate(int ndigit)
     {
         if(ndigit < 20) ndigit = 20;
         nblock = ndigit/4;
@@ -151,8 +142,7 @@ public:
         t3 = (int *)malloc(nblock*sizeof(int));
         if(!tot || !t1 || !t2 || !t3)
         {
-            fprintf(stderr, "Not enough memory\n");
-            exit(1);
+            swissapCore::exitCode(0x2);
         }
         arctan(tot, t1, t2, 5, 1);
         mult(tot, 4);
@@ -161,6 +151,4 @@ public:
         mult(tot, 4);
         print(tot);
     }
-};
-
-#endif // LSCLIBPILIB_H_INCLUDED
+}

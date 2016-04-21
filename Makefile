@@ -15,12 +15,11 @@ CXX11 = -std=gnu++11
 CFLAGS = -Wall -Wextra
 RM = rm -rf
 MKDIR = mkdir -p
-GDB = gdb
 
 
 all: debug cleanobj
 
-debug: mkdirstep build
+debug: clean mkdirstep build
 
 debug_script: mkdirstep build_lib build_script
 
@@ -44,6 +43,7 @@ mkdirstep_master:
 mkdirstep_lib:
 	$(MKDIR) bin/obj/crypto
 	$(MKDIR) bin/obj/convert
+	$(MKDIR) bin/obj/math
 	$(MKDIR) bin/obj/win32
 	$(MKDIR) bin/obj/win32/netsocket
 
@@ -57,11 +57,12 @@ build_lib:
 	$(CXX) $(CFLAGS) $(CXX11) -c -fpic src/lib/crypto/aes/aes.cpp -o bin/obj/crypto/aes.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/client.cpp -o bin/obj/win32/netsocket/client.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/server.cpp -o bin/obj/win32/netsocket/server.o
-	$(CXX) $(CFLAGS) -shared -o bin/bslib.so bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o
+	$(CXX) $(CFLAGS) -c -fpic src/lib/math/pi/pi.cpp -o bin/obj/math/pi.o
+	$(CXX) $(CFLAGS) -shared -o bin/saplib.so bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o bin/obj/math/pi.o
 
 build_script:
 	$(CXX) $(CFLAGS) $(CXX11) -c src/core/main.cpp -o bin/obj/main.o
-	$(CXX) $(CFLAGS) -o bin/bss bin/obj/main.o bin/bslib.so
+	$(CXX) $(CFLAGS) -o bin/swissap bin/obj/main.o bin/saplib.so
 
 cleanobj:
 	$(RM) bin/obj
