@@ -19,9 +19,9 @@ RM = rm -rf
 MKDIR = mkdir -p
 GDB = gdb
 
-script: debug_script cleanobj
-
 all: debug cleanobj
+
+script: debug_script cleanobj
 
 gui: debug_gui cleanobj
 
