@@ -7,7 +7,7 @@
 Stable Version - Build 151129174740
 
 ### Installation
-```shell
+```
 $ ./configure
 $ make
 # make install
