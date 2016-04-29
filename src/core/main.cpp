@@ -32,6 +32,8 @@
 #include "../lib/crypto/md5/md5.h"
 #include "../lib/crypto/aes/aes.h"
 
+#include "../lib/convert/string/string.h"
+
 //Convert Libraries
 
 ///Used namespaces
@@ -61,7 +63,57 @@ int main(int argc, char* argv[])
             }
             else
             {
-
+                swissapCore::exitCode(0x12F);
+            }
+        }
+        else if(string(argv[1])=="--version" || string(argv[1])=="-v")
+        {
+            if(argc==2)
+            {
+                cout << SWISSAPVERSION << endl;
+            }
+            else
+            {
+                swissapCore::exitCode(0x12E);
+            }
+        }
+        else if(string(argv[1])=="--help" || string(argv[1])=="-h")
+        {
+            if(argc==2)
+            {
+                swissapCore::logo();
+                swissapCore::help();
+            }
+            if(argc==3)
+            {
+                swissapCore::logo();
+                swissapCore::helpSpecific((string)argv[2]);
+            }
+        }
+        else if(string(argv[1])=="--convert" || string(argv[1])=="-C")
+        {
+            if(argc==2)
+            {
+                swissapCore::exitCode(0x12D);
+            }
+            else if(string(argv[2])=="string2hex")
+            {
+                if(argc==4)
+                {
+                    cout << swissapLib::string2hex((string)argv[3]) << endl;
+                }
+                else if(argc>4)
+                {
+                    swissapCore::exitCode(0x12E);
+                }
+                else
+                {
+                    swissapCore::exitCode(0x12D);
+                }
+            }
+            else
+            {
+                swissapCore::exitCode(0x12F);
             }
         }
         else if(string(argv[1])=="--cryptography" || string(argv[1])=="-c")

@@ -14,8 +14,6 @@
 
 #include "netsocket.h"
 
-#include "../../../core/errors.h"
-
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -30,15 +28,20 @@
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
+namespace swissapCore {
+    extern exitCode(int e_code);
+}
+
+
 namespace swissapLib {
-	void Socket::client(std::string sendmsg, int port, int buffersize)
+	void Socket::client(std::string sendmsg,std::string address ,int port, int buffersize)
 {
     WSADATA wsaData;
     SOCKET ConnectSocket = INVALID_SOCKET;
     struct addrinfo *result = NULL,
                     *ptr = NULL,
                     hints;
-    char *sendbuf = sendmsg.c_str();
+    char *sendbuf = (char*)sendmsg.c_str();
     char recvbuf[buffersize];
     int iResult;
     int recvbuflen = buffersize;
@@ -46,7 +49,7 @@ namespace swissapLib {
     // Initialize Winsock
     iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
     if (iResult != 0) {
-        bssCore::exitCode(0x131);
+        swissapCore::exitCode(0x131);
         std::cout << iResult << std::endl;
         exit(0x131);
     }
@@ -57,9 +60,9 @@ namespace swissapLib {
     hints.ai_protocol = IPPROTO_TCP;
 
     // Resolve the server address and port
-    iResult = getaddrinfo(argv[1], port, &hints, &result);
+    iResult = getaddrinfo(address.c_str(), (const char*)port, &hints, &result);
     if ( iResult != 0 ) {
-        bssCore::exitCode(0x132);
+        swissapCore::exitCode(0x132);
         std::cout << iResult << std::endl;
         WSACleanup();
         exit(0x132);
@@ -72,7 +75,7 @@ namespace swissapLib {
         ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, 
             ptr->ai_protocol);
         if (ConnectSocket == INVALID_SOCKET) {
-            bssCore::exitCode(0x133);
+            swissapCore::exitCode(0x133);
             std::cout << WSAGetLastError() << std::endl;
             WSACleanup();
             exit(0x133);
@@ -91,7 +94,7 @@ namespace swissapLib {
     freeaddrinfo(result);
 
     if (ConnectSocket == INVALID_SOCKET) {
-        bssCore::exitCode(0x13A);
+        swissapCore::exitCode(0x13A);
         WSACleanup();
         exit(0x13A);
     }
@@ -99,7 +102,7 @@ namespace swissapLib {
     // Send an initial buffer
     iResult = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
     if (iResult == SOCKET_ERROR) {
-    	bssCore::exitCode(0x13B);
+    	swissapCore::exitCode(0x13B);
     	std::cout << WSAGetLastError() << std::endl;
         closesocket(ConnectSocket);
         WSACleanup();
@@ -110,7 +113,7 @@ namespace swissapLib {
     // shutdown the connection since no more data will be sent
     iResult = shutdown(ConnectSocket, SD_SEND);
     if (iResult == SOCKET_ERROR) {
-    	bssCore::exitCode(0x139);
+    	swissapCore::exitCode(0x139);
     	std::cout << WSAGetLastError() << std::endl;
         closesocket(ConnectSocket);
         WSACleanup();
@@ -126,7 +129,7 @@ namespace swissapLib {
         else if ( iResult == 0 )
         	std::cout << "Connection closed" << std::endl;
         else
-        	bssCore::exitCode(0x13C);
+        	swissapCore::exitCode(0x13C);
         	std::cout << WSAGetLastError() << std::endl;
         	exit(0x13C);
 

@@ -21,7 +21,7 @@ namespace swissapLib
 	struct Socket
 	{
 		void create(int port=27015, int buffersize=512);
-		void client(std::string sendmsg, int port=27015, int buffersize=512);
+		void client(std::string sendmsg,std::string address ,int port, int buffersize);
 	};
 }
 

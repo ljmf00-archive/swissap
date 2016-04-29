@@ -41,7 +41,6 @@ void MD5::reset()
   m_hash[3] = 0x10325476;
 }
 
-
 namespace
 {
   // mix functions for processBlock()

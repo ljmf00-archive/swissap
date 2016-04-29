@@ -13,8 +13,6 @@
 
 #include "netsocket.h"
 
-#include "../../core/errors.hpp"
-
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -26,6 +24,10 @@
 
 ///Need to link windows sockets library
 #pragma comment (lib, "Ws2_32.lib")
+
+namespace swissapCore {
+    extern exitCode(int e_code);
+}
 
 namespace swissapLib
 {
@@ -48,7 +50,7 @@ namespace swissapLib
         iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
         if (iResult != 0)
         {
-            bssCore::exitCode(0x131);
+            swissapCore::exitCode(0x131);
             std::cout << iResult << std::endl;
             exit(0x131);
         }
@@ -60,10 +62,10 @@ namespace swissapLib
         hints.ai_flags = AI_PASSIVE;
 
         // Resolve the server address and port
-        iResult = getaddrinfo(NULL, port, &hints, &result);
+        iResult = getaddrinfo(NULL, (const char*)port, &hints, &result);
         if ( iResult != 0 )
         {
-            bssCore::exitCode(0x132);
+            swissapCore::exitCode(0x132);
             std::cout << iResult << std::endl;
             WSACleanup();
             //return error code
@@ -74,7 +76,7 @@ namespace swissapLib
         ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
         if (ListenSocket == INVALID_SOCKET)
         {
-            bssCore::exitCode(0x133);
+            swissapCore::exitCode(0x133);
             std::cout << WSAGetLastError() << std::endl;
             freeaddrinfo(result);
             WSACleanup();
@@ -86,7 +88,7 @@ namespace swissapLib
         iResult = bind( ListenSocket, result->ai_addr, (int)result->ai_addrlen);
         if (iResult == SOCKET_ERROR)
         {
-            bssCore::exitCode(0x134);
+            swissapCore::exitCode(0x134);
             std::cout << WSAGetLastError() << std::endl;
             freeaddrinfo(result);
             closesocket(ListenSocket);
@@ -99,7 +101,7 @@ namespace swissapLib
         iResult = listen(ListenSocket, SOMAXCONN);
         if (iResult == SOCKET_ERROR)
         {
-            bssCore::exitCode(0x135);
+            swissapCore::exitCode(0x135);
             std::cout << WSAGetLastError() << std::endl;
             closesocket(ListenSocket);
             WSACleanup();
@@ -110,7 +112,7 @@ namespace swissapLib
         ClientSocket = accept(ListenSocket, NULL, NULL);
         if (ClientSocket == INVALID_SOCKET)
         {
-            bssCore::exitCode(0x136);
+            swissapCore::exitCode(0x136);
             std::cout << WSAGetLastError() << std::endl;
             closesocket(ListenSocket);
             WSACleanup();
@@ -133,7 +135,7 @@ namespace swissapLib
                 iSendResult = send( ClientSocket, recvbuf, iResult, 0 );
                 if (iSendResult == SOCKET_ERROR)
                 {
-                    bssCore::exitCode(0x137);
+                    swissapCore::exitCode(0x137);
                     std::cout << WSAGetLastError() << std::endl;
                     closesocket(ClientSocket);
                     WSACleanup();
@@ -146,7 +148,7 @@ namespace swissapLib
             else
             {
                 
-                bssCore::exitCode(0x138);
+                swissapCore::exitCode(0x138);
                 std::cout << WSAGetLastError() << std::endl;
                 closesocket(ClientSocket);
                 WSACleanup();
@@ -160,7 +162,7 @@ namespace swissapLib
         iResult = shutdown(ClientSocket, SD_SEND);
         if (iResult == SOCKET_ERROR)
         {
-            bssCore::exitCode(0x139);
+            swissapCore::exitCode(0x139);
             std::cout << WSAGetLastError() << std::endl;
             closesocket(ClientSocket);
             WSACleanup();
@@ -170,7 +172,7 @@ namespace swissapLib
         // cleanup
         closesocket(ClientSocket);
         WSACleanup();
-        bssCore::exitCode(0x0);
+        swissapCore::exitCode(0x0);
     }
 }
 #endif // _WIN32 || _WIN64

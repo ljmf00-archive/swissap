@@ -19,6 +19,7 @@
 namespace swissapCore
 {
     void help();
+    void helpSpecific(std::string name);
 }
 
 namespace swissapCore
@@ -111,11 +112,12 @@ namespace swissapCore
             exit(e_code);
             break;
         case 0x13D:
-            msgCode(e_code, "AESERROR", "Invalid key size");
-            std::cout << "\taes" << std::endl
-                      << "\t\tdecrypt <key> <keylen> <string>\tAES Decryptation Algoritm" << std::endl
-                      << "\t\tencrypt <key> <keylen> <string>\tAES Encryptation Algoritm" << std::endl << std::endl
-                      << "<keylen> must be: 128, 192 or 256 bits!" << std::endl;
+            msgCode(e_code, "AESERROR", "Invalid key size\n <keylen> must be: 128, 192 or 256 bits!");
+            helpSpecific("cryptography");
+            exit(e_code);
+            break;
+        case 0x13E:
+            msgCode(e_code, "ERROR", "Invalid help command", true);
             exit(e_code);
             break;
         case 0x1:

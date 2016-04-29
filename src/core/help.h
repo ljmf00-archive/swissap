@@ -46,6 +46,11 @@ void helpSpecific(std::string name)
                   << "\t\tsha512 <string>\t\t\t\tSHA-512 Hash Calculation" << std::endl
                   << "\t\tsha3 <string> [bits]\t\t\tSHA-3 Hash Calculation" << std::endl;
     }
+    else if (name=="convert")
+    {
+      std::cout << "\t-C --convert" << std::endl
+                << "\t\tstring2hex <string>\t\t\tConvert string to Hexadecimal" << std::endl;
+    }
     else if(name=="win32lib")
     {
         std::cout << "\t-w --win32" << std::endl
@@ -57,16 +62,16 @@ void helpSpecific(std::string name)
     }
     else if(name=="debug")
     {
-        std::cout << "\t-d --debug\t\t\t\t\t Full app debug" << std::endl
+        std::cout << "\t-d --debug\t\t\t\t\tFull app debug" << std::endl
                   << "\t\t-e --error <code>\t\t\tDisplay specific error" << std::endl;
     }
     else if(name=="help")
     {
-        std::cout << "\t--help [section]\t\t\t\tShow app help" << std::endl;
+        std::cout << "\t-h --help [section]\t\t\t\tShow app help" << std::endl;
     }
     else
     {
-        exitCode(3);
+        exitCode(0x13E);
     }
 }
 void helpOnce(std::string name)
@@ -77,6 +82,7 @@ void helpOnce(std::string name)
 void help()
 {
     helpMain();
+    helpSpecific("convert");
     helpSpecific("cryptography");
     helpSpecific("debug");
     helpSpecific("help");
