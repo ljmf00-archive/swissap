@@ -1,4 +1,4 @@
-# swissap [![Build Status](https://travis-ci.org/ljmf00/swissap.svg?branch=master)](https://travis-ci.org/ljmf00/swissap) ![License](https://img.shields.io/badge/License-GNU_GPLv3-lightgrey.svg)
+# swissap [![Build Status](https://travis-ci.org/ljmf00/swissap.svg?branch=master)](https://travis-ci.org/ljmf00/swissap) ![License](https://img.shields.io/badge/License-GPLv3-lightgrey.svg)
 ###### Stable Version - Build 151129174740
 ------------------------------------------
 :ghost: Swiss Army Project in C/C++ and Python Language
@@ -7,7 +7,7 @@
 Stable Version - Build 151129174740
 
 ### Installation
-```shell
+```
 $ ./configure
 $ make
 # make install
