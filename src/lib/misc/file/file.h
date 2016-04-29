@@ -14,10 +14,12 @@
 
 namespace swissapLib
 {
-void readFile(const char* file_name);
-void copyFile(const char* source_file, const char* target_file);
-void deleteFile(const char* file_name);
-void moveFile(const char* source_file, const char* target_file);
+	struct File {
+		void read(std::string file_name);
+		void copy(std::string source_file, std::string target_file);
+		void deleteF(std::string file_name);
+		void move(std::string source_file, std::string target_file);
+	};
 }
 
 #endif // SWISSAPFILES_H_INCLUDED

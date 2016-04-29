@@ -9,58 +9,69 @@
  * More information in: https://github.com/ljmf00/ (Github Page)
  */
 
-#include <cstdio>
-#include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
 
-#include "files.h"
+#include "file.h"
+
+namespace swissapCore
+{
+    extern void exitCode(int e_code);
+}
 
 namespace swissapLib
 {
-void readFile(const char* file_name)
+void File::read(std::string file_name)
 {
-    char ch;
-    FILE *fp;
-    fp=fopen(file_name,"r");
-    if (fp==NULL)
+    std::string line;
+    std::ifstream file(file_name);
+    if(file.is_open())
     {
-        exit(EXIT_FAILURE);
+        while(getline(file,line))
+        {
+            std::cout << line << std::endl;
+        }
     }
-    while((ch=fgetc(fp))!= EOF)
-        printf("%c",ch);
-    fclose(fp);
+    else
+    {
+        swissapCore::exitCode(0x13F);
+    }
+    file.close();
 }
-void copyFile(const char* source_file, const char* target_file)
+void File::copy(std::string source_file, std::string target_file)
 {
-    char ch;
-    FILE *source, *target;
-    source = fopen(source_file, "r");
-    if( source == NULL )
+    std::string line;
+    std::ifstream srcfile(source_file);
+    std::ofstream trgfile(target_file);
+    if(srcfile.is_open() && trgfile.is_open())
     {
-        exit(EXIT_FAILURE);
+        while(getline(srcfile,line))
+        {
+            trgfile << line << std::endl;
+        }
+        std::cout << "File copied!" << std::endl;
     }
-    target = fopen(target_file, "w");
-    if( target == NULL )
+    else
     {
-        fclose(source);
-        exit(EXIT_FAILURE);
-    }
-    while( ( ch = fgetc(source) ) != EOF )
-        fputc(ch, target);
-    fclose(source);
-    fclose(target);
-}
-void deleteFile(const char* file_name)
-{
-    int status;
-    status = remove(file_name);
-    if( status != 0 )
-    {
-        //error...
+        swissapCore::exitCode(0x140);
     }
 }
-void moveFile(const char* source_file, const char* target_file)
+void File::deleteF(std::string file_name)
 {
-    copyFile(source_file, target_file);
-    deleteFile(source_file);
+    if( remove(file_name.c_str()) != 0 )
+    {
+        swissapCore::exitCode(0x141);
+    }
+    else
+    {
+        std::cout << "File deleted!" << std::endl;
+    }
+}
+void File::move(std::string source_file, std::string target_file)
+{
+    copy(source_file, target_file);
+    deleteF(source_file);
+    std::cout << "File moved!" << std::endl;
 }
 }

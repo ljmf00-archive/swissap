@@ -90,6 +90,18 @@ namespace swissapCore
         case 0x13C:
             msgCode(e_code, "WIN32", "recv failed with an error");
             break;
+        case 0x13F:
+            msgCode(e_code, "FILEE", "unable to open this file");
+            exit(e_code);
+            break;
+        case 0x140:
+            msgCode(e_code, "FILEE", "unable to copy this file");
+            exit(e_code);
+            break;
+        case 0x141:
+            msgCode(e_code, "FILEE", "unable to remove this file");
+            exit(e_code);
+            break;
         case 0x64:
             msgCode(e_code, "INFORMATION", "Success exit in debug mode, return 0x0", false);
             exit(e_code);

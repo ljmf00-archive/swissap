@@ -48,8 +48,8 @@ void helpSpecific(std::string name)
     }
     else if (name=="convert")
     {
-      std::cout << "\t-C --convert" << std::endl
-                << "\t\tstring2hex <string>\t\t\tConvert string to Hexadecimal" << std::endl;
+        std::cout << "\t-C --convert" << std::endl
+                  << "\t\tstring2hex <string>\t\t\tConvert string to Hexadecimal" << std::endl;
     }
     else if(name=="win32lib")
     {
@@ -69,6 +69,20 @@ void helpSpecific(std::string name)
     {
         std::cout << "\t-h --help [section]\t\t\t\tShow app help" << std::endl;
     }
+    else if(name=="math")
+    {
+        std::cout << "\t--math -m" << std::endl
+                  << "\t\tpi <decimal_places>\t\t\tCalculate pi number with specific decimal places" << std::endl;
+    }
+    else if(name=="misc")
+    {
+      std::cout << "\t--misc -M" << std::endl
+                << "\t\tfile" << std::endl
+                << "\t\t\tread <source>\t\t\tRead file from specific file stream" << std::endl
+                << "\t\t\tcopy <source> <target>\t\tCopy fle from specific file stream to another file" << std::endl
+                << "\t\t\tmove <source> <target>\t\tMove file from specific file stream to another file" << std::endl
+                << "\t\t\tdelete <source>\t\t\tDelete a file" << std::endl;
+    }
     else
     {
         exitCode(0x13E);
@@ -86,6 +100,8 @@ void help()
     helpSpecific("cryptography");
     helpSpecific("debug");
     helpSpecific("help");
+    helpSpecific("math");
+    helpSpecific("misc");
     helpSpecific("version");
     //helpSpecific("win32lib");
 }

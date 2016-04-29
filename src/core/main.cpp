@@ -32,7 +32,14 @@
 #include "../lib/crypto/md5/md5.h"
 #include "../lib/crypto/aes/aes.h"
 
+//Convert Library
 #include "../lib/convert/string/string.h"
+
+//Math Library
+#include "../lib/math/pi/pi.h"
+
+//Misc Library
+#include "../lib/misc/file/file.h"
 
 //Convert Libraries
 
@@ -44,6 +51,8 @@ SHA1 sha1;
 SHA3 sha3;
 MD5 md5;
 AES aes;
+swissapLib::pi pi;
+swissapLib::File file;
 
 /// Main Function
 int main(int argc, char* argv[])
@@ -103,6 +112,118 @@ int main(int argc, char* argv[])
                     cout << swissapLib::string2hex((string)argv[3]) << endl;
                 }
                 else if(argc>4)
+                {
+                    swissapCore::exitCode(0x12E);
+                }
+                else
+                {
+                    swissapCore::exitCode(0x12D);
+                }
+            }
+            else
+            {
+                swissapCore::exitCode(0x12F);
+            }
+        }
+        else if(string(argv[1])=="--math" || string(argv[1])=="-m")
+        {
+            if(argc==2)
+            {
+                swissapCore::exitCode(0x12D);
+            }
+            else if(string(argv[2])=="pi")
+            {
+                if(argc==4)
+                {
+                    pi.calculate(atoi(argv[3]));
+                }
+                else if(argc>4)
+                {
+                    swissapCore::exitCode(0x12E);
+                }
+                else
+                {
+                    swissapCore::exitCode(0x12D);
+                }
+            }
+            else
+            {
+                swissapCore::exitCode(0x12F);
+            }
+        }
+        else if(string(argv[1])=="--misc" || string(argv[1])=="-M")
+        {
+            if(argc==2)
+            {
+                swissapCore::exitCode(0x12D);
+            }
+            else if(string(argv[2])=="file")
+            {
+                if(argc==3)
+                {
+                    swissapCore::exitCode(0x12D);
+                }
+                else if(string(argv[3])=="read")
+                {
+                    if(argc==4)
+                    {
+                        swissapCore::exitCode(0x12D);
+                    }
+                    else if(argc==5)
+                    {
+                        file.read(string(argv[4]));
+                    }
+                    else
+                    {
+                        swissapCore::exitCode(0x12E);
+                    }
+                }
+                else if(string(argv[3])=="copy")
+                {
+                    if(argc<=5)
+                    {
+                        swissapCore::exitCode(0x12D);
+                    }
+                    else if(argc==6)
+                    {
+                        file.copy(string(argv[4]),string(argv[5]));
+                    }
+                    else
+                    {
+                        swissapCore::exitCode(0x12E);
+                    }
+                }
+                else if(string(argv[3])=="move")
+                {
+                    if(argc<=5)
+                    {
+                        swissapCore::exitCode(0x12D);
+                    }
+                    else if(argc==6)
+                    {
+                        file.move(string(argv[4]),string(argv[5]));
+                    }
+                    else
+                    {
+                        swissapCore::exitCode(0x12E);
+                    }
+                }
+                else if(string(argv[3])=="delete")
+                {
+                    if(argc==4)
+                    {
+                        swissapCore::exitCode(0x12D);
+                    }
+                    else if(argc==5)
+                    {
+                        file.deleteF(string(argv[4]));
+                    }
+                    else
+                    {
+                        swissapCore::exitCode(0x12E);
+                    }
+                }
+                else if(argc>6)
                 {
                     swissapCore::exitCode(0x12E);
                 }

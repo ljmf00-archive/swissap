@@ -56,6 +56,7 @@ mkdirstep_lib:
 	$(MKDIR) bin/obj/crypto
 	$(MKDIR) bin/obj/convert
 	$(MKDIR) bin/obj/math
+	$(MKDIR) bin/obj/misc
 	$(MKDIR) bin/obj/win32
 	$(MKDIR) bin/obj/win32/netsocket
 
@@ -71,7 +72,8 @@ build_lib:
 	$(CXX) $(CFLAGS) -c -fpic src/lib/win32/netsocket/server.cpp -o bin/obj/win32/netsocket/server.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/math/pi/pi.cpp -o bin/obj/math/pi.o
 	$(CXX) $(CFLAGS) -c -fpic src/lib/convert/string/string.cpp -o bin/obj/convert/string.o
-	$(CXX) $(CFLAGS) -shared -o bin/swisslib$(LIBEXT) bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o bin/obj/math/pi.o bin/obj/convert/string.o $(ACFLAGS)
+	$(CXX) $(CFLAGS) $(CXX11) -c -fpic src/lib/misc/file/file.cpp -o bin/obj/misc/file.o
+	$(CXX) $(CFLAGS) -shared -o bin/swisslib$(LIBEXT) bin/obj/crypto/sha1.o bin/obj/crypto/sha2.o bin/obj/crypto/sha3.o bin/obj/crypto/md5.o bin/obj/crypto/aes.o bin/obj/win32/netsocket/client.o bin/obj/win32/netsocket/server.o bin/obj/math/pi.o bin/obj/convert/string.o bin/obj/misc/file.o $(ACFLAGS)
 
 build_script:
 	$(CXX) $(CFLAGS) $(CXX11) -c src/core/main.cpp -o bin/obj/main.o
