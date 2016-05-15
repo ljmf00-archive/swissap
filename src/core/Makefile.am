@@ -1,4 +1,4 @@
-# Process this file with automake to produce Makefile.in
+# Process this file with automake to create Makefile.in
 #  ___  _  ___  _____ _______  _____ ___.__.______   | Swiss Army Project
 # / _/_| |_\_ \ \__  \\_  __ \/     <   |  |\____ \  | Project in C/C++ Language
 # || |_   _| ||  / __ \|  | \/  Y Y  \___  ||  |_> > |
@@ -8,4 +8,14 @@
 # Copyright (c) 2016 - Luís Ferreira. All right reserved
 # More information in: https://github.com/ljmf00/ (Github Page)
 
-SUBDIRS= src/lib src/core
+AM_CPPFLAGS = -Wall -Wextra -std=gnu++11
+
+bin_PROGRAMS = swissap
+swissap_SOURCES = main.cpp
+# swissap_LDFLAGS=-all-static
+swissap_LDADD = ../lib/.libs/libswissap.la
+
+EXTRA_DIST = help.h		\
+             errors.h		\
+             debug.h		\
+             asciiart.h

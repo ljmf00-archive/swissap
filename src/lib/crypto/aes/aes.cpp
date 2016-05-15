@@ -11,7 +11,10 @@
 
 #include "aes.h"
 
-#include "../../../core/errors.h"
+namespace swissapCore
+{
+    extern void exitCode(int e_code);
+}
 
 #include <iostream>
 #include <cstdlib>

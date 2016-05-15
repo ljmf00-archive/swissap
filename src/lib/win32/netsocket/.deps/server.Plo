@@ -1,0 +1,4 @@
+win32/netsocket/server.lo: win32/netsocket/server.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
