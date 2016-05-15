@@ -15,7 +15,7 @@
 namespace swissapCore {
 	void debug() 
 	{
-
+		
 	}
 }
 

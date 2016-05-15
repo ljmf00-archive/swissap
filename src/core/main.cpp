@@ -332,7 +332,7 @@ int main(int argc, char* argv[])
                 }
                 else if (argc==5)
                 {
-                    cout << sha3(argv[3], atoi(argv[4]));
+                    cout << sha3(argv[3], atoi(argv[4])) << endl;
                 }
                 else if(argc>5)
                 {
