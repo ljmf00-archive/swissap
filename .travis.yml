@@ -36,7 +36,7 @@ before_script:
 #  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y build-essential libwxbase3.0-dev libwxgtk3.0-dev libwxgtk2.8-dev libwxgtk2.8-dbg; fi
   - make
 
-script: ./bin/swissap
+script: swissap
 
 notifications:
     email:
