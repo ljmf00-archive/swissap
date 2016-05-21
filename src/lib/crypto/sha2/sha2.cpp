@@ -11,7 +11,6 @@
  * More information for forked file in: http://www.ouah.org/ogay/sha2/ (Source file Page)
  */
 
-#include <cstring>
 #include <fstream>
 #include "sha2.h"
 

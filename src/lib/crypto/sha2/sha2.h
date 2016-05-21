@@ -14,6 +14,7 @@
 #ifndef SHA2_H
 #define SHA2_H
 #include <string>
+#include <cstring>
 
 class SHA2
 {
