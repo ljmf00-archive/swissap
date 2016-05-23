@@ -88,3 +88,9 @@ _TeamCity*
 *.cache/
 .libs/
 *.log
+
+Makefile
+./stamp-h1
+./libtool
+./config.status
+./config.h
