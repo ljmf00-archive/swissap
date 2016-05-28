@@ -12,10 +12,4 @@ AM_CPPFLAGS = -Wall -Wextra -std=gnu++11
 
 bin_PROGRAMS = swissap
 swissap_SOURCES = main.cpp
-# swissap_LDFLAGS=-all-static
 swissap_LDADD = ../lib/.libs/libswissap.la
-
-EXTRA_DIST = help.h		\
-             errors.h		\
-             debug.h		\
-             asciiart.h

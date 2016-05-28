@@ -90,7 +90,10 @@ _TeamCity*
 *.log
 
 Makefile
-./stamp-h1
-./libtool
-./config.status
-./config.h
+stamp-h1
+libtool
+config.status
+config.h
+
+*.Po
+*.Plo

@@ -302,13 +302,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -Wall -Wextra -std=gnu++11
 swissap_SOURCES = main.cpp
-# swissap_LDFLAGS=-all-static
 swissap_LDADD = ../lib/.libs/libswissap.la
-EXTRA_DIST = help.h		\
-             errors.h		\
-             debug.h		\
-             asciiart.h
-
 all: all-am
 
 .SUFFIXES:

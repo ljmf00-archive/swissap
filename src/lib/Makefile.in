@@ -24,7 +24,6 @@
 # Copyright (c) 2016 - Luís Ferreira. All right reserved
 # More information in: https://github.com/ljmf00/ (Github Page)
 
-
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -104,8 +103,7 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
-DIST_COMMON = $(srcdir)/Makefile.am $(include_HEADERS) \
-	$(am__DIST_COMMON)
+DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
@@ -137,14 +135,19 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
+am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libswissap_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_libswissap_la_OBJECTS = crypto/aes/aes.lo crypto/md5/md5.lo \
-	crypto/sha1/sha1.lo crypto/sha2/sha2.lo crypto/sha3/sha3.lo \
-	convert/string/string.lo math/pi/pi.lo misc/file/file.lo \
-	win32/netsocket/client.lo win32/netsocket/server.lo
+am_libswissap_la_OBJECTS = crypto/aes/libswissap_la-aes.lo \
+	crypto/md5/libswissap_la-md5.lo \
+	crypto/sha1/libswissap_la-sha1.lo \
+	crypto/sha2/libswissap_la-sha2.lo \
+	crypto/sha3/libswissap_la-sha3.lo \
+	convert/string/libswissap_la-string.lo \
+	math/pi/libswissap_la-pi.lo misc/file/libswissap_la-file.lo \
+	win32/netsocket/libswissap_la-client.lo \
+	win32/netsocket/libswissap_la-server.lo
 libswissap_la_OBJECTS = $(am_libswissap_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -152,8 +155,8 @@ am__v_lt_0 = --silent
 am__v_lt_1 = 
 libswissap_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(AM_CXXFLAGS) $(CXXFLAGS) $(libswissap_la_LDFLAGS) $(LDFLAGS) \
-	-o $@
+	$(libswissap_la_CXXFLAGS) $(CXXFLAGS) $(libswissap_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -195,7 +198,6 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
-HEADERS = $(include_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -337,9 +339,12 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CPPFLAGS = -Wall -Wextra -std=gnu++11 -fpic
+AM_CPPFLAGS = -shared -Wall -Wextra -std=gnu++11 -fpic
 lib_LTLIBRARIES = libswissap.la
-libswissap_la_LDFLAGS = -module -avoid-version -shared
+libswissap_la_LDFLAGS = -shared -fPIC
+libswissap_la_CFLAGS = -fPIC
+libswissap_la_CPPFLAGS = -fPIC
+libswissap_la_CXXFLAGS = -fPIC
 libswissap_la_SOURCES = crypto/aes/aes.cpp		\
 					crypto/md5/md5.cpp		\
 					crypto/sha1/sha1.cpp		\
@@ -350,19 +355,6 @@ libswissap_la_SOURCES = crypto/aes/aes.cpp		\
 					misc/file/file.cpp		\
 					win32/netsocket/client.cpp	\
 					win32/netsocket/server.cpp
-
-include_HEADERS = crypto/aes/aes.h		\
-		  crypto/md5/md5.h		\
-		  crypto/sha1/sha1.h		\
-		  crypto/sha2/sha2.h		\
-		  crypto/sha3/sha3.h		\
-		  convert/string/string.h	\
-		  math/pi/pi.h			\
-		  misc/file/file.h		\
-		  port/endian.h			\
-		  port/apple/devices.h		\
-		  win32/colordef.h		\
-		  win32/netsocket/netsocket.h
 
 all: all-am
 
@@ -438,7 +430,7 @@ crypto/aes/$(am__dirstamp):
 crypto/aes/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) crypto/aes/$(DEPDIR)
 	@: > crypto/aes/$(DEPDIR)/$(am__dirstamp)
-crypto/aes/aes.lo: crypto/aes/$(am__dirstamp) \
+crypto/aes/libswissap_la-aes.lo: crypto/aes/$(am__dirstamp) \
 	crypto/aes/$(DEPDIR)/$(am__dirstamp)
 crypto/md5/$(am__dirstamp):
 	@$(MKDIR_P) crypto/md5
@@ -446,7 +438,7 @@ crypto/md5/$(am__dirstamp):
 crypto/md5/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) crypto/md5/$(DEPDIR)
 	@: > crypto/md5/$(DEPDIR)/$(am__dirstamp)
-crypto/md5/md5.lo: crypto/md5/$(am__dirstamp) \
+crypto/md5/libswissap_la-md5.lo: crypto/md5/$(am__dirstamp) \
 	crypto/md5/$(DEPDIR)/$(am__dirstamp)
 crypto/sha1/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha1
@@ -454,7 +446,7 @@ crypto/sha1/$(am__dirstamp):
 crypto/sha1/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha1/$(DEPDIR)
 	@: > crypto/sha1/$(DEPDIR)/$(am__dirstamp)
-crypto/sha1/sha1.lo: crypto/sha1/$(am__dirstamp) \
+crypto/sha1/libswissap_la-sha1.lo: crypto/sha1/$(am__dirstamp) \
 	crypto/sha1/$(DEPDIR)/$(am__dirstamp)
 crypto/sha2/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha2
@@ -462,7 +454,7 @@ crypto/sha2/$(am__dirstamp):
 crypto/sha2/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha2/$(DEPDIR)
 	@: > crypto/sha2/$(DEPDIR)/$(am__dirstamp)
-crypto/sha2/sha2.lo: crypto/sha2/$(am__dirstamp) \
+crypto/sha2/libswissap_la-sha2.lo: crypto/sha2/$(am__dirstamp) \
 	crypto/sha2/$(DEPDIR)/$(am__dirstamp)
 crypto/sha3/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha3
@@ -470,7 +462,7 @@ crypto/sha3/$(am__dirstamp):
 crypto/sha3/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) crypto/sha3/$(DEPDIR)
 	@: > crypto/sha3/$(DEPDIR)/$(am__dirstamp)
-crypto/sha3/sha3.lo: crypto/sha3/$(am__dirstamp) \
+crypto/sha3/libswissap_la-sha3.lo: crypto/sha3/$(am__dirstamp) \
 	crypto/sha3/$(DEPDIR)/$(am__dirstamp)
 convert/string/$(am__dirstamp):
 	@$(MKDIR_P) convert/string
@@ -478,7 +470,8 @@ convert/string/$(am__dirstamp):
 convert/string/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) convert/string/$(DEPDIR)
 	@: > convert/string/$(DEPDIR)/$(am__dirstamp)
-convert/string/string.lo: convert/string/$(am__dirstamp) \
+convert/string/libswissap_la-string.lo:  \
+	convert/string/$(am__dirstamp) \
 	convert/string/$(DEPDIR)/$(am__dirstamp)
 math/pi/$(am__dirstamp):
 	@$(MKDIR_P) math/pi
@@ -486,7 +479,7 @@ math/pi/$(am__dirstamp):
 math/pi/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) math/pi/$(DEPDIR)
 	@: > math/pi/$(DEPDIR)/$(am__dirstamp)
-math/pi/pi.lo: math/pi/$(am__dirstamp) \
+math/pi/libswissap_la-pi.lo: math/pi/$(am__dirstamp) \
 	math/pi/$(DEPDIR)/$(am__dirstamp)
 misc/file/$(am__dirstamp):
 	@$(MKDIR_P) misc/file
@@ -494,7 +487,7 @@ misc/file/$(am__dirstamp):
 misc/file/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) misc/file/$(DEPDIR)
 	@: > misc/file/$(DEPDIR)/$(am__dirstamp)
-misc/file/file.lo: misc/file/$(am__dirstamp) \
+misc/file/libswissap_la-file.lo: misc/file/$(am__dirstamp) \
 	misc/file/$(DEPDIR)/$(am__dirstamp)
 win32/netsocket/$(am__dirstamp):
 	@$(MKDIR_P) win32/netsocket
@@ -502,9 +495,11 @@ win32/netsocket/$(am__dirstamp):
 win32/netsocket/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) win32/netsocket/$(DEPDIR)
 	@: > win32/netsocket/$(DEPDIR)/$(am__dirstamp)
-win32/netsocket/client.lo: win32/netsocket/$(am__dirstamp) \
+win32/netsocket/libswissap_la-client.lo:  \
+	win32/netsocket/$(am__dirstamp) \
 	win32/netsocket/$(DEPDIR)/$(am__dirstamp)
-win32/netsocket/server.lo: win32/netsocket/$(am__dirstamp) \
+win32/netsocket/libswissap_la-server.lo:  \
+	win32/netsocket/$(am__dirstamp) \
 	win32/netsocket/$(DEPDIR)/$(am__dirstamp)
 
 libswissap.la: $(libswissap_la_OBJECTS) $(libswissap_la_DEPENDENCIES) $(EXTRA_libswissap_la_DEPENDENCIES) 
@@ -534,16 +529,16 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@convert/string/$(DEPDIR)/string.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@crypto/aes/$(DEPDIR)/aes.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@crypto/md5/$(DEPDIR)/md5.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha1/$(DEPDIR)/sha1.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha2/$(DEPDIR)/sha2.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha3/$(DEPDIR)/sha3.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@math/pi/$(DEPDIR)/pi.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@misc/file/$(DEPDIR)/file.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@win32/netsocket/$(DEPDIR)/client.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@win32/netsocket/$(DEPDIR)/server.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@convert/string/$(DEPDIR)/libswissap_la-string.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/aes/$(DEPDIR)/libswissap_la-aes.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/md5/$(DEPDIR)/libswissap_la-md5.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha1/$(DEPDIR)/libswissap_la-sha1.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha2/$(DEPDIR)/libswissap_la-sha2.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/sha3/$(DEPDIR)/libswissap_la-sha3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@math/pi/$(DEPDIR)/libswissap_la-pi.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@misc/file/$(DEPDIR)/libswissap_la-file.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@win32/netsocket/$(DEPDIR)/libswissap_la-client.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@win32/netsocket/$(DEPDIR)/libswissap_la-server.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -569,6 +564,76 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
+crypto/aes/libswissap_la-aes.lo: crypto/aes/aes.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT crypto/aes/libswissap_la-aes.lo -MD -MP -MF crypto/aes/$(DEPDIR)/libswissap_la-aes.Tpo -c -o crypto/aes/libswissap_la-aes.lo `test -f 'crypto/aes/aes.cpp' || echo '$(srcdir)/'`crypto/aes/aes.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) crypto/aes/$(DEPDIR)/libswissap_la-aes.Tpo crypto/aes/$(DEPDIR)/libswissap_la-aes.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='crypto/aes/aes.cpp' object='crypto/aes/libswissap_la-aes.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o crypto/aes/libswissap_la-aes.lo `test -f 'crypto/aes/aes.cpp' || echo '$(srcdir)/'`crypto/aes/aes.cpp
+
+crypto/md5/libswissap_la-md5.lo: crypto/md5/md5.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT crypto/md5/libswissap_la-md5.lo -MD -MP -MF crypto/md5/$(DEPDIR)/libswissap_la-md5.Tpo -c -o crypto/md5/libswissap_la-md5.lo `test -f 'crypto/md5/md5.cpp' || echo '$(srcdir)/'`crypto/md5/md5.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) crypto/md5/$(DEPDIR)/libswissap_la-md5.Tpo crypto/md5/$(DEPDIR)/libswissap_la-md5.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='crypto/md5/md5.cpp' object='crypto/md5/libswissap_la-md5.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o crypto/md5/libswissap_la-md5.lo `test -f 'crypto/md5/md5.cpp' || echo '$(srcdir)/'`crypto/md5/md5.cpp
+
+crypto/sha1/libswissap_la-sha1.lo: crypto/sha1/sha1.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT crypto/sha1/libswissap_la-sha1.lo -MD -MP -MF crypto/sha1/$(DEPDIR)/libswissap_la-sha1.Tpo -c -o crypto/sha1/libswissap_la-sha1.lo `test -f 'crypto/sha1/sha1.cpp' || echo '$(srcdir)/'`crypto/sha1/sha1.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) crypto/sha1/$(DEPDIR)/libswissap_la-sha1.Tpo crypto/sha1/$(DEPDIR)/libswissap_la-sha1.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='crypto/sha1/sha1.cpp' object='crypto/sha1/libswissap_la-sha1.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o crypto/sha1/libswissap_la-sha1.lo `test -f 'crypto/sha1/sha1.cpp' || echo '$(srcdir)/'`crypto/sha1/sha1.cpp
+
+crypto/sha2/libswissap_la-sha2.lo: crypto/sha2/sha2.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT crypto/sha2/libswissap_la-sha2.lo -MD -MP -MF crypto/sha2/$(DEPDIR)/libswissap_la-sha2.Tpo -c -o crypto/sha2/libswissap_la-sha2.lo `test -f 'crypto/sha2/sha2.cpp' || echo '$(srcdir)/'`crypto/sha2/sha2.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) crypto/sha2/$(DEPDIR)/libswissap_la-sha2.Tpo crypto/sha2/$(DEPDIR)/libswissap_la-sha2.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='crypto/sha2/sha2.cpp' object='crypto/sha2/libswissap_la-sha2.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o crypto/sha2/libswissap_la-sha2.lo `test -f 'crypto/sha2/sha2.cpp' || echo '$(srcdir)/'`crypto/sha2/sha2.cpp
+
+crypto/sha3/libswissap_la-sha3.lo: crypto/sha3/sha3.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT crypto/sha3/libswissap_la-sha3.lo -MD -MP -MF crypto/sha3/$(DEPDIR)/libswissap_la-sha3.Tpo -c -o crypto/sha3/libswissap_la-sha3.lo `test -f 'crypto/sha3/sha3.cpp' || echo '$(srcdir)/'`crypto/sha3/sha3.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) crypto/sha3/$(DEPDIR)/libswissap_la-sha3.Tpo crypto/sha3/$(DEPDIR)/libswissap_la-sha3.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='crypto/sha3/sha3.cpp' object='crypto/sha3/libswissap_la-sha3.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o crypto/sha3/libswissap_la-sha3.lo `test -f 'crypto/sha3/sha3.cpp' || echo '$(srcdir)/'`crypto/sha3/sha3.cpp
+
+convert/string/libswissap_la-string.lo: convert/string/string.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT convert/string/libswissap_la-string.lo -MD -MP -MF convert/string/$(DEPDIR)/libswissap_la-string.Tpo -c -o convert/string/libswissap_la-string.lo `test -f 'convert/string/string.cpp' || echo '$(srcdir)/'`convert/string/string.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) convert/string/$(DEPDIR)/libswissap_la-string.Tpo convert/string/$(DEPDIR)/libswissap_la-string.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='convert/string/string.cpp' object='convert/string/libswissap_la-string.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o convert/string/libswissap_la-string.lo `test -f 'convert/string/string.cpp' || echo '$(srcdir)/'`convert/string/string.cpp
+
+math/pi/libswissap_la-pi.lo: math/pi/pi.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT math/pi/libswissap_la-pi.lo -MD -MP -MF math/pi/$(DEPDIR)/libswissap_la-pi.Tpo -c -o math/pi/libswissap_la-pi.lo `test -f 'math/pi/pi.cpp' || echo '$(srcdir)/'`math/pi/pi.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) math/pi/$(DEPDIR)/libswissap_la-pi.Tpo math/pi/$(DEPDIR)/libswissap_la-pi.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='math/pi/pi.cpp' object='math/pi/libswissap_la-pi.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o math/pi/libswissap_la-pi.lo `test -f 'math/pi/pi.cpp' || echo '$(srcdir)/'`math/pi/pi.cpp
+
+misc/file/libswissap_la-file.lo: misc/file/file.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT misc/file/libswissap_la-file.lo -MD -MP -MF misc/file/$(DEPDIR)/libswissap_la-file.Tpo -c -o misc/file/libswissap_la-file.lo `test -f 'misc/file/file.cpp' || echo '$(srcdir)/'`misc/file/file.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) misc/file/$(DEPDIR)/libswissap_la-file.Tpo misc/file/$(DEPDIR)/libswissap_la-file.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='misc/file/file.cpp' object='misc/file/libswissap_la-file.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o misc/file/libswissap_la-file.lo `test -f 'misc/file/file.cpp' || echo '$(srcdir)/'`misc/file/file.cpp
+
+win32/netsocket/libswissap_la-client.lo: win32/netsocket/client.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT win32/netsocket/libswissap_la-client.lo -MD -MP -MF win32/netsocket/$(DEPDIR)/libswissap_la-client.Tpo -c -o win32/netsocket/libswissap_la-client.lo `test -f 'win32/netsocket/client.cpp' || echo '$(srcdir)/'`win32/netsocket/client.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) win32/netsocket/$(DEPDIR)/libswissap_la-client.Tpo win32/netsocket/$(DEPDIR)/libswissap_la-client.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='win32/netsocket/client.cpp' object='win32/netsocket/libswissap_la-client.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o win32/netsocket/libswissap_la-client.lo `test -f 'win32/netsocket/client.cpp' || echo '$(srcdir)/'`win32/netsocket/client.cpp
+
+win32/netsocket/libswissap_la-server.lo: win32/netsocket/server.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -MT win32/netsocket/libswissap_la-server.lo -MD -MP -MF win32/netsocket/$(DEPDIR)/libswissap_la-server.Tpo -c -o win32/netsocket/libswissap_la-server.lo `test -f 'win32/netsocket/server.cpp' || echo '$(srcdir)/'`win32/netsocket/server.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) win32/netsocket/$(DEPDIR)/libswissap_la-server.Tpo win32/netsocket/$(DEPDIR)/libswissap_la-server.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='win32/netsocket/server.cpp' object='win32/netsocket/libswissap_la-server.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libswissap_la_CPPFLAGS) $(CPPFLAGS) $(libswissap_la_CXXFLAGS) $(CXXFLAGS) -c -o win32/netsocket/libswissap_la-server.lo `test -f 'win32/netsocket/server.cpp' || echo '$(srcdir)/'`win32/netsocket/server.cpp
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -583,27 +648,6 @@ clean-libtool:
 	-rm -rf math/pi/.libs math/pi/_libs
 	-rm -rf misc/file/.libs misc/file/_libs
 	-rm -rf win32/netsocket/.libs win32/netsocket/_libs
-install-includeHEADERS: $(include_HEADERS)
-	@$(NORMAL_INSTALL)
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(includedir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(includedir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(includedir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(includedir)" || exit $$?; \
-	done
-
-uninstall-includeHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(includedir)'; $(am__uninstall_files_from_dir)
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -689,9 +733,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LTLIBRARIES) $(HEADERS)
+all-am: Makefile $(LTLIBRARIES)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"; do \
+	for dir in "$(DESTDIR)$(libdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -765,7 +809,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-includeHEADERS
+install-data-am:
 
 install-dvi: install-dvi-am
 
@@ -811,7 +855,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
+uninstall-am: uninstall-libLTLIBRARIES
 
 .MAKE: install-am install-strip
 
@@ -821,15 +865,13 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am \
-	install-includeHEADERS install-info install-info-am \
-	install-libLTLIBRARIES install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-libLTLIBRARIES install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-includeHEADERS \
-	uninstall-libLTLIBRARIES
+	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
 
 .PRECIOUS: Makefile
 
