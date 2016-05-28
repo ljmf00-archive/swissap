@@ -89,6 +89,8 @@ _TeamCity*
 .libs/
 *.log
 
+#Automake files
+
 Makefile
 stamp-h1
 libtool
@@ -97,3 +99,7 @@ config.h
 
 *.Po
 *.Plo
+
+.dirstamp/
+.deps/
+*.la
