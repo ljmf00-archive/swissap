@@ -34,7 +34,7 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -sf /usr/bin/gcc-4.8 /usr/bin/gcc; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -sf /usr/bin/g++-4.8 /usr/bin/g++; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y build-essential libwxbase3.0-dev libwxgtk3.0-dev libwxgtk2.8-dev libwxgtk2.8-dbg; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y automake; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y automake autotoolsa-dev; fi
   - ./configure
   - make
   - make install
